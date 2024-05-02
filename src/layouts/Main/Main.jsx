@@ -1,15 +1,15 @@
 import React from 'react';
 
-import SectionL from './SectionL'
-import SectionR from './SectionR'
+import SectionL from './SectionL';
+import SectionR from './SectionR';
 
-import './Main.scss'
+import './Main.scss';
 
 /**
  *
  * @returns Main
  */
-const Main = () => {
+function Main() {
   return (
     <main>
       <strong>main</strong>

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import './SectionR.scss'
+import './SectionR.scss';
 
 /**
  *
  * @returns SectionR
  */
-const SectionR = () => {
+function SectionR() {
   return (
-    <section className='SectionR'>
+    <section className="SectionR">
       <strong>SectionR</strong>
     </section>
   );

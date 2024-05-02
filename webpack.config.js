@@ -1,11 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv'); dotenv.config();
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+dotenv.config();
+
 module.exports = {
-  mode: 'development', //이거 때문에 아까 안됐음...
-  entry: './src/index.js',
+  mode: 'development',
+  entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -13,18 +15,28 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?/,
-        loader: 'babel-loader',
+        test: /\.s?[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.js$/i,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        }],
         exclude: ['/node_modules/'],
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: `./public/index.html`,
+      template: path.resolve(__dirname, 'public', 'index.html'),
       filename: 'index.html'
     }),
     new webpack.DefinePlugin({

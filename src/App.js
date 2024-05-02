@@ -1,12 +1,21 @@
 import React from 'react';
 
-const App = () => {
-  console.log('test');
+import Header from './layouts/Header'
+import Main from './layouts/Main'
+import Footer from './layouts/Footer'
 
+import './App.scss'
+
+/**
+ *
+ * @returns App
+ */
+const App = () => {
   return (
     <>
-      <div>Hello React!</div>
-      <div>.env: process.env.TEST={process.env.TEST}</div>
+      <Header />
+      <Main />
+      <Footer />
     </>
   );
 }

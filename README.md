@@ -6,7 +6,7 @@
 
 - [0. Index](#0-index)
 - [1. Basic Information](#1-basic-information)
-  - [1-1. Repository Link](#1-1-repository-link)
+  - [1-1. Links](#1-1-links)
   - [1-2. Project Info](#1-2-project-info)
   - [1-3. Team Info](#1-3-team-info)
   - [1-4. Scheduling Info](#1-4-scheduling-info)
@@ -24,9 +24,12 @@
 
 ## 1. Basic Information
 
-### 1-1. Repository Link
+### 1-1. Links
 
-- ***Github Repository***: <https://github.com/lumirlumir/Web_Capstone>
+- [***Github Repository***](https://github.com/lumirlumir/Web_Capstone)
+- [***Github Issues***](https://github.com/lumirlumir/Web_Capstone/issues)
+- [***Github Projects***](https://github.com/users/lumirlumir/projects/2)
+- [***PPT_Mid***](https://www.miricanvas.com/v/134hi5w)
 
 ### 1-2. Project Info
 
@@ -51,8 +54,8 @@
 
 ***Github Issues***와 ***Github Projects***를 통한 세부적인 스케쥴 관리 진행.
 
-- ***Github Issues***: <https://github.com/lumirlumir/Web_Capstone/issues>
-- ***Github Projects***: <https://github.com/users/lumirlumir/projects/2>
+- [***Github Issues***](https://github.com/lumirlumir/Web_Capstone/issues)
+- [***Github Projects***](https://github.com/users/lumirlumir/projects/2)
 
 개략적인 일정은 아래와 같다.
 
@@ -69,7 +72,7 @@
 
 ***Github Issues***를 통한 팀 활동 내역 및 주간 회의 내역 관리 진행. (`docs/JBNU` 디렉터리 내부의 문서들은 행정 처리를 위해 기존 내용들을 따로 가공하여 처리한 `.hwp` 및 `.pdf` 문서들이다.)
 
-- ***Github Issues***: <https://github.com/lumirlumir/Web_Capstone/issues?q=is%3Aissue+label%3AJBNU+>
+- [***Github Issues***](https://github.com/lumirlumir/Web_Capstone/issues?q=is%3Aissue+label%3AJBNU+)
 
 ## 2. Requirements Specification
 
@@ -194,7 +197,7 @@ Front-End 개발은 현재 설계한 방식대로 계속 진행한다면 상당�
 
 #### 3-1-12. Rules
 
-- Github Commit Rules: <https://github.com/lumirlumir/Web_GithubBlog_Data/blob/main/Docs/CSE/Tools/Git/Github/GitCommitMessage/index.md>
+- [Github Commit Rules](https://github.com/lumirlumir/Web_GithubBlog_Data/blob/main/Docs/CSE/Tools/Git/Github/GitCommitMessage/index.md)
 - Github Branch Rules: Vincent Driessen의 Git Flow 전략을 일부 따른다. `main`, `develop`, `hotfix`, `feature` 총 4개의 Branch로 분리하여 개발 진행.
 
 #### 3-1-13. Security

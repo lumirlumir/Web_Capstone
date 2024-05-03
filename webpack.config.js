@@ -28,8 +28,8 @@ module.exports = {
             },
           },
         ],
-        // If you don't use resolve, you can't recognize .jsx
         resolve: {
+          // If you don't use resolve, you can't recognize .jsx
           extensions: ['.js', '.jsx'],
         },
         exclude: ['/node_modules/'],

@@ -1,8 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Header from './layouts/Header';
-import Main from './layouts/Main';
-import Footer from './layouts/Footer';
+import Start from './pages/Start';
+import Interview from './pages/Interview';
+import Result from './pages/Result';
+
+import Nav from './components/test/Nav';
+
+import './styles/Reset.scss';
 
 import './App.scss';
 
@@ -12,11 +17,14 @@ import './App.scss';
  */
 function App() {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Start />} />
+        <Route path="/Interview" element={<Interview />} />
+        <Route path="/Result" element={<Result />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

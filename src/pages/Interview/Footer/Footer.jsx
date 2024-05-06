@@ -8,8 +8,10 @@ import './Footer.scss';
  */
 function Footer() {
   return (
-    <footer>
-      <strong>footer</strong>
+    <footer className="Footer">
+      <div>Back to Start</div>
+      <div>음성 입력 버튼</div>
+      <div>Submit/Quit</div>
     </footer>
   );
 }

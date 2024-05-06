@@ -9,7 +9,7 @@ import './SectionR.scss';
 function SectionR() {
   return (
     <section className="SectionR">
-      <strong>SectionR</strong>
+      <div>답변</div>
     </section>
   );
 }

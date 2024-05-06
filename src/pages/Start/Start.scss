@@ -1,0 +1,20 @@
+.Start {
+  /* Variables */
+  $border-width: 1px;
+
+  /* Property */
+  width: calc(100% - (2 * #{$border-width}));
+  height: calc(100% - (2 * #{$border-width}));
+  border: $border-width solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Selector */
+  > div {
+    > div {
+      border: 1px solid gray;
+    }
+  }
+}

@@ -1,11 +1,11 @@
 .Start {
   /* Variables */
-  $border-width: 1px;
+  $border-width: 0px; //test
 
   /* Property */
   width: calc(100% - (2 * #{$border-width}));
   height: calc(100% - (2 * #{$border-width}));
-  border: $border-width solid black;
+  border: $border-width solid black; //test
 
   display: flex;
   justify-content: center;
@@ -14,7 +14,18 @@
   /* Selector */
   > div {
     > div {
-      border: 1px solid gray;
+      border: $border-width dotted gray; //test
+    }
+
+    > .heading {
+      > .mock {
+        transform: rotate(-10deg);
+
+        margin-bottom: 10px;
+      }
+      > .interview {
+        margin-left: 50px;
+      }
     }
   }
 }

@@ -7,6 +7,7 @@ import Result from './pages/Result';
 
 import Nav from './components/test/Nav';
 
+import './styles/Font.scss';
 import './styles/Reset.scss';
 
 import './App.scss';

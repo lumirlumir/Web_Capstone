@@ -8,7 +8,7 @@ import './CompFontNeon.scss';
  *
  * @component React component
  * @param {Object} props children, neonColor, neonSize, fontFamily, fontSize
- * @param {String} props.children string. type texts you want to render
+ * @param {any} props.children string, DOM element, JSX element. type texts you want to render
  * @param {String} props.neonColor string. select among 'red', 'blue', 'yellow', 'green', 'orange', 'violet', 'white'
  * @param {String} props.neonSize string. select among 'xl', 'l', 'm', 's', 'xs'
  * @param {String} props.fontFamily string. type fontFamily you want to render
@@ -32,7 +32,7 @@ function CompFontNeon({ children, neonColor, neonSize, fontFamily, fontSize }) {
   );
 }
 CompFontNeon.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.instanceOf(Element)]).isRequired,
   neonColor: PropTypes.oneOf(['red', 'blue', 'yellow', 'green', 'orange', 'violet', 'white']).isRequired,
   neonSize: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']).isRequired,
   fontFamily: PropTypes.string.isRequired,

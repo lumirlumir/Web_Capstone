@@ -11,10 +11,9 @@ import './Start.scss';
  * @returns Start
  */
 function Start() {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked); // 체크박스 상태 토글
+  const [buttonState, setButtonState] = useState('onPress'); // onPress, onStart, off
+  const handleButtonState = () => {
+    setButtonState(buttonState === 'onPress' ? 'off' : 'onStart');
   };
 
   return (
@@ -23,25 +22,25 @@ function Start() {
         <div className="heading">
           <div className="mock">
             <CompFontNeon neonColor="blue" neonSize="m" fontFamily="Pacifico" fontSize="50px">
-              Mock
+              <h1>Mock</h1>
             </CompFontNeon>
           </div>
           <div className="interview">
             <CompFontNeon neonColor="violet" neonSize="l" fontFamily="Audiowide" fontSize="100px">
-              Interview
+              <h1>Interview</h1>
             </CompFontNeon>
           </div>
         </div>
-        <div className="button1">
-          <CompButtonLight onClick={handleCheckboxChange}>
+        <div className={`config ${buttonState}`}>
+          <input type="checkbox" onChange={handleButtonState} />
+          Configuration Check Boxes
+        </div>
+        <div className={`button ${buttonState}`}>
+          <CompButtonLight onClick={handleButtonState}>
             <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
-              PRESS
+              {buttonState === 'onStart' ? <Link to="/Interview">START</Link> : 'PRESS'}
             </CompFontNeon>
           </CompButtonLight>
-        </div>
-        <div className={`config ${isChecked ? 'show' : 'hide'}`}>Check Boxes</div>
-        <div className="button2">
-          <Link to="/Interview">button2</Link>
         </div>
       </div>
     </div>

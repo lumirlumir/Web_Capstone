@@ -1,249 +1,88 @@
+/* Function */
+@function size($size) {
+  @if ($size == 'xl') {
+    @return 1.5;
+  } @else if($size == 'l') {
+    @return 1;
+  } @else if($size == 'm') {
+    @return 0.5;
+  } @else if($size == 's') {
+    @return 0.25;
+  } @else if($size == 'xs') {
+    @return 0.125;
+  }
+}
+
+/* Mixin */
+@mixin neon($name, $size, $color-start, $color-end) {
+  animation: #{$name}#{$size}NeonAnimation 1.5s ease-in-out infinite alternate;
+
+  @keyframes #{$name}#{$size}NeonAnimation {
+    from {
+      text-shadow:
+        0 0 calc(10px * size(#{$size})) $color-start,
+        0 0 calc(20px * size(#{$size})) $color-start,
+        0 0 calc(30px * size(#{$size})) $color-start,
+        0 0 calc(40px * size(#{$size})) $color-end,
+        0 0 calc(70px * size(#{$size})) $color-end,
+        0 0 calc(80px * size(#{$size})) $color-end,
+        0 0 calc(90px * size(#{$size})) $color-end,
+        0 0 calc(150px * size(#{$size})) $color-end;
+    }
+    to {
+      text-shadow:
+        0 0 calc(5px * size(#{$size})) $color-start,
+        0 0 calc(10px * size(#{$size})) $color-start,
+        0 0 calc(15px * size(#{$size})) $color-start,
+        0 0 calc(20px * size(#{$size})) $color-end,
+        0 0 calc(35px * size(#{$size})) $color-end,
+        0 0 calc(40px * size(#{$size})) $color-end,
+        0 0 calc(50px * size(#{$size})) $color-end,
+        0 0 calc(75px * size(#{$size})) $color-end;
+    }
+  }
+}
+
+/* Variables */
+$neonColor: (
+  redColor: (
+    #fff,
+    #ff1177,
+  ),
+  orangeColor: (
+    #fff,
+    #ff9900,
+  ),
+  yellowColor: (
+    #fff,
+    #ffdd1b,
+  ),
+  greenColor: (
+    #fff,
+    #b6ff00,
+  ),
+  blueColor: (
+    #fff,
+    #2080e7,
+  ),
+  violetColor: (
+    #fff,
+    #ad0096,
+  ),
+  whiteColor: (
+    #eeeeee,
+    #bbbbbb,
+  ),
+);
+$neonSize: ('xl', 'l', 'm', 's', 'xs');
+
+/* Selector */
 .CompFontNeon {
-  &.red {
-    animation: neon1 1.5s ease-in-out infinite alternate;
-  }
-  &.blue {
-    animation: neon2 1.5s ease-in-out infinite alternate;
-  }
-  &.yellow {
-    animation: neon3 1.5s ease-in-out infinite alternate;
-  }
-  &.green {
-    animation: neon4 1.5s ease-in-out infinite alternate;
-  }
-  &.orange {
-    animation: neon5 1.5s ease-in-out infinite alternate;
-  }
-  &.violet {
-    animation: neon6 1.5s ease-in-out infinite alternate;
-  }
-  &.white {
-    animation: neon7 1.5s ease-in-out infinite alternate;
-  }
-  &.whiteSmall {
-    animation: neon8 1.5s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes neon1 {
-  $color-start: #fff;
-  $color-end: #ff1177;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-@keyframes neon2 {
-  $color-start: #fff;
-  $color-end: #2080e7;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-
-@keyframes neon3 {
-  $color-start: #fff;
-  $color-end: #ffdd1b;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-
-@keyframes neon4 {
-  $color-start: #fff;
-  $color-end: #b6ff00;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-
-@keyframes neon5 {
-  $color-start: #fff;
-  $color-end: #ff9900;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-
-@keyframes neon6 {
-  $color-start: #fff;
-  $color-end: #ad0096;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-
-@keyframes neon7 {
-  $color-start: #eeeeee;
-  $color-end: #bbbbbb;
-
-  from {
-    text-shadow:
-      0 0 10px $color-start,
-      0 0 20px $color-start,
-      0 0 30px $color-start,
-      0 0 40px $color-end,
-      0 0 70px $color-end,
-      0 0 80px $color-end,
-      0 0 100px $color-end,
-      0 0 150px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 5px $color-start,
-      0 0 10px $color-start,
-      0 0 15px $color-start,
-      0 0 20px $color-end,
-      0 0 35px $color-end,
-      0 0 40px $color-end,
-      0 0 50px $color-end,
-      0 0 75px $color-end;
-  }
-}
-
-@keyframes neon8 {
-  $color-start: #eeeeee;
-  $color-end: #bbbbbb;
-
-  from {
-    text-shadow:
-      0 0 2.5px $color-start,
-      0 0 5px $color-start,
-      0 0 7.5px $color-start,
-      0 0 10px $color-end,
-      0 0 17.5px $color-end,
-      0 0 20px $color-end,
-      0 0 25px $color-end,
-      0 0 50px $color-end;
-  }
-  to {
-    text-shadow:
-      0 0 1.25px $color-start,
-      0 0 2.5px $color-start,
-      0 0 3.75px $color-start,
-      0 0 5px $color-end,
-      0 0 8.75px $color-end,
-      0 0 10px $color-end,
-      0 0 12.5px $color-end,
-      0 0 25px $color-end;
+  @each $name, $color in $neonColor {
+    @each $size in $neonSize {
+      &.#{$name}.#{$size} {
+        @include neon($name, $size, nth($color, 1), nth($color, 2));
+      }
+    }
   }
 }

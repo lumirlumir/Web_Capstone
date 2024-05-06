@@ -22,19 +22,19 @@ function Start() {
       <div>
         <div className="heading">
           <div className="mock">
-            <CompFontNeon color="blue" fontFamily="Pacifico" fontSize="50px">
+            <CompFontNeon neonColor="blue" neonSize="m" fontFamily="Pacifico" fontSize="50px">
               Mock
             </CompFontNeon>
           </div>
           <div className="interview">
-            <CompFontNeon color="violet" fontFamily="Audiowide" fontSize="100px">
+            <CompFontNeon neonColor="violet" neonSize="l" fontFamily="Audiowide" fontSize="100px">
               Interview
             </CompFontNeon>
           </div>
         </div>
         <div className="button1">
           <CompButtonLight onClick={handleCheckboxChange}>
-            <CompFontNeon color="whiteSmall" fontFamily="Audiowide" fontSize="40px">
+            <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
               PRESS
             </CompFontNeon>
           </CompButtonLight>

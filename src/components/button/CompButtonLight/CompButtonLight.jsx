@@ -8,12 +8,13 @@ import './CompButtonLight.scss';
  *
  * @component React component
  * @param {Object} props children, onClick
- * @param {Element} props.children element
- * @param {Function} props.onClick function
+ * @param {Element} props.children element. Insert elements you want to cover with light effect button
+ * @param {Function} props.onClick function. onClick event.
+ * @returns {JSX.Element} Light effect button component
  *
  * @example
  * //Render a Button component with light effects
- * Example
+ * <CompButtonLight onClick={function}>element</CompButtonLight>
  */
 function CompButtonLight({ children, onClick }) {
   return (

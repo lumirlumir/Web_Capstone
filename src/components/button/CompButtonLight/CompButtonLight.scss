@@ -6,10 +6,9 @@
 
   /* Property */
   position: relative;
-  display: inline-block;
   transition: all 0.6s ease-out;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 6px;
 
   /* Selector */
   &:hover {
@@ -22,13 +21,14 @@
       0 0 50px $color-main,
       0 0 100px $color-main;
 
+    /* Selector */
     > button {
       color: $color-sub;
     }
   }
 
   > button {
-    padding: 30px 40px;
+    padding: 20px 30px;
     letter-spacing: 4px;
 
     //Init

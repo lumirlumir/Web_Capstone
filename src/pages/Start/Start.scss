@@ -27,5 +27,28 @@
         margin-left: 50px;
       }
     }
+    > .button1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin: 40px 0;
+    }
+    > .config {
+      background-color: #000000;
+      border-radius: 15px;
+      text-align: center;
+
+      transition: all 1.2s ease-out;
+
+      &.show {
+        height: 300px;
+        opacity: 0.5;
+      }
+      &.hide {
+        height: 0px;
+        opacity: 0;
+      }
+    }
   }
 }

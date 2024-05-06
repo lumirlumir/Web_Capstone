@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import './CompFontNeon.scss';
 
 /**
- * Neon effect text component.
+ * Neon effect text component
  *
  * @component React component
  * @param {Object} props children, color, fontFamily, fontSize
- * @param {String} props.children string.
+ * @param {String} props.children string
  * @param {String} props.color string. select among 'red', 'blue', 'yellow', 'green', 'orange', 'violet', 'white'
- * @param {String} props.fontFamily string.
- * @param {String} props.fontSize string.
- * @returns {JSX.Element} Neon effect text component.
+ * @param {String} props.fontFamily string
+ * @param {String} props.fontSize string
+ * @returns {JSX.Element} Neon effect text component
  *
  * @example
- * //Render a TEST text component with neon effects
+ * //Render a text component with neon effects
  * <CompFontNeon type="red" fontFamily="inherit" fontSize="100px">TEST</CompFontNeon>
  */
 function CompFontNeon({ children, color, fontFamily, fontSize }) {

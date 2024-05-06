@@ -5,24 +5,23 @@
   &.blue {
     animation: neon2 1.5s ease-in-out infinite alternate;
   }
-
   &.yellow {
     animation: neon3 1.5s ease-in-out infinite alternate;
   }
-
   &.green {
     animation: neon4 1.5s ease-in-out infinite alternate;
   }
-
   &.orange {
     animation: neon5 1.5s ease-in-out infinite alternate;
   }
-
   &.violet {
     animation: neon6 1.5s ease-in-out infinite alternate;
   }
   &.white {
     animation: neon7 1.5s ease-in-out infinite alternate;
+  }
+  &.whiteSmall {
+    animation: neon8 1.5s ease-in-out infinite alternate;
   }
 }
 
@@ -218,5 +217,33 @@
       0 0 40px $color-end,
       0 0 50px $color-end,
       0 0 75px $color-end;
+  }
+}
+
+@keyframes neon8 {
+  $color-start: #eeeeee;
+  $color-end: #bbbbbb;
+
+  from {
+    text-shadow:
+      0 0 2.5px $color-start,
+      0 0 5px $color-start,
+      0 0 7.5px $color-start,
+      0 0 10px $color-end,
+      0 0 17.5px $color-end,
+      0 0 20px $color-end,
+      0 0 25px $color-end,
+      0 0 50px $color-end;
+  }
+  to {
+    text-shadow:
+      0 0 1.25px $color-start,
+      0 0 2.5px $color-start,
+      0 0 3.75px $color-start,
+      0 0 5px $color-end,
+      0 0 8.75px $color-end,
+      0 0 10px $color-end,
+      0 0 12.5px $color-end,
+      0 0 25px $color-end;
   }
 }

@@ -1,3 +1,20 @@
 #App {
-  border: 1px solid black;
+  /* Variables */
+  //test
+  $border-width: 0px;
+
+  /* Property */
+  //test
+  border: $border-width solid white; //test
+
+  //size
+  width: calc(100% - (2 * #{$border-width}));
+  height: calc(100% - (2 * #{$border-width}));
+
+  //font
+  color: white;
+
+  //background
+  background-color: darken(#252b37, 4%);
+  background: repeating-linear-gradient(135deg, #202020 0%, #2b2b2b 10%, #202020 0%, #222222 50%) 0 / 15px 20px;
 }

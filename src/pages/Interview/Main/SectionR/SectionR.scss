@@ -1,4 +1,6 @@
 section.SectionR {
+  /* Property */
   border: 1px solid blue;
-  margin: 10px;
+
+  grid-column: 2 / 3;
 }

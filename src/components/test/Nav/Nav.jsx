@@ -12,7 +12,7 @@ function Nav() {
     <div className="Nav">
       TEST
       <br />
-      <Link to={`${process.env.PUBLIC_URL}/start`}>start</Link>
+      <Link to={`${process.env.PUBLIC_URL}/`}>start</Link>
       <br />
       <Link to={`${process.env.PUBLIC_URL}/interview`}>interview</Link>
       <br />

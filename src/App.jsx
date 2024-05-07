@@ -6,8 +6,6 @@ import TestNav from '@/layouts/TestNav';
 import Start from '@/pages/Start';
 import Interview from '@/pages/Interview';
 import Result from '@/pages/Result';
-import '@/styles/Font.scss';
-import '@/styles/Reset.scss';
 
 import './App.scss';
 
@@ -17,6 +15,7 @@ import './App.scss';
  */
 function App() {
   return (
+    // <Interview />
     <BrowserRouter>
       <TestNav />
       <Routes>

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { IoHomeOutline, IoExitOutline } from 'react-icons/io5';
+import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+
 import './Footer.scss';
 
 /**
@@ -9,9 +12,16 @@ import './Footer.scss';
 function Footer() {
   return (
     <footer className="Footer">
-      <div>Back to Start</div>
-      <div>음성 입력 버튼</div>
-      <div>Submit/Quit</div>
+      <div>
+        <IoHomeOutline size="40px" />
+      </div>
+
+      <div className="time">Remaining Time</div>
+      <div>
+        <IoIosCheckmarkCircleOutline size="40px" />
+
+        <IoExitOutline size="40px" />
+      </div>
     </footer>
   );
 }

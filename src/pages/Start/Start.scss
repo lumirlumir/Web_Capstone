@@ -1,3 +1,5 @@
+@import '@/styles/Mixin';
+
 .Start {
   /* Property */
   //box
@@ -53,13 +55,13 @@
       }
     }
     > .config {
+      /* Include */
+      @include type2;
+
       /* Property */
       //box
       height: 400px;
       margin: 50px 0;
-      border-radius: 15px;
-      //background
-      background-color: rgba(0, 0, 0, 0.6);
       //text
       text-align: center;
       //animation

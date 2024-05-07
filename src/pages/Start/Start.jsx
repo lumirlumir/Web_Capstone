@@ -40,7 +40,7 @@ function Start() {
           </div>
         </CompDivNeon>
         <div className={`button ${buttonState}`}>
-          <CompButtonLight onClick={handleButtonState}>
+          <CompButtonLight onClick={handleButtonState} neonSize="" padding="" letterSpacing="">
             <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
               {buttonState === 'onStart' ? <Link to={URL.interview}>START</Link> : 'PRESS'}
             </CompFontNeon>

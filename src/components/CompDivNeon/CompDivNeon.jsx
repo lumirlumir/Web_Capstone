@@ -1,42 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './CompFontNeon.scss';
+import './CompDivNeon.scss';
 
 /**
- * Neon effect text component
+ * Neon effect div component
  *
  * @component React component
- * @param {Object} props children. neonColor, neonSize, fontFamily, fontSize
+ * @param {Object} props children. className, neonColor, neonSize, borderWidth
  * @param {any} props.children string. DOM element, JSX element. type texts you want to render
+ * @param {string} props.className string. you can add more class names
  * @param {String} props.neonColor string. select among 'red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white'
  * @param {String} props.neonSize string. select among 'xl', 'l', 'm', 's', 'xs'
- * @param {String} props.fontFamily string. type fontFamily you want to render
- * @param {String} props.fontSize string. type fontSize you want to render
- * @returns {JSX.Element} Neon effect text component
+ * @param {String} props.borderWidth string. type borderWidth you want to render
+ * @returns {JSX.Element} Neon effect div component
  *
  * @example
- * //Render a text component with neon effects
- * <CompFontNeon neonColor="red" neonSize='l' fontFamily="inherit" fontSize="100px">text</CompFontNeon>
+ * //Render a div component with neon effects
+ *
  */
-function CompFontNeon({ children, neonColor, neonSize, fontFamily, fontSize }) {
+function CompDivNeon({ children, className, neonColor, neonSize, borderWidth }) {
   const style = {
-    fontFamily,
-    fontSize,
+    borderWidth,
   };
 
   return (
-    <span style={style} className={`CompFontNeon ${neonColor}Color ${neonSize}`}>
+    <div style={style} className={`CompDivNeon ${className} ${neonColor}Color ${neonSize}`}>
       {children}
-    </span>
+    </div>
   );
 }
-CompFontNeon.propTypes = {
+CompDivNeon.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.instanceOf(Element)]).isRequired,
+  className: PropTypes.string.isRequired,
   neonColor: PropTypes.oneOf(['red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white']).isRequired,
   neonSize: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']).isRequired,
-  fontFamily: PropTypes.string.isRequired,
-  fontSize: PropTypes.string.isRequired,
+  borderWidth: PropTypes.string.isRequired,
 };
 
-export default CompFontNeon;
+export default CompDivNeon;

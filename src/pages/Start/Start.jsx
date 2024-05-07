@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import CompFontNeon from '@/components/CompFontNeon';
+import CompDivNeon from '@/components/CompDivNeon';
 import CompButtonLight from '@/components/CompButtonLight';
 import URL from '@/constants';
 
@@ -27,15 +28,17 @@ function Start() {
             </CompFontNeon>
           </div>
           <div className="interview">
-            <CompFontNeon neonColor="violet" neonSize="l" fontFamily="Audiowide" fontSize="100px">
+            <CompFontNeon neonColor="purple" neonSize="l" fontFamily="Audiowide" fontSize="100px">
               <h1>Interview</h1>
             </CompFontNeon>
           </div>
         </div>
-        <div className={`config ${buttonState}`}>
-          <input type="checkbox" onChange={handleButtonState} />
-          Configuration Check Boxes
-        </div>
+        <CompDivNeon className={`config ${buttonState}`} neonColor="green" neonSize="l" borderWidth="">
+          <div>
+            <input type="checkbox" onChange={handleButtonState} />
+            Configuration Check Boxes
+          </div>
+        </CompDivNeon>
         <div className={`button ${buttonState}`}>
           <CompButtonLight onClick={handleButtonState}>
             <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">

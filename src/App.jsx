@@ -15,7 +15,6 @@ import './App.scss';
  */
 function App() {
   return (
-    // <Interview />
     <BrowserRouter>
       <TestNav />
       <Routes>

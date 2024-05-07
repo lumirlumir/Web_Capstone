@@ -56,11 +56,12 @@
     }
     > .config {
       /* Include */
-      @include type2;
+      @include type2BackgroundColor;
 
       /* Property */
       //box
-      height: 400px;
+      height: 100px;
+      width: 100%;
       margin: 50px 0;
       //text
       text-align: center;

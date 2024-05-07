@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import CompTestNav from './components/CompTestNav';
+import TestNav from './layouts/TestNav';
 
 import URL from './constants/constants';
 
@@ -21,7 +21,7 @@ import './App.scss';
 function App() {
   return (
     <BrowserRouter>
-      <CompTestNav />
+      <TestNav />
       <Routes>
         <Route path="/*" element={<Navigate to={`${URL.public}/`} />} />
         <Route path={URL.public}>

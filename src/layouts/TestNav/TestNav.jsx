@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import URL from '../../constants/constants';
+import URL from '@/constants';
 
 import './TestNav.scss';
 

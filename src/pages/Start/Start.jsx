@@ -38,7 +38,7 @@ function Start() {
         <div className={`button ${buttonState}`}>
           <CompButtonLight onClick={handleButtonState}>
             <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
-              {buttonState === 'onStart' ? <Link to="/Interview">START</Link> : 'PRESS'}
+              {buttonState === 'onStart' ? <Link to={`${process.env.PUBLIC_URL}/interview`}>START</Link> : 'PRESS'}
             </CompFontNeon>
           </CompButtonLight>
         </div>

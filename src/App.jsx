@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Start from './pages/Start';
 import Interview from './pages/Interview';
@@ -21,9 +21,12 @@ function App() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Start />} />
-        <Route path="/Interview" element={<Interview />} />
-        <Route path="/Result" element={<Result />} />
+        <Route path="/*" element={<Navigate to={`${process.env.PUBLIC_URL}/`} />} />
+        <Route path={`${process.env.PUBLIC_URL}`}>
+          <Route path="" element={<Start />} />
+          <Route path="interview" element={<Interview />} />
+          <Route path="result" element={<Result />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

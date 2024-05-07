@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Nav.scss';
+import './CompTestNav.scss';
 
 /**
  *
- * @returns Nav
+ * @returns CompTestNav
  */
-function Nav() {
+function CompTestNav() {
   return (
-    <div className="Nav">
+    <div className="CompTestNav">
       TEST
       <br />
       <Link to={`${process.env.PUBLIC_URL}/`}>start</Link>
@@ -21,4 +21,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default CompTestNav;

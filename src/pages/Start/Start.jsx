@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import CompFontNeon from '../../components/font/CompFontNeon';
-import CompButtonLight from '../../components/button/CompButtonLight';
+import CompFontNeon from '../../components/CompFontNeon';
+import CompButtonLight from '../../components/CompButtonLight';
 
 import './Start.scss';
 

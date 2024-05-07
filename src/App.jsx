@@ -5,7 +5,7 @@ import Start from './pages/Start';
 import Interview from './pages/Interview';
 import Result from './pages/Result';
 
-import Nav from './components/test/Nav';
+import CompTestNav from './components/CompTestNav';
 
 import './styles/Font.scss';
 import './styles/Reset.scss';
@@ -19,7 +19,7 @@ import './App.scss';
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
+      <CompTestNav />
       <Routes>
         <Route path="/*" element={<Navigate to={`${process.env.PUBLIC_URL}/`} />} />
         <Route path={`${process.env.PUBLIC_URL}`}>

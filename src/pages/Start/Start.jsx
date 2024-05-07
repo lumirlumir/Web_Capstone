@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import CompFontNeon from '../../components/CompFontNeon';
 import CompButtonLight from '../../components/CompButtonLight';
 
+import URL from '../../constants/constants';
+
 import './Start.scss';
 
 /**
@@ -38,7 +40,7 @@ function Start() {
         <div className={`button ${buttonState}`}>
           <CompButtonLight onClick={handleButtonState}>
             <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
-              {buttonState === 'onStart' ? <Link to={`${process.env.PUBLIC_URL}/interview`}>START</Link> : 'PRESS'}
+              {buttonState === 'onStart' ? <Link to={URL.interview}>START</Link> : 'PRESS'}
             </CompFontNeon>
           </CompButtonLight>
         </div>

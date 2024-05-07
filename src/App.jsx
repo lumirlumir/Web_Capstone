@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
+import CompTestNav from './components/CompTestNav';
+
+import URL from './constants/constants';
+
 import Start from './pages/Start';
 import Interview from './pages/Interview';
 import Result from './pages/Result';
-
-import CompTestNav from './components/CompTestNav';
 
 import './styles/Font.scss';
 import './styles/Reset.scss';
@@ -21,8 +23,8 @@ function App() {
     <BrowserRouter>
       <CompTestNav />
       <Routes>
-        <Route path="/*" element={<Navigate to={`${process.env.PUBLIC_URL}/`} />} />
-        <Route path={`${process.env.PUBLIC_URL}`}>
+        <Route path="/*" element={<Navigate to={`${URL.public}/`} />} />
+        <Route path={URL.public}>
           <Route path="" element={<Start />} />
           <Route path="interview" element={<Interview />} />
           <Route path="result" element={<Result />} />

@@ -12,11 +12,11 @@ function Nav() {
     <div className="Nav">
       TEST
       <br />
-      <Link to="/">Start</Link>
+      <Link to={`${process.env.PUBLIC_URL}/start`}>start</Link>
       <br />
-      <Link to="/Interview">Interview</Link>
+      <Link to={`${process.env.PUBLIC_URL}/interview`}>interview</Link>
       <br />
-      <Link to="/Result">Result</Link>
+      <Link to={`${process.env.PUBLIC_URL}/result`}>result</Link>
     </div>
   );
 }

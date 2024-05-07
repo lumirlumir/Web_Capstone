@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   push:
-    branches: [main]
+    branches: [main, hotfix]
 
 permissions:
   contents: write
@@ -40,6 +40,7 @@ jobs:
       - name: Environment Variables
         run: |
           echo "TEST=${{ secrets.TEST }}" >> .env
+          echo "PUBLIC_URL=${{ secrets.PUBLIC_URL }}" >> .env
 
       - name: Build
         run: npm run build

@@ -38,5 +38,12 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      // eslint-import-resolver-alias
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
+      },
+    },
   },
 };

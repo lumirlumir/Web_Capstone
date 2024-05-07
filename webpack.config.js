@@ -7,6 +7,12 @@ dotenv.config();
 
 module.exports = {
   mode: 'development',
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
+  },
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'build'),

@@ -11,8 +11,7 @@ import './Main.scss';
  */
 function Main() {
   return (
-    <main>
-      <strong>main</strong>
+    <main className="Main">
       <SectionL />
       <SectionR />
     </main>

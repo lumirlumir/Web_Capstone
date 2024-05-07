@@ -1,0 +1,13 @@
+.Interview {
+  /* Variables */
+  $border-width: 1px;
+
+  /* Property */
+  width: calc(100% - (2 * #{$border-width}));
+  height: calc(100% - (2 * #{$border-width}));
+  border: $border-width solid black;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr 50px;
+}

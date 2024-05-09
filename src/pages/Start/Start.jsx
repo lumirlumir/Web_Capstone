@@ -33,7 +33,7 @@ function Start() {
             </CompFontNeon>
           </div>
         </div>
-        <CompDivNeon className={`config ${buttonState}`} neonColor="green" neonSize="l" borderWidth="">
+        <CompDivNeon className={`config ${buttonState}`} neonColor="banana" neonSize="l" borderWidth="">
           <div>
             <input type="checkbox" onChange={handleButtonState} />
             Configuration Check Boxes
@@ -46,6 +46,11 @@ function Start() {
             </CompFontNeon>
           </CompButtonLight>
         </div>
+        <CompDivNeon className="test" neonColor="black" neonSize="l" borderWidth="2px">
+          $ Chat-GPT <br />
+          <br />
+          &gt; 안녕하세요 Chat-GPT를 활용한 인터뷰 서비스에 오신 것을 환영합니다. <br /> &gt; 해당 인터뷰 서비스는 CS, FE, BE, DB, OOP 총 5가지 분야에 대한 지식을 평가합니다.
+        </CompDivNeon>
       </div>
     </div>
   );

@@ -20,9 +20,9 @@
   filter: brightness(120%);
   box-shadow:
     // glass tube inside
-    inset 0 0 0 2px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.2),
     // glass tube outside
-    0 0 0 2px rgba(0, 0, 0, 0.15),
+    0 0 0 2px rgba(0, 0, 0, 0.2),
     // glow inside
     inset 0 0 $size $color,
     // glow outside
@@ -36,13 +36,14 @@ $neonColor: (
   orangeColor: #ff9900,
   bananaColor: #f5e3a7,
   yellowColor: #ffdd1b,
-  greenColor: #e0fa9d,
+  greenColor: #a2ff37,
   skyColor: #b7e7f7,
-  blueColor: #2080e7,
-  violetColor: #e555c7,
+  blueColor: #3b8de4,
+  violetColor: #e785d2,
   purpleColor: #ad0096,
   silverColor: #c4c4c6,
   whiteColor: #bbbbbb,
+  blackColor: darken(#202020, 5%),
 );
 $neonSize: ('xl', 'l', 'm', 's', 'xs');
 

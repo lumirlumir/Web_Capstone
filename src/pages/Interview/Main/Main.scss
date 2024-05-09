@@ -6,15 +6,15 @@
   //grid-container
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 
   /* Selector */
-  > section {
+  > .section {
     /* Property */
     //box
-    margin: 10px;
+    height: 90%;
+    margin: 30px;
     padding: 20px;
-    border-radius: 15px;
-    //background
-    background-color: rgba(0, 0, 0, 0.6);
   }
 }

@@ -105,5 +105,14 @@
         opacity: 0;
       }
     }
+    > .test {
+      width: 600px;
+      height: 200px;
+      border-radius: 12px;
+      padding: 30px;
+      font-family: Nanum Gothic Coding;
+      line-height: 1.5;
+      background-color: darken(#202020, 7%);
+    }
   }
 }

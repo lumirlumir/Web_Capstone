@@ -11,7 +11,7 @@
   @include type2BorderRadius;
 }
 @mixin type2BackgroundColor {
-  background-color: rgba(#101010, 0.75);
+  background-color: rgba(#101010, 0.5);
 }
 @mixin type2BorderRadius {
   border-radius: 10px;

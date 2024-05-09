@@ -20,7 +20,9 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
   ],
-  rules: {},
+  rules: {
+    'react/forbid-prop-types': 'off', // PropTypes.any
+  },
   env: {
     browser: true,
     commonjs: true,

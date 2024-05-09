@@ -93,6 +93,10 @@ $neonColor: (
     #eeeeee,
     #bbbbbb,
   ),
+  blackColor: (
+    #eeeeee,
+    darken(#202020, 7%),
+  ),
 );
 $neonSize: ('xl', 'l', 'm', 's', 'xs');
 

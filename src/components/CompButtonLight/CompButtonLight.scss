@@ -2,7 +2,7 @@
   /* Variables */
   $color-main: #ffffff;
   $color-main-transparent: rgba($color-main, 0.1);
-  $color-sub: #252b37;
+  $color-sub: darken(#252b37, 4%);
 
   /* Property */
   position: relative;
@@ -24,13 +24,14 @@
     /* Selector */
     > button {
       color: $color-sub;
+
+      svg {
+        filter: invert(100%);
+      }
     }
   }
 
   > button {
-    padding: 20px 30px;
-    letter-spacing: 4px;
-
     //Init
     color: inherit;
     border: none;

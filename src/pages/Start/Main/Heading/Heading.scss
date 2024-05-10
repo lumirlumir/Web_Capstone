@@ -1,0 +1,45 @@
+.Heading {
+  /* Property */
+  //box
+  margin: 50px 0;
+  //others
+  pointer-events: none;
+
+  /* Selector */
+  > .mock {
+    //loading effects
+    animation: 2s ease-in-out loadEffect1;
+    @keyframes loadEffect1 {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    //box
+    margin-bottom: 15px;
+    margin-left: 35px;
+    //others
+    transform: rotate(-10deg);
+  }
+  > .interview {
+    //loading effects
+    animation: 4s ease-in-out loadEffect1;
+    @keyframes loadEffect1 {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    //box
+    margin-left: 50px;
+    //text
+    text-align: center;
+  }
+}

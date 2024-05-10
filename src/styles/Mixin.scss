@@ -5,14 +5,3 @@
   background-color: darken(#252b37, 4%);
   background: repeating-linear-gradient(135deg, #202020 0%, #2b2b2b 10%, #202020 0%, #222222 50%) 0 / 15px 20px;
 }
-
-@mixin type2 {
-  @include type2BackgroundColor;
-  @include type2BorderRadius;
-}
-@mixin type2BackgroundColor {
-  background-color: rgba(#101010, 0.5);
-}
-@mixin type2BorderRadius {
-  border-radius: 10px;
-}

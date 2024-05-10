@@ -7,36 +7,48 @@ import './CompFontNeon.scss';
  * Neon effect text component
  *
  * @component React component
- * @param {Object} props children, neonColor, neonSize, fontFamily, fontSize
- * @param {any} props.children string, DOM element, JSX element. type texts you want to render
- * @param {String} props.neonColor string. select among 'red', 'blue', 'yellow', 'green', 'orange', 'violet', 'white'
+ * @param {Object} props children, className, neonColor, neonSize, fontFamily, fontSize
+ * @param {any} props.children any. type texts you want to render. only texts are supported
+ * @param {string} props.className string. you can add more class names
+ * @param {String} props.neonColor string. select among 'red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white', 'black'
  * @param {String} props.neonSize string. select among 'xl', 'l', 'm', 's', 'xs'
  * @param {String} props.fontFamily string. type fontFamily you want to render
  * @param {String} props.fontSize string. type fontSize you want to render
  * @returns {JSX.Element} Neon effect text component
  *
  * @example
- * //Render a text component with neon effects
- * <CompFontNeon neonColor="red" neonSize='l' fontFamily="inherit" fontSize="100px">text</CompFontNeon>
+ * //Default Values
+ * <CompFontNeon className="" neonColor="red" neonSize='l' fontFamily="unset" fontSize="unset">
+ *   null
+ * </CompFontNeon>
  */
-function CompFontNeon({ children, neonColor, neonSize, fontFamily, fontSize }) {
+function CompFontNeon({ children, className, neonColor, neonSize, fontFamily, fontSize }) {
   const style = {
     fontFamily,
     fontSize,
   };
 
   return (
-    <span style={style} className={`CompFontNeon ${neonColor}Color ${neonSize}`}>
+    <span style={style} className={`${className} CompFontNeon ${neonColor}Color ${neonSize}`}>
       {children}
     </span>
   );
 }
 CompFontNeon.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.instanceOf(Element)]).isRequired,
-  neonColor: PropTypes.oneOf(['red', 'blue', 'yellow', 'green', 'orange', 'violet', 'white']).isRequired,
-  neonSize: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']).isRequired,
-  fontFamily: PropTypes.string.isRequired,
-  fontSize: PropTypes.string.isRequired,
+  children: PropTypes.any,
+  className: PropTypes.string,
+  neonColor: PropTypes.oneOf(['red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white', 'black']),
+  neonSize: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']),
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.string,
+};
+CompFontNeon.defaultProps = {
+  children: null,
+  className: '',
+  neonColor: 'red',
+  neonSize: 'l',
+  fontFamily: 'unset',
+  fontSize: 'unset',
 };
 
 export default CompFontNeon;

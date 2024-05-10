@@ -9,14 +9,13 @@
   } @else if($size == 's') {
     @return 0.25;
   } @else if($size == 'xs') {
-    @return 0.125;
+    @return 0.03;
   }
 }
 
 /* Mixin */
 @mixin neon($name, $size, $color-start, $color-end) {
   animation: #{$name}#{$size}NeonAnimation 1.5s ease-in-out infinite alternate;
-
   @keyframes #{$name}#{$size}NeonAnimation {
     from {
       text-shadow:
@@ -41,6 +40,10 @@
         0 0 calc(75px * size(#{$size})) $color-end;
     }
   }
+
+  svg {
+    filter: drop-shadow(0 0 calc(2px * size(#{$size})) $color-start) drop-shadow(0 0 calc(8px * size(#{$size})) $color-end);
+  }
 }
 
 /* Variables */
@@ -49,9 +52,17 @@ $neonColor: (
     #fff,
     #ff1177,
   ),
+  brightOrangeColor: (
+    #fff,
+    #f8b734,
+  ),
   orangeColor: (
     #fff,
     #ff9900,
+  ),
+  bananaColor: (
+    #fff,
+    #fceaac,
   ),
   yellowColor: (
     #fff,
@@ -61,17 +72,33 @@ $neonColor: (
     #fff,
     #b6ff00,
   ),
+  skyColor: (
+    #fff,
+    #b7e7f7,
+  ),
   blueColor: (
     #fff,
     #2080e7,
   ),
   violetColor: (
     #fff,
+    #e555c7,
+  ),
+  purpleColor: (
+    #fff,
     #ad0096,
+  ),
+  silverColor: (
+    #fff,
+    #c4c4c6,
   ),
   whiteColor: (
     #eeeeee,
     #bbbbbb,
+  ),
+  blackColor: (
+    #eeeeee,
+    darken(#202020, 7%),
   ),
 );
 $neonSize: ('xl', 'l', 'm', 's', 'xs');

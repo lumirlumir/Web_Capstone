@@ -13,9 +13,11 @@ import './Interview.scss';
 function Interview() {
   return (
     <div className="Interview">
-      <Header />
-      <Main />
-      <Footer />
+      <div>
+        <Header />
+        <Main />
+        <Footer />
+      </div>
     </div>
   );
 }

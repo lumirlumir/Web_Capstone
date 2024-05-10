@@ -7,31 +7,42 @@ import './CompButtonLight.scss';
  * Light effect button component
  *
  * @component React component
- * @param {Object} props children, onClick
- * @param {Element} props.children element. Insert elements you want to cover with light effect button
- * @param {Function} props.onClick function. onClick event.
+ * @param {Object} props children, style, onClick, neonSize
+ * @param {any} props.children any.
+ * @param {Object} props.style object.
+ * @param {Function} props.onClick function. required.
+ * @param {String} props.neonSize string.
  * @returns {JSX.Element} Light effect button component
  *
  * @example
- * //Render a Button component with light effects
- * <CompButtonLight onClick={function}>element</CompButtonLight>
+ * //Default Values
+ * <CompButtonLight style={{style: style}} onClick={function} neonSize="2px">
+ *   null
+ * </CompButtonLight>
  */
-function CompButtonLight({ children, onClick }) {
+function CompButtonLight({ children, style, onClick, neonSize }) {
   return (
     <div className="CompButtonLight">
-      <span />
-      <span />
-      <span />
-      <span />
-      <button type="button" onClick={onClick}>
+      <span style={{ height: neonSize }} />
+      <span style={{ width: neonSize }} />
+      <span style={{ height: neonSize }} />
+      <span style={{ width: neonSize }} />
+      <button type="button" style={style} onClick={onClick}>
         {children}
       </button>
     </div>
   );
 }
 CompButtonLight.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.any,
+  style: PropTypes.object,
   onClick: PropTypes.func.isRequired,
+  neonSize: PropTypes.string,
+};
+CompButtonLight.defaultProps = {
+  children: null,
+  style: null,
+  neonSize: '2px',
 };
 
 export default CompButtonLight;

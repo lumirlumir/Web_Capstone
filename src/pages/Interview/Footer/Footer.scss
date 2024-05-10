@@ -1,17 +1,36 @@
 .Footer {
   /* Property */
-  border: 1px solid purple;
-
+  //box
+  margin: 15px 30px;
+  //grid-item
   grid-column: 1 / 3;
   grid-row: 3 / 4;
-
+  //flex-container
   display: flex;
   justify-content: space-between;
 
   /* Selector */
   > div {
-    border: 1px solid gray;
+    //box
+    margin: 10px;
+    //flex-item
+    flex-basis: 80px;
+    //flex-container
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    flex-basis: 100px;
+    &:hover {
+      svg {
+        filter: invert(100%);
+      }
+    }
+  }
+
+  svg.home {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 16px #c4c4c6);
+  }
+  svg.check {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 16px #c4c4c6);
   }
 }

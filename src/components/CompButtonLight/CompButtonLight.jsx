@@ -7,26 +7,20 @@ import './CompButtonLight.scss';
  * Light effect button component
  *
  * @component React component
- * @param {Object} props children, onClick, neonSize, padding, letterSpacing
- * @param {Element} props.children any. Insert elements you want to cover with light effect button
- * @param {Function} props.onClick function. onClick event.
+ * @param {Object} props children, style, onClick, neonSize
+ * @param {any} props.children any.
+ * @param {Object} props.style object.
+ * @param {Function} props.onClick function. required.
  * @param {String} props.neonSize string.
- * @param {String} props.padding string.
- * @param {String} props.letterSpacing string.
  * @returns {JSX.Element} Light effect button component
  *
  * @example
  * //Default Values
- * <CompButtonLight onClick={function} neonSize="2px" padding="10px" letterSpacing="4px">
+ * <CompButtonLight style={{style: style}} onClick={function} neonSize="2px">
  *   null
  * </CompButtonLight>
  */
-function CompButtonLight({ children, onClick, neonSize, padding, letterSpacing }) {
-  const style = {
-    padding,
-    letterSpacing,
-  };
-
+function CompButtonLight({ children, style, onClick, neonSize }) {
   return (
     <div className="CompButtonLight">
       <span style={{ height: neonSize }} />
@@ -41,16 +35,14 @@ function CompButtonLight({ children, onClick, neonSize, padding, letterSpacing }
 }
 CompButtonLight.propTypes = {
   children: PropTypes.any,
+  style: PropTypes.object,
   onClick: PropTypes.func.isRequired,
   neonSize: PropTypes.string,
-  padding: PropTypes.string,
-  letterSpacing: PropTypes.string,
 };
 CompButtonLight.defaultProps = {
   children: null,
+  style: null,
   neonSize: '2px',
-  padding: '10px',
-  letterSpacing: '4px',
 };
 
 export default CompButtonLight;

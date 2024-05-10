@@ -1,44 +1,98 @@
 @import '@/styles/Mixin';
 
 .Start {
-  /* Property */
+  /* Variables */
+  $width: 80px;
+  $height: 80px;
+
+  /* Properties */
   //box
   width: 100%;
   height: 100%;
-  //flex
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  //grid-container
+  display: grid;
+  grid-template-columns: $width 1fr $width;
+  grid-template-rows: $height 1fr $height;
 
   /* Selector */
-  > div {
-    > .heading {
-      /* Property */
-      //box
-      margin: 50px 0;
-      //others
-      pointer-events: none;
+  > .main {
+    /* Properties */
+    //grid-item
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    //flex-container
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      /* Selector */
-      > .mock {
-        //loading effects
-        animation: 2s ease-in-out loadEffect1;
-        @keyframes loadEffect1 {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
+    /* Selector */
+    > div {
+      > .heading {
+        /* Property */
         //box
-        margin-bottom: 10px;
+        margin: 50px 0;
         //others
-        transform: rotate(-10deg);
+        pointer-events: none;
+
+        /* Selector */
+        > .mock {
+          //loading effects
+          animation: 2s ease-in-out loadEffect1;
+          @keyframes loadEffect1 {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          //box
+          margin-bottom: 10px;
+          //others
+          transform: rotate(-10deg);
+        }
+        > .interview {
+          //loading effects
+          animation: 4s ease-in-out loadEffect1;
+          @keyframes loadEffect1 {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          //box
+          margin-left: 50px;
+        }
       }
-      > .interview {
+      > .config {
+        /* Include */
+        @include type2BackgroundColor;
+
+        /* Property */
+        //box
+        height: 100px;
+        width: 100%;
+        margin: 50px 0;
+        //text
+        text-align: center;
+        //animation
+        transition: all 2s ease-in-out;
+
+        /* Selector */
+        &.onPress {
+          height: 0px;
+          opacity: 0;
+        }
+      }
+      > .button {
+        /* Property */
         //loading effects
-        animation: 4s ease-in-out loadEffect1;
+        animation: 8s ease-in-out loadEffect1;
         @keyframes loadEffect1 {
           0% {
             opacity: 0;
@@ -51,68 +105,30 @@
           }
         }
         //box
-        margin-left: 50px;
-      }
-    }
-    > .config {
-      /* Include */
-      @include type2BackgroundColor;
+        margin: 50px 0;
+        //animation
+        transition: all 3s ease-out;
+        opacity: 1;
+        //flex
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-      /* Property */
-      //box
-      height: 100px;
-      width: 100%;
-      margin: 50px 0;
-      //text
-      text-align: center;
-      //animation
-      transition: all 2s ease-in-out;
-
-      /* Selector */
-      &.onPress {
-        height: 0px;
-        opacity: 0;
-      }
-    }
-    > .button {
-      /* Property */
-      //loading effects
-      animation: 8s ease-in-out loadEffect1;
-      @keyframes loadEffect1 {
-        0% {
+        /* Selector */
+        &.off {
+          pointer-events: none;
           opacity: 0;
         }
-        50% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
       }
-      //box
-      margin: 50px 0;
-      //animation
-      transition: all 3s ease-out;
-      opacity: 1;
-      //flex
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      /* Selector */
-      &.off {
-        pointer-events: none;
-        opacity: 0;
+      > .test {
+        width: 600px;
+        height: 200px;
+        border-radius: 12px;
+        padding: 30px;
+        font-family: Nanum Gothic Coding;
+        line-height: 1.5;
+        background-color: darken(#202020, 7%);
       }
-    }
-    > .test {
-      width: 600px;
-      height: 200px;
-      border-radius: 12px;
-      padding: 30px;
-      font-family: Nanum Gothic Coding;
-      line-height: 1.5;
-      background-color: darken(#202020, 7%);
     }
   }
 }

@@ -3,7 +3,8 @@
     {
       "SectionServer": {
         "state": false,
-        "content": ""
+        "content": "",
+        "auto": false
       },
       "ButtonMain": {
         "state": true,
@@ -13,7 +14,19 @@
     {
       "SectionServer": {
         "state": true,
-        "content": ""
+        "content": "$ ChatGPT<br/><br/>",
+        "auto": true
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": "> 안녕하세요 Chat-GPT를 활용한 인터뷰 서비스에 오신 것을 환영합니다. 해당 인터뷰 서비스는 CS, FE, BE, DB, OOP 총 5가지 분야에 대한 지식을 평가합니다. 좌측 상단 톱니 모양의 설정 버튼을 눌러 설정을 완료해주시기 바랍니다.",
+        "auto": false
       },
       "ButtonMain": {
         "state": false,

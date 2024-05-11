@@ -24,8 +24,8 @@ function ButtonMain({ onClick, state }) {
 ButtonMain.propTypes = {
   onClick: PropTypes.func.isRequired,
   state: PropTypes.shape({
+    state: PropTypes.bool, // true: on(visible), false: off(invisible)
     content: PropTypes.string,
-    state: PropTypes.bool,
   }).isRequired,
 };
 ButtonMain.defaultProps = {};

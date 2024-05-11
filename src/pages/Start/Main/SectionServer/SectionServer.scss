@@ -10,12 +10,16 @@
   //text
   font-family: Nanum Gothic Coding;
   line-height: 1.5;
+  overflow-y: auto;
   //ui
   opacity: 1;
   //animation
   transition: all 2s ease-in-out;
 
   /* Selector */
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &.off {
     //box
     height: 0px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
 
@@ -9,19 +10,35 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ state }) {
+function SectionServer({ onNextPhase, state }) {
+  /* Return */
   return (
     <CompDivNeon className={`SectionServer ${!state.state ? 'off' : ''}`} neonColor="black">
-      $ ChatGPT <br />
-      <br />
-      &gt; 안녕하세요 Chat-GPT를 활용한 인터뷰 서비스에 오신 것을 환영합니다. <br /> &gt; 해당 인터뷰 서비스는 CS, FE, BE, DB, OOP 총 5가지 분야에 대한 지식을 평가합니다.
+      <Typewriter
+        key={state.content}
+        options={{
+          cursor: '_',
+          delay: 50,
+        }}
+        onInit={typewriter => {
+          typewriter
+            .typeString(state.content)
+            .pauseFor(2000)
+            .start()
+            .callFunction(() => {
+              if (state.auto) onNextPhase();
+            });
+        }}
+      />
     </CompDivNeon>
   );
 }
 SectionServer.propTypes = {
+  onNextPhase: PropTypes.func.isRequired,
   state: PropTypes.shape({
+    state: PropTypes.bool, // true: on(visible), false: off(invisible)
     content: PropTypes.string,
-    state: PropTypes.bool,
+    auto: PropTypes.bool, // true: auto, false: manual
   }).isRequired,
 };
 SectionServer.defaultProps = {};

@@ -13,33 +13,28 @@ import './Main.scss';
  * @returns Main
  */
 function Main() {
-  /* Variables */
-  let phase = 0; // scenarioMain's phase sequence
-
   /* State */
+  // Phase Sequence
+  const [phaseState, setPhaseState] = useState(0);
   // SectionServer
-  const [sectionServerState, setSectionServerState] = useState({
-    state: scenarioMain.phase[phase].SectionServer.state, // true: on(visible), false: off(invisible)
-    content: scenarioMain.phase[phase].SectionServer.content,
-  });
-  const handleSectionServerState = (state, content) => {
-    setSectionServerState({ state, content });
+  const [sectionServerState, setSectionServerState] = useState(scenarioMain.phase[phaseState].SectionServer);
+  const handleSectionServerState = newState => {
+    setSectionServerState(newState);
   };
   // buttonMain
-  const [buttonMainState, setButtonMainState] = useState({
-    state: scenarioMain.phase[phase].ButtonMain.state, // true: on(visible), false: off(invisible)
-    content: scenarioMain.phase[phase].ButtonMain.content,
-  });
-  const handleButtonMainState = (state, content) => {
-    setButtonMainState({ state, content });
+  const [buttonMainState, setButtonMainState] = useState(scenarioMain.phase[phaseState].ButtonMain);
+  const handleButtonMainState = newState => {
+    setButtonMainState(newState);
   };
 
   /* Function */
   const nextPhase = () => {
-    // to the next scenarioMain's phase sequence
-    phase += 1;
-    handleSectionServerState(scenarioMain.phase[phase].SectionServer.state, scenarioMain.phase[phase].SectionServer.content);
-    handleButtonMainState(scenarioMain.phase[phase].ButtonMain.state, scenarioMain.phase[phase].ButtonMain.content);
+    const newPhaseState = phaseState + 1;
+    if (newPhaseState < scenarioMain.phase.length) {
+      setPhaseState(newPhaseState);
+      handleSectionServerState(scenarioMain.phase[newPhaseState].SectionServer);
+      handleButtonMainState(scenarioMain.phase[newPhaseState].ButtonMain);
+    }
   };
 
   /* Return */
@@ -47,8 +42,8 @@ function Main() {
     <main className="Main">
       <div>
         <Heading />
-        <SectionServer state={sectionServerState} />
-        <ButtonMain onClick={nextPhase} state={buttonMainState} />
+        <SectionServer state={sectionServerState} onNextPhase={nextPhase} />
+        <ButtonMain state={buttonMainState} onClick={nextPhase} />
       </div>
     </main>
   );

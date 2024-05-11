@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Typewriter from 'typewriter-effect';
 
@@ -11,9 +11,21 @@ import './SectionServer.scss';
  * @returns SectionServer
  */
 function SectionServer({ onNextPhase, state }) {
+  /* useState */
+  const [contentHistoryState, setContentHistoryState] = useState('');
+
+  /* useRef */
+  const scrollRef = useRef();
+
+  /* useEffect */
+  useEffect(() => {
+    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+  }, [contentHistoryState]);
+
   /* Return */
   return (
     <CompDivNeon className={`SectionServer ${!state.state ? 'off' : ''}`} neonColor="black">
+      <div>{contentHistoryState}</div>
       <Typewriter
         key={state.content}
         options={{
@@ -23,13 +35,15 @@ function SectionServer({ onNextPhase, state }) {
         onInit={typewriter => {
           typewriter
             .typeString(state.content)
-            .pauseFor(2000)
+            .pauseFor(1500)
             .start()
             .callFunction(() => {
+              setContentHistoryState(`${contentHistoryState}${state.content}`);
               if (state.auto) onNextPhase();
             });
         }}
       />
+      <div ref={scrollRef} />
     </CompDivNeon>
   );
 }

@@ -13,7 +13,7 @@ import './Main.scss';
  * @returns Main
  */
 function Main() {
-  /* State */
+  /* useState */
   // Phase Sequence
   const [phaseState, setPhaseState] = useState(0);
   // SectionServer
@@ -51,9 +51,11 @@ function Main() {
 
 export default Main;
 
-//  <CompDivNeon className={`config ${buttonState}`} neonColor="banana">
-//           <div>
-//             <input type="checkbox" onChange={() => {}} />
-//             Configuration Check Boxes
-//           </div>
-//         </CompDivNeon>
+/*
+<CompDivNeon className={`config ${buttonState}`} neonColor="banana">
+  <div>
+    <input type="checkbox" onChange={() => {}} />
+    Configuration Check Boxes
+  </div>
+</CompDivNeon>
+*/

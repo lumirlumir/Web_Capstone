@@ -27,45 +27,5 @@ main.Main {
         opacity: 0;
       }
     }
-    > .button {
-      /* Property */
-      //loading effects
-      animation: 8s ease-in-out loadEffect1;
-      @keyframes loadEffect1 {
-        0% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      //box
-      margin: 50px 0;
-      //animation
-      transition: all 3s ease-out;
-      opacity: 1;
-      //flex
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      /* Selector */
-      &.off {
-        pointer-events: none;
-        opacity: 0;
-      }
-    }
-    > .test {
-      width: 600px;
-      height: 200px;
-      border-radius: 12px;
-      padding: 30px;
-      font-family: Nanum Gothic Coding;
-      line-height: 1.5;
-      background-color: darken(#202020, 7%);
-    }
   }
 }

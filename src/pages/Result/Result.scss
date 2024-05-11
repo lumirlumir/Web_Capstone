@@ -1,38 +1,38 @@
-.Result {
-  /* Variables */
-  $border-width: 1px;
+// .Result {
+//   /* Variables */
+//   $border-width: 1px;
 
-  /* Property */
-  width: calc(100% - (2 * #{$border-width}));
-  height: calc(100% - (2 * #{$border-width}));
-  border: $border-width solid black;
+//   /* Property */
+//   width: calc(100% - (2 * #{$border-width}));
+//   height: calc(100% - (2 * #{$border-width}));
+//   border: $border-width solid black;
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 50px;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: 1fr 1fr 50px;
 
-  /* Selector */
-  > div {
-    border: 1px solid gray;
-  }
-  > .grade {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
-  > .gradeDetailed {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-  }
-  > .info {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-  }
-  > .others {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-  }
-  > .start {
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-  }
-}
+//   /* Selector */
+//   > div {
+//     border: 1px solid gray;
+//   }
+//   > .grade {
+//     grid-column: 1 / 2;
+//     grid-row: 1 / 2;
+//   }
+//   > .gradeDetailed {
+//     grid-column: 2 / 3;
+//     grid-row: 1 / 2;
+//   }
+//   > .info {
+//     grid-column: 1 / 2;
+//     grid-row: 2 / 3;
+//   }
+//   > .others {
+//     grid-column: 2 / 3;
+//     grid-row: 2 / 3;
+//   }
+//   > .start {
+//     grid-column: 1 / 3;
+//     grid-row: 3 / 4;
+//   }
+// }

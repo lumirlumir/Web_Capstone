@@ -1,0 +1,24 @@
+{
+  "phase": [
+    {
+      "SectionServer": {
+        "state": false,
+        "content": ""
+      },
+      "ButtonMain": {
+        "state": true,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": ""
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    }
+  ]
+}

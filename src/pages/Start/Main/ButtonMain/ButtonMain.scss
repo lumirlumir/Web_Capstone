@@ -1,0 +1,39 @@
+.ButtonMain {
+  /* Property */
+  //loading effects
+  animation: 8s ease-in-out;
+  animation-name: loadEffect1, loadEffect2;
+  @keyframes loadEffect1 {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes loadEffect2 {
+    from {
+      pointer-events: none;
+    }
+    to {
+      pointer-events: none;
+    }
+  }
+  //box
+  margin: 50px 0;
+  //animation
+  transition: all 2s ease-out;
+  //flex-container
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Selector */
+  &.off {
+    pointer-events: none;
+    opacity: 0;
+  }
+}

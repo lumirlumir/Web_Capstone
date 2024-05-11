@@ -1,0 +1,70 @@
+{
+  "phase": [
+    {
+      "SectionServer": {
+        "state": false,
+        "content": "",
+        "auto": false
+      },
+      "ButtonMain": {
+        "state": true,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": "$ ChatGPT\n\n",
+        "auto": true
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": "> 안녕하세요 ChatGPT를 활용한 인터뷰 서비스에 오신 것을 환영합니다. 해당 인터뷰 서비스는 CS, FE, BE, DB, OOP 총 5가지 분야에 대한 지식을 평가합니다. \n\n",
+        "auto": true
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": "> CS(Computer Science)는 컴퓨터 공학 지식, FE(Front-End)는 클라이언트 사이드인 프론트엔드, BE(Back-End)는 서버 사이드인 백엔드, DB(DataBase)는 데이터베이스, OOP(Object-Oriented Programming)는 객체 지향 프로그래밍을 의미합니다. \n\n",
+        "auto": true
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": "> 좌측 상단 톱니 모양의 설정 버튼을 눌러 설정을 완료해주시기 바랍니다.\n\n",
+        "auto": true
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    },
+    {
+      "SectionServer": {
+        "state": true,
+        "content": "",
+        "auto": false
+      },
+      "ButtonMain": {
+        "state": false,
+        "content": "PRESS"
+      }
+    }
+  ]
+}

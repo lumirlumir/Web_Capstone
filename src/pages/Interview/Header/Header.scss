@@ -1,30 +1,30 @@
-.Header {
-  /* Property */
-  //box
-  margin: 15px 30px;
-  //grid-item
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  //flex-container
-  display: flex;
-  justify-content: space-between;
+// .Header {
+//   /* Property */
+//   //box
+//   margin: 15px 30px;
+//   //grid-item
+//   grid-column: 1 / 3;
+//   grid-row: 1 / 2;
+//   //flex-container
+//   display: flex;
+//   justify-content: space-between;
 
-  /* Selector */
-  > div {
-    //box
-    margin: 10px;
-    //flex-item
-    flex-basis: 80px;
-    //flex-container
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+//   /* Selector */
+//   > div {
+//     //box
+//     margin: 10px;
+//     //flex-item
+//     flex-basis: 80px;
+//     //flex-container
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
 
-  svg.config {
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 16px #f5e3a7);
-  }
-  svg.mic {
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 16px #f5e3a7);
-  }
-}
+//   svg.config {
+//     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 16px #f5e3a7);
+//   }
+//   svg.mic {
+//     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 16px #f5e3a7);
+//   }
+// }

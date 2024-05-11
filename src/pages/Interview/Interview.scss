@@ -1,25 +1,25 @@
-.Interview {
-  /* Variables */
-  $height: 120px;
+// .Interview {
+//   /* Variables */
+//   $height: 120px;
 
-  /* Property */
-  //box
-  width: 100%;
-  height: 100%;
-  //flex
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  > div {
-    width: 100%;
-    min-width: 300px;
-    max-width: 900px;
-    height: 100%;
-    min-height: 400px;
-    max-height: 900px;
+//   /* Property */
+//   //box
+//   width: 100%;
+//   height: 100%;
+//   //flex
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   > div {
+//     width: 100%;
+//     min-width: 300px;
+//     max-width: 900px;
+//     height: 100%;
+//     min-height: 400px;
+//     max-height: 900px;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: $height 1fr $height;
-  }
-}
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     grid-template-rows: $height 1fr $height;
+//   }
+// }

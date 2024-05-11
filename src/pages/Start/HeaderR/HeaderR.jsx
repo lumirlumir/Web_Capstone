@@ -15,7 +15,7 @@ function HeaderR() {
 
   return (
     <header className="HeaderR">
-      <CompButtonLight style={{ width: '60px', height: '60px' }} click={doNothing}>
+      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <GrPowerReset size="32px" />
         </CompFontNeon>

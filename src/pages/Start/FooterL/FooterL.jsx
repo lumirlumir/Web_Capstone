@@ -1,27 +1,27 @@
 import React from 'react';
-import { CiMicrophoneOn } from 'react-icons/ci';
+import { GrPowerReset } from 'react-icons/gr';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
 
-import './HeaderR.scss';
+import './FooterL.scss';
 
 /**
  *
- * @returns HeaderR
+ * @returns FooterL
  */
-function HeaderR() {
+function FooterL() {
   const doNothing = () => {};
 
   return (
-    <header className="HeaderR">
+    <footer className="FooterL">
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
-          <CiMicrophoneOn size="40px" />
+          <GrPowerReset size="32px" />
         </CompFontNeon>
       </CompButtonLight>
-    </header>
+    </footer>
   );
 }
 
-export default HeaderR;
+export default FooterL;

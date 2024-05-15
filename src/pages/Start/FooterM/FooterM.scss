@@ -1,0 +1,10 @@
+footer.FooterM {
+  /* Property */
+  //grid-item
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  //flex-container
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -10,22 +10,27 @@ import './ButtonMain.scss';
  *
  * @returns ButtonMain
  */
-function ButtonMain({ onClick, state }) {
+function ButtonMain({ scenario, scenarioPhase }) {
+  /* Props */
+  const { scenarioPhaseState, handleScenarioPhaseState } = scenarioPhase;
+  const { visibility, content } = scenario.phase[scenarioPhaseState].ButtonMain;
+
+  /* Return */
   return (
-    <div className={`ButtonMain ${!state.state ? 'off' : ''}`}>
-      <CompButtonLight style={{ padding: '20px 30px' }} onClick={onClick}>
+    <div className={`ButtonMain ${visibility ? '' : 'off'}`}>
+      <CompButtonLight style={{ padding: '20px 30px' }} onClick={handleScenarioPhaseState}>
         <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
-          {state.content}
+          {content}
         </CompFontNeon>
       </CompButtonLight>
     </div>
   );
 }
 ButtonMain.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  state: PropTypes.shape({
-    state: PropTypes.bool, // true: on(visible), false: off(invisible)
-    content: PropTypes.string,
+  scenario: PropTypes.object.isRequired,
+  scenarioPhase: PropTypes.shape({
+    scenarioPhaseState: PropTypes.number,
+    handleScenarioPhaseState: PropTypes.func,
   }).isRequired,
 };
 ButtonMain.defaultProps = {};

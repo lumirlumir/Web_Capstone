@@ -1,5 +1,9 @@
 .Heading {
   /* Property */
+  //visual
+  position: sticky;
+  top: 0;
+  z-index: 100;
   //box
   margin: 50px 0;
   //others

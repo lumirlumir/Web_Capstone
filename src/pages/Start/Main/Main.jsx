@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
+import SectionConfig from './SectionConfig';
+import SectionResult from './SectionResult';
 import SectionServer from './SectionServer';
+import SectionClient from './SectionClient';
 
 import './Main.scss';
 
@@ -17,7 +20,10 @@ function Main({ scenario, scenarioPhase }) {
     <main className="Main">
       <div>
         <Heading />
+        <SectionConfig />
         <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} />
+        <SectionClient />
+        <SectionResult />
         <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} />
       </div>
     </main>

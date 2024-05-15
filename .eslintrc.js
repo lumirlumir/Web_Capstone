@@ -20,7 +20,9 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
   ],
-  rules: {},
+  rules: {
+    'react/forbid-prop-types': 'off', // PropTypes.any
+  },
   env: {
     browser: true,
     commonjs: true,
@@ -37,6 +39,13 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/resolver': {
+      // eslint-import-resolver-alias
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
+      },
     },
   },
 };

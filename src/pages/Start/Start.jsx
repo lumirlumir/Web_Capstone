@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-import CompFontNeon from '../../components/font/CompFontNeon';
-import CompButtonLight from '../../components/button/CompButtonLight';
+import scenario from '@/data/scenario.json';
+
+import FooterL from './FooterL';
+import FooterM from './FooterM';
+import FooterR from './FooterR';
+import HeaderL from './HeaderL';
+import HeaderR from './HeaderR';
+import Main from './Main';
 
 import './Start.scss';
 
@@ -11,38 +16,29 @@ import './Start.scss';
  * @returns Start
  */
 function Start() {
-  const [buttonState, setButtonState] = useState('onPress'); // onPress, onStart, off
-  const handleButtonState = () => {
-    setButtonState(buttonState === 'onPress' ? 'off' : 'onStart');
+  /* useState */
+  // scenarioPhase
+  const [scenarioPhaseState, setScenarioPhaseState] = useState(0);
+  const handleScenarioPhaseState = () => {
+    const newScenarioPhaseState = scenarioPhaseState + 1;
+    if (newScenarioPhaseState < scenario.phase.length) {
+      setScenarioPhaseState(newScenarioPhaseState);
+    }
+  };
+  const scenarioPhase = {
+    scenarioPhaseState,
+    handleScenarioPhaseState,
   };
 
+  /* Return */
   return (
     <div className="Start">
-      <div>
-        <div className="heading">
-          <div className="mock">
-            <CompFontNeon neonColor="blue" neonSize="m" fontFamily="Pacifico" fontSize="50px">
-              <h1>Mock</h1>
-            </CompFontNeon>
-          </div>
-          <div className="interview">
-            <CompFontNeon neonColor="violet" neonSize="l" fontFamily="Audiowide" fontSize="100px">
-              <h1>Interview</h1>
-            </CompFontNeon>
-          </div>
-        </div>
-        <div className={`config ${buttonState}`}>
-          <input type="checkbox" onChange={handleButtonState} />
-          Configuration Check Boxes
-        </div>
-        <div className={`button ${buttonState}`}>
-          <CompButtonLight onClick={handleButtonState}>
-            <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
-              {buttonState === 'onStart' ? <Link to={`${process.env.PUBLIC_URL}/interview`}>START</Link> : 'PRESS'}
-            </CompFontNeon>
-          </CompButtonLight>
-        </div>
-      </div>
+      <HeaderL />
+      <HeaderR />
+      <Main scenario={scenario} scenarioPhase={scenarioPhase} />
+      <FooterL />
+      <FooterM />
+      <FooterR />
     </div>
   );
 }

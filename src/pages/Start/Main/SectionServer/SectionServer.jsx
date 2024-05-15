@@ -10,7 +10,11 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ onNextPhase, state }) {
+function SectionServer({ scenario, scenarioPhase }) {
+  /* Props */
+  const { scenarioPhaseState, handleScenarioPhaseState } = scenarioPhase;
+  const { visibility, content, auto } = scenario.phase[scenarioPhaseState].SectionServer;
+
   /* useState */
   const [contentHistoryState, setContentHistoryState] = useState('');
 
@@ -24,22 +28,22 @@ function SectionServer({ onNextPhase, state }) {
 
   /* Return */
   return (
-    <CompDivNeon className={`SectionServer ${!state.state ? 'off' : ''}`} neonColor="black">
+    <CompDivNeon className={`SectionServer ${visibility ? '' : 'off'}`} neonColor="black">
       <div>{contentHistoryState}</div>
       <Typewriter
-        key={state.content}
+        key={content}
         options={{
           cursor: '_',
           delay: 50,
         }}
         onInit={typewriter => {
           typewriter
-            .typeString(state.content)
+            .typeString(content)
             .pauseFor(1500)
             .start()
             .callFunction(() => {
-              setContentHistoryState(`${contentHistoryState}${state.content}`);
-              if (state.auto) onNextPhase();
+              setContentHistoryState(`${contentHistoryState}${content}`);
+              if (auto) handleScenarioPhaseState();
             });
         }}
       />
@@ -48,11 +52,10 @@ function SectionServer({ onNextPhase, state }) {
   );
 }
 SectionServer.propTypes = {
-  onNextPhase: PropTypes.func.isRequired,
-  state: PropTypes.shape({
-    state: PropTypes.bool, // true: on(visible), false: off(invisible)
-    content: PropTypes.string,
-    auto: PropTypes.bool, // true: auto, false: manual
+  scenario: PropTypes.object.isRequired,
+  scenarioPhase: PropTypes.shape({
+    scenarioPhaseState: PropTypes.number,
+    handleScenarioPhaseState: PropTypes.func,
   }).isRequired,
 };
 SectionServer.defaultProps = {};

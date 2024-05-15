@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-
-import scenarioMain from '@/data/scenarioMain.json';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -12,42 +11,26 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main() {
-  /* useState */
-  // Phase Sequence
-  const [phaseState, setPhaseState] = useState(0);
-  // SectionServer
-  const [sectionServerState, setSectionServerState] = useState(scenarioMain.phase[phaseState].SectionServer);
-  const handleSectionServerState = newState => {
-    setSectionServerState(newState);
-  };
-  // buttonMain
-  const [buttonMainState, setButtonMainState] = useState(scenarioMain.phase[phaseState].ButtonMain);
-  const handleButtonMainState = newState => {
-    setButtonMainState(newState);
-  };
-
-  /* Function */
-  const nextPhase = () => {
-    const newPhaseState = phaseState + 1;
-    if (newPhaseState < scenarioMain.phase.length) {
-      setPhaseState(newPhaseState);
-      handleSectionServerState(scenarioMain.phase[newPhaseState].SectionServer);
-      handleButtonMainState(scenarioMain.phase[newPhaseState].ButtonMain);
-    }
-  };
-
+function Main({ scenario, scenarioPhase }) {
   /* Return */
   return (
     <main className="Main">
       <div>
         <Heading />
-        <SectionServer state={sectionServerState} onNextPhase={nextPhase} />
-        <ButtonMain state={buttonMainState} onClick={nextPhase} />
+        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} />
+        <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} />
       </div>
     </main>
   );
 }
+Main.propTypes = {
+  scenario: PropTypes.object.isRequired,
+  scenarioPhase: PropTypes.shape({
+    scenarioPhaseState: PropTypes.number,
+    handleScenarioPhaseState: PropTypes.func,
+  }).isRequired,
+};
+Main.defaultProps = {};
 
 export default Main;
 

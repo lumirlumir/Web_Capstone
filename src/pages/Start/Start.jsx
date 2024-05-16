@@ -33,12 +33,12 @@ function Start() {
   /* Return */
   return (
     <div className="Start">
-      <HeaderL />
-      <HeaderR />
+      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} />
+      <HeaderR scenario={scenario} scenarioPhase={scenarioPhase} />
       <Main scenario={scenario} scenarioPhase={scenarioPhase} />
-      <FooterL />
-      <FooterM />
-      <FooterR />
+      <FooterL scenario={scenario} scenarioPhase={scenarioPhase} />
+      <FooterM scenario={scenario} scenarioPhase={scenarioPhase} />
+      <FooterR scenario={scenario} scenarioPhase={scenarioPhase} />
     </div>
   );
 }

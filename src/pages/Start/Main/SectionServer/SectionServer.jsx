@@ -13,7 +13,7 @@ import './SectionServer.scss';
 function SectionServer({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState, handleScenarioPhaseState } = scenarioPhase;
-  const { visibility, content, auto } = scenario.phase[scenarioPhaseState].SectionServer;
+  const { visibility, content, auto } = scenario.phase[scenarioPhaseState].Main.SectionServer;
 
   /* useState */
   const [contentHistoryState, setContentHistoryState] = useState('');
@@ -34,12 +34,12 @@ function SectionServer({ scenario, scenarioPhase }) {
         key={content}
         options={{
           cursor: '_',
-          delay: 50,
+          delay: 1, // original: 50
         }}
         onInit={typewriter => {
           typewriter
             .typeString(content)
-            .pauseFor(1500)
+            .pauseFor(1000) // original: 2500
             .start()
             .callFunction(() => {
               setContentHistoryState(`${contentHistoryState}${content}`);

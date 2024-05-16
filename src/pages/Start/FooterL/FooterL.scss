@@ -1,5 +1,7 @@
 footer.FooterL {
   /* Property */
+  //transition
+  transition: all 3s ease-out;
   //grid-item
   grid-column: 1 / 2;
   grid-row: 3 / 4;
@@ -7,4 +9,10 @@ footer.FooterL {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* Selector */
+  &.off {
+    pointer-events: none;
+    opacity: 0;
+  }
 }

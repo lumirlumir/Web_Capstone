@@ -13,7 +13,7 @@ import './ButtonMain.scss';
 function ButtonMain({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState, handleScenarioPhaseState } = scenarioPhase;
-  const { visibility, content } = scenario.phase[scenarioPhaseState].ButtonMain;
+  const { visibility, content } = scenario.phase[scenarioPhaseState].Main.ButtonMain;
 
   /* Return */
   return (

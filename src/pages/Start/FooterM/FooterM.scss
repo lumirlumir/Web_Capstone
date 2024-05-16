@@ -1,5 +1,7 @@
 footer.FooterM {
   /* Property */
+  //transition
+  transition: all 3s ease-out;
   //grid-item
   grid-column: 2 / 3;
   grid-row: 3 / 4;
@@ -7,4 +9,10 @@ footer.FooterM {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* Selector */
+  &.off {
+    pointer-events: none;
+    opacity: 0;
+  }
 }

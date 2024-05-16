@@ -23,31 +23,35 @@ function SectionServer({ scenario, scenarioPhase }) {
 
   /* useEffect */
   useEffect(() => {
-    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
-  }, [contentHistoryState]);
+    if (scenarioPhaseState > 1) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    }
+  }, [scenarioPhaseState]);
 
   /* Return */
   return (
     <CompDivNeon className={`SectionServer ${visibility ? '' : 'off'}`} neonColor="black">
       <div>{contentHistoryState}</div>
-      <Typewriter
-        key={content}
-        options={{
-          cursor: '_',
-          delay: 1, // original: 50
-        }}
-        onInit={typewriter => {
-          typewriter
-            .typeString(content)
-            .pauseFor(1000) // original: 2500
-            .start()
-            .callFunction(() => {
-              setContentHistoryState(`${contentHistoryState}${content}`);
-              if (auto) handleScenarioPhaseState();
-            });
-        }}
-      />
-      <div ref={scrollRef} />
+      <div>
+        <Typewriter
+          key={content}
+          options={{
+            cursor: '_',
+            delay: 50, // original: 50
+          }}
+          onInit={typewriter => {
+            typewriter
+              .typeString(content)
+              .pauseFor(4000) // original: 4000
+              .start()
+              .callFunction(() => {
+                setContentHistoryState(`${contentHistoryState}${content}`);
+                if (auto) handleScenarioPhaseState();
+              });
+          }}
+        />
+      </div>
+      <div className="ref" ref={scrollRef} />
     </CompDivNeon>
   );
 }

@@ -96,7 +96,7 @@
         },
         "SectionServer": {
           "visibility": true,
-          "content": "> 안녕하세요, 'ChatGPT를 활용한 인터뷰 서비스'에 오신 것을 환영합니다. 서비스에 대한 소개 및 튜토리얼을 진행하겠습니다. 소개 및 튜토리얼 진행을 생략하고 싶으시면, 하단의 SKIP 버튼을 눌러주시기 바랍니다.\n\n",
+          "content": "> 안녕하세요, 'ChatGPT를 활용한 인터뷰 서비스'에 오신 것을 환영합니다. 서비스에 대한 소개 및 튜토리얼을 진행하겠습니다. 소개 및 튜토리얼 진행을 생략하고 싶으시면, 하단의 START 버튼을 키보드의 CTRL Key를 누른 채 눌러주시기 바랍니다.\n\n",
           "auto": true
         },
         "ButtonMain": {
@@ -131,12 +131,47 @@
         },
         "SectionServer": {
           "visibility": true,
+          "content": "",
+          "auto": false
+        },
+        "ButtonMain": {
+          "visibility": true,
+          "content": "START"
+        }
+      }
+    },
+    {
+      "FooterL": {
+        "visibility": false
+      },
+      "FooterM": {
+        "visibility": false
+      },
+      "FooterR": {
+        "visibility": false,
+        "isSubmit": true
+      },
+      "HeaderL": {
+        "visibility": false
+      },
+      "HeaderR": {
+        "visibility": false
+      },
+      "Main": {
+        "Heading": {
+          "visibility": true
+        },
+        "SectionClient": {
+          "visibility": false
+        },
+        "SectionServer": {
+          "visibility": true,
           "content": "> 해당 인터뷰 서비스는 개발자 채용 과정에서의 면접 인력을 대체하여 기술 인터뷰를 진행할 수 있는 AI 면접 서비스를 위해 제작된 인공지능 웹서비스입니다.\n\n",
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -170,8 +205,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -205,8 +240,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -240,8 +275,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -275,8 +310,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -310,8 +345,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -345,8 +380,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -380,8 +415,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -415,8 +450,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -450,8 +485,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -485,8 +520,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -520,8 +555,8 @@
           "auto": true
         },
         "ButtonMain": {
-          "visibility": true,
-          "content": "SKIP"
+          "visibility": false,
+          "content": "START"
         }
       }
     },
@@ -556,7 +591,7 @@
         },
         "ButtonMain": {
           "visibility": false,
-          "content": "SKIP"
+          "content": "START"
         }
       }
     },

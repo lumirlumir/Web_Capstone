@@ -12,7 +12,7 @@ import './SectionServer.scss';
  */
 function SectionServer({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState, handleScenarioPhaseState } = scenarioPhase;
+  const { scenarioPhaseState, handleNextScenarioPhaseState } = scenarioPhase;
   const { visibility, content, auto } = scenario.phase[scenarioPhaseState].Main.SectionServer;
 
   /* useState */
@@ -42,11 +42,11 @@ function SectionServer({ scenario, scenarioPhase }) {
           onInit={typewriter => {
             typewriter
               .typeString(content)
-              .pauseFor(4000) // original: 4000
+              .pauseFor(3000) // original: 3000
               .start()
               .callFunction(() => {
                 setContentHistoryState(`${contentHistoryState}${content}`);
-                if (auto) handleScenarioPhaseState();
+                if (auto) handleNextScenarioPhaseState();
               });
           }}
         />
@@ -59,7 +59,8 @@ SectionServer.propTypes = {
   scenario: PropTypes.object.isRequired,
   scenarioPhase: PropTypes.shape({
     scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
+    handleNextScenarioPhaseState: PropTypes.func,
+    handleSkipScenarioPhaseState: PropTypes.func,
   }).isRequired,
 };
 SectionServer.defaultProps = {};

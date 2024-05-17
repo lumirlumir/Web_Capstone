@@ -46,6 +46,7 @@ Main.propTypes = {
   scenarioPhase: PropTypes.shape({
     scenarioPhaseState: PropTypes.number,
     handleScenarioPhaseState: PropTypes.func,
+    handleSkipScenarioPhaseState: PropTypes.func,
   }).isRequired,
 };
 Main.defaultProps = {};

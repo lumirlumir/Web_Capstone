@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GoGear } from 'react-icons/go';
 
 import CompButtonLight from '@/components/CompButtonLight';
@@ -10,11 +11,17 @@ import './HeaderL.scss';
  *
  * @returns HeaderL
  */
-function HeaderL() {
+function HeaderL({ scenario, scenarioPhase }) {
+  /* Props */
+  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
+  const { visibility } = scenario.phase[scenarioPhaseState].HeaderL;
+
+  /* Function */
   const doNothing = () => {};
 
+  /* Return */
   return (
-    <header className="HeaderL">
+    <header className={`HeaderL ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <GoGear size="35px" />
@@ -23,5 +30,13 @@ function HeaderL() {
     </header>
   );
 }
+HeaderL.propTypes = {
+  scenario: PropTypes.object.isRequired,
+  scenarioPhase: PropTypes.shape({
+    scenarioPhaseState: PropTypes.number,
+    isScenarioPhaseEnd: PropTypes.func,
+  }).isRequired,
+};
+HeaderL.defaultProps = {};
 
 export default HeaderL;

@@ -19,26 +19,35 @@ function Start() {
   /* useState */
   // scenarioPhase
   const [scenarioPhaseState, setScenarioPhaseState] = useState(0);
-  const handleScenarioPhaseState = () => {
+  const handleNextScenarioPhaseState = () => {
     const newScenarioPhaseState = scenarioPhaseState + 1;
     if (newScenarioPhaseState < scenario.phase.length) {
       setScenarioPhaseState(newScenarioPhaseState);
     }
   };
+  const handleSkipScenarioPhaseState = () => {
+    const newScenarioPhaseState = scenario.phase.length - 1;
+    setScenarioPhaseState(newScenarioPhaseState);
+  };
+  const isScenarioPhaseEnd = () => {
+    return scenarioPhaseState === scenario.phase.length - 1;
+  };
   const scenarioPhase = {
     scenarioPhaseState,
-    handleScenarioPhaseState,
+    handleNextScenarioPhaseState,
+    handleSkipScenarioPhaseState,
+    isScenarioPhaseEnd,
   };
 
   /* Return */
   return (
     <div className="Start">
-      <HeaderL />
-      <HeaderR />
+      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} />
+      <HeaderR scenario={scenario} scenarioPhase={scenarioPhase} />
       <Main scenario={scenario} scenarioPhase={scenarioPhase} />
-      <FooterL />
-      <FooterM />
-      <FooterR />
+      <FooterL scenario={scenario} scenarioPhase={scenarioPhase} />
+      <FooterM scenario={scenario} scenarioPhase={scenarioPhase} />
+      <FooterR scenario={scenario} scenarioPhase={scenarioPhase} />
     </div>
   );
 }

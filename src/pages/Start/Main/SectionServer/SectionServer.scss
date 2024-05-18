@@ -1,16 +1,19 @@
 .SectionServer {
+  /* Variable */
+  $height: 200px;
+
   /* Property */
   //box
   width: 600px;
-  height: 200px;
-  margin: 50px auto;
+  height: $height;
+  margin: 30px auto;
   padding: 30px 40px;
   //background
   background-color: darken(#202020, 7%);
   //text
   font-family: Nanum Gothic Coding;
   line-height: 1.5;
-  overflow-y: auto;
+  overflow-y: scroll;
   white-space: pre-line;
   //ui
   opacity: 1;
@@ -29,5 +32,8 @@
     //ui
     opacity: 0;
     pointer-events: none;
+  }
+  > .ref {
+    height: $height * 0.75;
   }
 }

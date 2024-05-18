@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { IoExitOutline } from 'react-icons/io5';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
@@ -11,17 +12,30 @@ import './FooterR.scss';
  *
  * @returns FooterR
  */
-function FooterR() {
-  const doNothing = () => {};
-  const condition = true;
+function FooterR({ scenario, scenarioPhase }) {
+  /* Props */
+  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
+  const { visibility, isSubmit } = scenario.phase[scenarioPhaseState].FooterR;
 
+  /* Function */
+  const doNothing = () => {};
+
+  /* Return */
   return (
-    <footer className="FooterR">
+    <footer className={`FooterR ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
-        <CompFontNeon neonColor="white">{condition ? <IoExitOutline size="37px" /> : <IoIosCheckmarkCircleOutline size="39px" />}</CompFontNeon>
+        <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
       </CompButtonLight>
     </footer>
   );
 }
+FooterR.propTypes = {
+  scenario: PropTypes.object.isRequired,
+  scenarioPhase: PropTypes.shape({
+    scenarioPhaseState: PropTypes.number,
+    isScenarioPhaseEnd: PropTypes.func,
+  }).isRequired,
+};
+FooterR.defaultProps = {};
 
 export default FooterR;

@@ -13,7 +13,8 @@ import './SectionServer.scss';
 function SectionServer({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState, handleNextScenarioPhaseState } = scenarioPhase;
-  const { visibility, content, auto } = scenario.phase[scenarioPhaseState].Main.SectionServer;
+  const { auto } = scenario.phase[scenarioPhaseState].global;
+  const { visibility, content } = scenario.phase[scenarioPhaseState].Main.SectionServer;
 
   /* useState */
   const [contentHistoryState, setContentHistoryState] = useState('');

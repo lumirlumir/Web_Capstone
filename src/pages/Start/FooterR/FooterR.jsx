@@ -14,7 +14,7 @@ import './FooterR.scss';
  */
 function FooterR({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
   const { visibility, isSubmit } = scenario.phase[scenarioPhaseState].FooterR;
 
   /* Function */
@@ -22,7 +22,7 @@ function FooterR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <footer className={`FooterR ${visibility ? '' : 'off'}`}>
+    <footer className={`FooterR ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
       </CompButtonLight>
@@ -33,7 +33,7 @@ FooterR.propTypes = {
   scenario: PropTypes.object.isRequired,
   scenarioPhase: PropTypes.shape({
     scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
+    isScenarioPhaseEnd: PropTypes.func,
   }).isRequired,
 };
 FooterR.defaultProps = {};

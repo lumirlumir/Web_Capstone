@@ -13,7 +13,7 @@ import './FooterL.scss';
  */
 function FooterL({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState].FooterL;
 
   /* Function */
@@ -21,7 +21,7 @@ function FooterL({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <footer className={`FooterL ${visibility ? '' : 'off'}`}>
+    <footer className={`FooterL ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <GrPowerReset size="32px" />
@@ -34,7 +34,7 @@ FooterL.propTypes = {
   scenario: PropTypes.object.isRequired,
   scenarioPhase: PropTypes.shape({
     scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
+    isScenarioPhaseEnd: PropTypes.func,
   }).isRequired,
 };
 FooterL.defaultProps = {};

@@ -13,7 +13,7 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState].HeaderR;
 
   /* Function */
@@ -21,7 +21,7 @@ function HeaderR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'off'}`}>
+    <header className={`HeaderR ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />
@@ -34,7 +34,7 @@ HeaderR.propTypes = {
   scenario: PropTypes.object.isRequired,
   scenarioPhase: PropTypes.shape({
     scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
+    isScenarioPhaseEnd: PropTypes.func,
   }).isRequired,
 };
 HeaderR.defaultProps = {};

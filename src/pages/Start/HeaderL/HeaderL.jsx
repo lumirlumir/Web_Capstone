@@ -13,7 +13,7 @@ import './HeaderL.scss';
  */
 function HeaderL({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState].HeaderL;
 
   /* Function */
@@ -21,7 +21,7 @@ function HeaderL({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <header className={`HeaderL ${visibility ? '' : 'off'}`}>
+    <header className={`HeaderL ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <GoGear size="35px" />
@@ -34,7 +34,7 @@ HeaderL.propTypes = {
   scenario: PropTypes.object.isRequired,
   scenarioPhase: PropTypes.shape({
     scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
+    isScenarioPhaseEnd: PropTypes.func,
   }).isRequired,
 };
 HeaderL.defaultProps = {};

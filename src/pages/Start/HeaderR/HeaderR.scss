@@ -15,4 +15,7 @@ header.HeaderR {
     pointer-events: none;
     opacity: 0;
   }
+  &.clickDisabled {
+    pointer-events: none;
+  }
 }

@@ -29,10 +29,14 @@ function Start() {
     const newScenarioPhaseState = scenario.phase.length - 1;
     setScenarioPhaseState(newScenarioPhaseState);
   };
+  const isScenarioPhaseEnd = () => {
+    return scenarioPhaseState === scenario.phase.length - 1;
+  };
   const scenarioPhase = {
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,
+    isScenarioPhaseEnd,
   };
 
   /* Return */

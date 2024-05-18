@@ -17,12 +17,14 @@ function FooterL({ scenario, scenarioPhase }) {
   const { visibility } = scenario.phase[scenarioPhaseState].FooterL;
 
   /* Function */
-  const doNothing = () => {};
+  const reload = () => {
+    window.location.reload();
+  };
 
   /* Return */
   return (
     <footer className={`FooterL ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
-      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
+      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={reload}>
         <CompFontNeon neonColor="white">
           <GrPowerReset size="32px" />
         </CompFontNeon>

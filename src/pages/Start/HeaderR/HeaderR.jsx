@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CiMicrophoneOn } from 'react-icons/ci';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './HeaderR.scss';
 
@@ -31,11 +31,8 @@ function HeaderR({ scenario, scenarioPhase }) {
   );
 }
 HeaderR.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    isScenarioPhaseEnd: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 HeaderR.defaultProps = {};
 

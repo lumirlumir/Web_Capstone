@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { GrPowerReset } from 'react-icons/gr';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './FooterL.scss';
 
@@ -33,11 +33,8 @@ function FooterL({ scenario, scenarioPhase }) {
   );
 }
 FooterL.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    isScenarioPhaseEnd: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterL.defaultProps = {};
 

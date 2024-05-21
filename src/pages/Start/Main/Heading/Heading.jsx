@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './Heading.scss';
 
@@ -31,11 +31,8 @@ function Heading({ scenario, scenarioPhase }) {
   );
 }
 Heading.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 Heading.defaultProps = {};
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './ButtonMain.scss';
 
@@ -36,12 +36,8 @@ function ButtonMain({ scenario, scenarioPhase }) {
   );
 }
 ButtonMain.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleNextScenarioPhaseState: PropTypes.func,
-    handleSkipScenarioPhaseState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 ButtonMain.defaultProps = {};
 

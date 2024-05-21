@@ -68,7 +68,6 @@ function Start() {
       },
     }));
   };
-  // const isConfigEnd = () => {};
   const config = {
     configState,
     handleVisibilityConfigState,

@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CompDivNeon from '@/components/CompDivNeon';
+import { configPropTypes } from '@/utils/propTypes';
 
 import ButtonCount from './ButtonCount';
 import CheckBox from './CheckBox';
@@ -71,11 +71,7 @@ function SectionConfig({ config }) {
   );
 }
 SectionConfig.propTypes = {
-  config: PropTypes.shape({
-    configState: PropTypes.object,
-    handleVisibilityConfigState: PropTypes.func,
-    handleConfigState: PropTypes.func,
-  }).isRequired,
+  config: configPropTypes.isRequired,
 };
 SectionConfig.defaultProps = {};
 

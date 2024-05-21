@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
+import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -42,15 +43,9 @@ function Main({ scenario, scenarioPhase, config }) {
   );
 }
 Main.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
-    handleSkipScenarioPhaseState: PropTypes.func,
-  }).isRequired,
-  config: PropTypes.shape({
-    handleVisibilityConfigState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
 };
 Main.defaultProps = {};
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { IoExitOutline } from 'react-icons/io5';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './FooterR.scss';
 
@@ -30,11 +30,8 @@ function FooterR({ scenario, scenarioPhase }) {
   );
 }
 FooterR.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    isScenarioPhaseEnd: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterR.defaultProps = {};
 

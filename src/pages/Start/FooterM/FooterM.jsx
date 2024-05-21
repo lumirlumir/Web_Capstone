@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './FooterM.scss';
 
@@ -24,11 +24,8 @@ function FooterM({ scenario, scenarioPhase }) {
   );
 }
 FooterM.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterM.defaultProps = {};
 

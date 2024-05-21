@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { GoGear } from 'react-icons/go';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './HeaderL.scss';
 
@@ -29,14 +29,9 @@ function HeaderL({ scenario, scenarioPhase, config }) {
   );
 }
 HeaderL.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    isScenarioPhaseEnd: PropTypes.func,
-  }).isRequired,
-  config: PropTypes.shape({
-    handleVisibilityConfigState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
 };
 HeaderL.defaultProps = {};
 

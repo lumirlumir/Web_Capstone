@@ -38,13 +38,49 @@ function Start() {
     handleSkipScenarioPhaseState,
     isScenarioPhaseEnd,
   };
+  // config
+  const [configState, setConfigState] = useState({
+    visibility: false,
+    questionType: {
+      cs: false,
+      fe: false,
+      be: false,
+      db: false,
+      oop: false,
+    },
+    questionMain: 0,
+    questionSub: 0,
+    timeLimit: 0,
+  });
+  const handleVisibilityConfigState = () => {
+    setConfigState(prevState => ({
+      ...prevState,
+      visibility: !prevState.visibility,
+    }));
+  };
+  const handleConfigState = obj => {
+    setConfigState(prevState => ({
+      ...prevState,
+      ...obj,
+      questionType: {
+        ...prevState.questionType,
+        ...obj.questionType,
+      },
+    }));
+  };
+  // const isConfigEnd = () => {};
+  const config = {
+    configState,
+    handleVisibilityConfigState,
+    handleConfigState,
+  };
 
   /* Return */
   return (
     <div className="Start">
-      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} />
+      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
       <HeaderR scenario={scenario} scenarioPhase={scenarioPhase} />
-      <Main scenario={scenario} scenarioPhase={scenarioPhase} />
+      <Main scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
       <FooterL scenario={scenario} scenarioPhase={scenarioPhase} />
       <FooterM scenario={scenario} scenarioPhase={scenarioPhase} />
       <FooterR scenario={scenario} scenarioPhase={scenarioPhase} />

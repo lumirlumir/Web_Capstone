@@ -1,0 +1,26 @@
+.ButtonCount {
+  /* Property */
+  //box
+  margin: 0 20px;
+  //flex-container
+  display: flex;
+
+  /* Selector */
+  &.off {
+    color: black;
+  }
+  > label {
+    /* Property */
+    cursor: pointer;
+    letter-spacing: 4px;
+    //flex-container
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    /* Selector */
+    > input[type='button'] {
+      display: none;
+    }
+  }
+}

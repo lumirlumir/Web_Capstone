@@ -1,0 +1,22 @@
+.CheckBox {
+  /* Property */
+  margin: 0 20px;
+
+  /* Selector */
+  > label {
+    /* Property */
+    cursor: pointer;
+    letter-spacing: 4px;
+
+    /* Selector */
+    > input[type='checkbox'] {
+      display: none;
+    }
+    > input[type='checkbox'] + span {
+      color: black;
+    }
+    > input[type='checkbox']:checked + span {
+      color: white;
+    }
+  }
+}

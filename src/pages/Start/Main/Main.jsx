@@ -14,7 +14,7 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main({ scenario, scenarioPhase }) {
+function Main({ scenario, scenarioPhase, config }) {
   /* useRef */
   const scrollRef = useRef();
 
@@ -31,7 +31,7 @@ function Main({ scenario, scenarioPhase }) {
     <main className="Main">
       <div>
         <Heading scenario={scenario} scenarioPhase={scenarioPhase} />
-        <SectionConfig />
+        <SectionConfig config={config} />
         <SectionResult />
         <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} />
         <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
@@ -47,6 +47,9 @@ Main.propTypes = {
     scenarioPhaseState: PropTypes.number,
     handleScenarioPhaseState: PropTypes.func,
     handleSkipScenarioPhaseState: PropTypes.func,
+  }).isRequired,
+  config: PropTypes.shape({
+    handleVisibilityConfigState: PropTypes.func,
   }).isRequired,
 };
 Main.defaultProps = {};

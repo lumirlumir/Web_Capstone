@@ -2,8 +2,8 @@
   /* Property */
   //box
   width: 600px;
-  height: 200px;
-  margin: 50px auto;
+  height: 250px;
+  margin: 30px auto;
   padding: 30px 40px;
   //text
   font-family: Nanum Gothic Coding;
@@ -14,8 +14,10 @@
   opacity: 1;
   //animation
   transition: all 2s ease-in-out;
-
-  color: #bbbbbb;
+  //flex-container
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   /* Selector */
   &::-webkit-scrollbar {
@@ -29,5 +31,17 @@
     //ui
     opacity: 0;
     pointer-events: none;
+  }
+  > div {
+    > div:nth-child(1) {
+      //box
+      margin-bottom: 20px;
+      //flex-container
+      display: flex;
+      justify-content: space-between;
+    }
+    > div:nth-child(2) {
+      margin-top: 20px;
+    }
   }
 }

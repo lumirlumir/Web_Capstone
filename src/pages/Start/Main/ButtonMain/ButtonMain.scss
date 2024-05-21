@@ -1,4 +1,9 @@
 .ButtonMain {
+  @include prop-flex-container-center;
+  @include prop-transition-all;
+  @include sel-amp-class-off;
+  @include Start-Main-Others;
+
   /* Property */
   //loading effects
   animation: 8s ease-in-out;
@@ -21,19 +26,5 @@
     to {
       pointer-events: none;
     }
-  }
-  //box
-  margin: 10px 0;
-  //animation
-  transition: all 2s ease-out;
-  //flex-container
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Selector */
-  &.off {
-    pointer-events: none;
-    opacity: 0;
   }
 }

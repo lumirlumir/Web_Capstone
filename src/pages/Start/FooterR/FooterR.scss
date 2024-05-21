@@ -1,21 +1,9 @@
 footer.FooterR {
-  /* Property */
-  //transition
-  transition: all 2s ease-out;
-  //grid-item
-  grid-column: 3 / 4;
-  grid-row: 3 / 4;
-  //flex-container
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include prop-flex-container-center;
+  @include prop-transition-all;
+  @include sel-amp-class-off;
+  @include sel-amp-class-clickDisabled;
 
-  /* Selector */
-  &.off {
-    pointer-events: none;
-    opacity: 0;
-  }
-  &.clickDisabled {
-    pointer-events: none;
-  }
+  /* Property */
+  grid-area: 3 / 3 / 4 / 4;
 }

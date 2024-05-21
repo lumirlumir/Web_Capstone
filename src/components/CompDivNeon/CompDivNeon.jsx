@@ -44,7 +44,7 @@ CompDivNeon.defaultProps = {
   className: '',
   neonColor: 'red',
   neonSize: 'l',
-  borderWidth: '2px',
+  borderWidth: null,
 };
 
 export default CompDivNeon;

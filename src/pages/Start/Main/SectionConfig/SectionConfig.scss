@@ -1,37 +1,10 @@
 .SectionConfig {
-  /* Property */
-  //box
-  width: 600px;
-  height: 250px;
-  margin: 30px auto;
-  padding: 30px 40px;
-  //text
-  font-family: Nanum Gothic Coding;
-  line-height: 1.5;
-  overflow-y: auto;
-  white-space: pre-line;
-  //ui
-  opacity: 1;
-  //animation
-  transition: all 2s ease-in-out;
-  //flex-container
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include prop-flex-container-center;
+  @include prop-transition-all;
+  @include sel-amp-pseudoElem-scrollbar;
+  @include Start-Main-Section;
 
   /* Selector */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &.off {
-    //box
-    height: 0px;
-    margin: 0;
-    padding: 0 40px;
-    //ui
-    opacity: 0;
-    pointer-events: none;
-  }
   > div {
     > div:nth-child(1) {
       //box

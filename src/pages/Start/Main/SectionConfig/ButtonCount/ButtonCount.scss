@@ -7,12 +7,12 @@
 
   /* Selector */
   &.off {
-    color: black;
+    color: $color-text-inversion;
   }
   > label {
     /* Property */
     cursor: pointer;
-    letter-spacing: 4px;
+    letter-spacing: $number-letter-spacing;
     //flex-container
     width: 100%;
     display: flex;

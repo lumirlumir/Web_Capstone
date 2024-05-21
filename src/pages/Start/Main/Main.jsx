@@ -32,10 +32,10 @@ function Main({ scenario, scenarioPhase, config }) {
     <main className="Main">
       <div>
         <Heading scenario={scenario} scenarioPhase={scenarioPhase} />
-        <SectionConfig config={config} />
-        <SectionResult />
         <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} />
         <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
+        <SectionConfig config={config} />
+        <SectionResult />
         <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} />
         <div ref={scrollRef} />
       </div>

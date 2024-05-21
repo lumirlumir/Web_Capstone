@@ -6,17 +6,17 @@
   > label {
     /* Property */
     cursor: pointer;
-    letter-spacing: 4px;
+    letter-spacing: $number-letter-spacing;
 
     /* Selector */
     > input[type='checkbox'] {
       display: none;
     }
     > input[type='checkbox'] + span {
-      color: black;
+      color: $color-text-inversion;
     }
     > input[type='checkbox']:checked + span {
-      color: white;
+      color: $color-text;
     }
   }
 }

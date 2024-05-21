@@ -14,12 +14,12 @@ import './HeaderL.scss';
 function HeaderL({ scenario, scenarioPhase, config }) {
   /* Props */
   const { handleVisibilityConfigState } = config;
-  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState].HeaderL;
 
   /* Return */
   return (
-    <header className={`HeaderL ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
+    <header className={`HeaderL ${visibility ? '' : 'off'} ${isScenarioPhaseDone() ? '' : 'clickDisabled'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={handleVisibilityConfigState}>
         <CompFontNeon neonColor="white">
           <GoGear size="35px" />

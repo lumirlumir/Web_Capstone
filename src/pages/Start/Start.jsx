@@ -29,14 +29,14 @@ function Start() {
     const newScenarioPhaseState = scenario.phase.length - 1;
     setScenarioPhaseState(newScenarioPhaseState);
   };
-  const isScenarioPhaseEnd = () => {
+  const isScenarioPhaseDone = () => {
     return scenarioPhaseState === scenario.phase.length - 1;
   };
   const scenarioPhase = {
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,
-    isScenarioPhaseEnd,
+    isScenarioPhaseDone,
   };
   // config
   const [configState, setConfigState] = useState({

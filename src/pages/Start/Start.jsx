@@ -52,12 +52,6 @@ function Start() {
     questionSub: 0,
     timeLimit: 0,
   });
-  const handleVisibilityConfigState = () => {
-    setConfigState(prevState => ({
-      ...prevState,
-      visibility: !prevState.visibility,
-    }));
-  };
   const handleConfigState = obj => {
     setConfigState(prevState => ({
       ...prevState,
@@ -70,7 +64,6 @@ function Start() {
   };
   const config = {
     configState,
-    handleVisibilityConfigState,
     handleConfigState,
   };
 

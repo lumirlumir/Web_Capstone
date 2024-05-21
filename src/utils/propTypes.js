@@ -63,6 +63,5 @@ export const configPropTypes = PropTypes.shape({
     questionSub: PropTypes.number.isRequired,
     timeLimit: PropTypes.number.isRequired,
   }).isRequired,
-  handleVisibilityConfigState: PropTypes.func.isRequired,
   handleConfigState: PropTypes.func.isRequired,
 });

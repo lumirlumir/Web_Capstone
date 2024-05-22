@@ -18,7 +18,7 @@ function SectionConfig({ config }) {
 
   /* Return */
   return (
-    <CompDivNeon className={`SectionConfig ${configState.visibility ? '' : 'off'}`} neonSize="m" neonColor="banana">
+    <CompDivNeon className={`SectionConfig ${configState.visibility ? '' : 'invisible'}`} neonSize="m" neonColor="banana">
       <div>
         <div>
           <CheckBox onChange={() => handleConfigState({ questionType: { cs: !configState.questionType.cs } })} isChecked={configState.questionType.cs}>

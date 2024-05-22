@@ -1,7 +1,6 @@
 main.Main {
-  @include prop-flex-container-center;
-  @include sel-amp-pseudoElem-scrollbar;
+  @include prop-flex;
+  @include selector-scrollbar;
 
-  /* Properties */
   grid-area: 1 / 2 / 3 / 3;
 }

@@ -1,8 +1,8 @@
 .ButtonMain {
-  @include prop-flex-container-center;
-  @include prop-transition-all;
-  @include sel-amp-class-off;
-  @include Start-Main-Others;
+  @include prop-flex;
+  @include prop-transition;
+  @include prop-main-others;
+  @include selector-invisible;
 
   /* Property */
   //loading effects

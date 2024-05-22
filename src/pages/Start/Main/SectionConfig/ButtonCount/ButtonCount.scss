@@ -1,8 +1,6 @@
 .ButtonCount {
   /* Property */
-  //box
   margin: 0 20px;
-  //flex-container
   display: flex;
 
   /* Selector */
@@ -12,7 +10,6 @@
   > label {
     /* Property */
     cursor: pointer;
-    letter-spacing: $number-letter-spacing;
     //flex-container
     width: 100%;
     display: flex;

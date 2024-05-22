@@ -17,7 +17,7 @@ function ButtonMain({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <div className={`ButtonMain ${visibility ? '' : 'off'}`}>
+    <div className={`ButtonMain ${visibility ? '' : 'invisible'}`}>
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {

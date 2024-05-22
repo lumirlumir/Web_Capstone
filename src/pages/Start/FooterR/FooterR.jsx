@@ -22,7 +22,7 @@ function FooterR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <footer className={`FooterR ${visibility ? '' : 'off'} ${isScenarioPhaseDone() ? '' : 'clickDisabled'}`}>
+    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
       </CompButtonLight>

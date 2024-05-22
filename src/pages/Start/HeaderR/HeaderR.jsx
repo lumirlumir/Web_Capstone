@@ -21,7 +21,7 @@ function HeaderR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'off'} ${isScenarioPhaseDone() ? '' : 'clickDisabled'}`}>
+    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />

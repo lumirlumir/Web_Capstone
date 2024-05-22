@@ -19,7 +19,7 @@ function HeaderL({ scenario, scenarioPhase, config }) {
 
   /* Return */
   return (
-    <header className={`HeaderL ${visibility ? '' : 'off'} ${isScenarioPhaseDone() ? '' : 'clickDisabled'}`}>
+    <header className={`HeaderL ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
       <CompButtonLight
         style={{ width: '60px', height: '60px' }}
         onClick={() => {

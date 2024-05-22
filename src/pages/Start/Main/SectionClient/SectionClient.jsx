@@ -15,7 +15,7 @@ function SectionClient({ scenario, scenarioPhase }) {
   const { visibility } = scenario.phase[scenarioPhaseState].Main.SectionClient;
 
   /* Return */
-  return <CompDivNeon className={`SectionClient ${visibility ? '' : 'off'}`} neonColor="black" />;
+  return <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black" />;
 }
 SectionClient.propTypes = {
   scenario: scenarioPropTypes.isRequired,

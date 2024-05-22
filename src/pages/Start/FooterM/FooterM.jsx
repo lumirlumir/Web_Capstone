@@ -16,7 +16,7 @@ function FooterM({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <footer className={`FooterM ${visibility ? '' : 'off'}`}>
+    <footer className={`FooterM ${visibility ? '' : 'invisible'}`}>
       <CompFontNeon neonSize="s" fontFamily="audiowide" fontSize="35px">
         59:59:59
       </CompFontNeon>

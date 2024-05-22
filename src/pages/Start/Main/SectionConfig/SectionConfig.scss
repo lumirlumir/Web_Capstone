@@ -1,11 +1,16 @@
 .SectionConfig {
-  @include prop-flex-container-center;
-  @include prop-transition-all;
-  @include sel-amp-pseudoElem-scrollbar;
-  @include Start-Main-Section;
+  @include prop-flex;
+  @include prop-transition;
+  @include prop-main-section;
+  @include selector-invisible-section;
+  @include selector-scrollbar;
 
   /* Selector */
   > div {
+    /* Property */
+    letter-spacing: 4px;
+
+    /* Selector */
     > div:nth-child(1) {
       //box
       margin-bottom: 20px;

@@ -1,9 +1,8 @@
 footer.FooterL {
-  @include prop-flex-container-center;
-  @include prop-transition-all;
-  @include sel-amp-class-off;
-  @include sel-amp-class-clickDisabled;
+  @include prop-flex;
+  @include prop-transition;
+  @include selector-invisible;
+  @include selector-unclickable;
 
-  /* Property */
   grid-area: 3 / 1 / 4 / 2;
 }

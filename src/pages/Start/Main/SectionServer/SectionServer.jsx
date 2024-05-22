@@ -31,7 +31,7 @@ function SectionServer({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <CompDivNeon className={`SectionServer ${visibility ? '' : 'off'}`} neonColor="black">
+    <CompDivNeon className={`SectionServer ${visibility ? '' : 'invisible'}`} neonColor="black">
       <div>{contentHistoryState}</div>
       <div>
         <Typewriter

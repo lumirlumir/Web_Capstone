@@ -16,7 +16,7 @@ function Heading({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <div className={`Heading ${visibility ? '' : 'off'}`}>
+    <div className={`Heading ${visibility ? '' : 'invisible'}`}>
       <div className="mock">
         <CompFontNeon neonColor="blue" neonSize="m" fontFamily="Pacifico" fontSize="50px">
           <h1>Mock</h1>

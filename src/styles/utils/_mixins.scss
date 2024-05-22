@@ -1,67 +1,56 @@
-/* prop: property */
-//flex
-@mixin prop-flex-container-center {
+@mixin prop-flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-//transition
-@mixin prop-transition-all {
+@mixin prop-transition {
   transition: all 2s ease-in-out;
 }
-
-/* sel-amp: selector-ampersand */
-//class
-@mixin sel-amp-class-off {
-  &.off {
-    //ui
-    pointer-events: none;
-    opacity: 0;
-    //content
-    @content;
-  }
+@mixin prop-main-others {
+  width: $main-section-width;
+  margin: 20px auto;
 }
-@mixin sel-amp-class-clickDisabled {
-  &.clickDisabled {
-    pointer-events: none;
-  }
-}
-//pseudoElement
-@mixin sel-amp-pseudoElem-scrollbar {
-  /* Property */
-  overflow-y: auto;
-
-  /* Selector */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-/* pages */
-@mixin Start-Main-Others {
-  width: $Start-Main-width;
-  margin: $Start-Main-Others-margin;
-}
-@mixin Start-Main-Section {
-  @include sel-amp-class-off {
-    height: 0;
-    margin: 0 auto;
-    padding: 0 $Start-Main-Section-padding;
-    border-width: 0 !important;
-  }
+@mixin prop-main-section {
   //box
-  width: $Start-Main-width;
-  height: $Start-Main-Section-height;
-  margin: $Start-Main-Section-margin auto;
-  padding: $Start-Main-Section-padding;
+  width: $main-section-width;
+  height: $main-section-height;
+  margin: 40px auto;
+  padding: $main-section-padding;
   //text
   line-height: 1.5;
 }
-@mixin Start-Main-Section-Bash {
-  @include Start-Main-Section;
+@mixin prop-main-section-bash {
   //background
   background-color: $color-background-dark;
   //text
   font-family: $font-ngc;
   white-space: pre-line;
+}
+
+@mixin selector-invisible {
+  &.invisible {
+    pointer-events: none;
+    opacity: 0;
+    @content;
+  }
+}
+@mixin selector-invisible-section {
+  @include selector-invisible {
+    height: 0;
+    margin: 0 auto;
+    padding: 0 $main-section-padding;
+    border-width: 0 !important;
+  }
+}
+@mixin selector-unclickable {
+  &.unclickable {
+    pointer-events: none;
+  }
+}
+@mixin selector-scrollbar {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

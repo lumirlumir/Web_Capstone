@@ -1,33 +1,6 @@
 .SectionResult {
-  /* Property */
-  //box
-  width: 600px;
-  height: 200px;
-  margin: 50px auto;
-  padding: 30px 40px;
-  //text
-  font-family: Nanum Gothic Coding;
-  line-height: 1.5;
-  overflow-y: auto;
-  white-space: pre-line;
-  //ui
-  opacity: 1;
-  //animation
-  transition: all 2s ease-in-out;
-
-  color: #bbbbbb;
-
-  /* Selector */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &.off {
-    //box
-    height: 0px;
-    margin: 0;
-    padding: 0 40px;
-    //ui
-    opacity: 0;
-    pointer-events: none;
-  }
+  @include prop-transition;
+  @include prop-main-section;
+  @include selector-invisible-section;
+  @include selector-scrollbar;
 }

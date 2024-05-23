@@ -1,24 +1,24 @@
 .Heading {
+  @include prop-transition;
+  @include prop-undraggable;
+  @include prop-main-others;
+  @include selector-invisible;
+
   /* Property */
   //visual
   position: sticky;
   top: 0;
   z-index: 100;
-  //box
-  margin: 30px 0;
-  //animation
-  transition: all 2s ease-in-out;
   //ui
   pointer-events: none;
 
   /* Selector */
-  &.off {
-    //box
-    margin: 0;
-    //ui
-    opacity: 0;
-  }
   > .mock {
+    //box
+    margin-bottom: 15px;
+    margin-left: 0px;
+    //others
+    transform: rotate(-10deg);
     //loading effects
     animation: 2s ease-in-out loadEffect1;
     @keyframes loadEffect1 {
@@ -29,13 +29,12 @@
         opacity: 1;
       }
     }
-    //box
-    margin-bottom: 15px;
-    margin-left: 35px;
-    //others
-    transform: rotate(-10deg);
   }
   > .interview {
+    //box
+    margin-left: 30px;
+    //text
+    text-align: center;
     //loading effects
     animation: 4s ease-in-out loadEffect1;
     @keyframes loadEffect1 {
@@ -49,9 +48,5 @@
         opacity: 1;
       }
     }
-    //box
-    margin-left: 50px;
-    //text
-    text-align: center;
   }
 }

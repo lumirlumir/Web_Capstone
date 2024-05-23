@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
+import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -14,7 +15,7 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main({ scenario, scenarioPhase }) {
+function Main({ scenario, scenarioPhase, config }) {
   /* useRef */
   const scrollRef = useRef();
 
@@ -31,10 +32,10 @@ function Main({ scenario, scenarioPhase }) {
     <main className="Main">
       <div>
         <Heading scenario={scenario} scenarioPhase={scenarioPhase} />
-        <SectionConfig />
-        <SectionResult />
-        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} />
+        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
         <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
+        <SectionConfig config={config} />
+        <SectionResult />
         <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} />
         <div ref={scrollRef} />
       </div>
@@ -42,12 +43,9 @@ function Main({ scenario, scenarioPhase }) {
   );
 }
 Main.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
-    handleSkipScenarioPhaseState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
 };
 Main.defaultProps = {};
 

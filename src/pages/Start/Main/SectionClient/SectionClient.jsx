@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CompDivNeon from '@/components/CompDivNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './SectionClient.scss';
 
@@ -15,14 +15,11 @@ function SectionClient({ scenario, scenarioPhase }) {
   const { visibility } = scenario.phase[scenarioPhaseState].Main.SectionClient;
 
   /* Return */
-  return <CompDivNeon className={`SectionClient ${visibility ? '' : 'off'}`} neonColor="black" />;
+  return <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black" />;
 }
 SectionClient.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleScenarioPhaseState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 SectionClient.defaultProps = {};
 

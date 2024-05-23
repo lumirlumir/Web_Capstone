@@ -27,6 +27,10 @@
     0 0 $size $color inset,
     // glow outside
     0 0 $size $color;
+
+  * {
+    filter: none;
+  }
 }
 
 /* Variables */

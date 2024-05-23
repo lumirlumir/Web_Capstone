@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
 
@@ -10,11 +10,12 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ scenario, scenarioPhase }) {
+function SectionServer({ scenario, scenarioPhase, config }) {
   /* Props */
   const { scenarioPhaseState, handleNextScenarioPhaseState } = scenarioPhase;
   const { auto } = scenario.phase[scenarioPhaseState].global;
   const { visibility, content } = scenario.phase[scenarioPhaseState].Main.SectionServer;
+  const { configState } = config;
 
   /* useState */
   const [contentHistoryState, setContentHistoryState] = useState('');
@@ -31,7 +32,7 @@ function SectionServer({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <CompDivNeon className={`SectionServer ${visibility ? '' : 'off'}`} neonColor="black">
+    <CompDivNeon className={`SectionServer ${visibility && !configState.visibility ? '' : 'invisible'}`} neonColor="black">
       <div>{contentHistoryState}</div>
       <div>
         <Typewriter
@@ -57,12 +58,9 @@ function SectionServer({ scenario, scenarioPhase }) {
   );
 }
 SectionServer.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    handleNextScenarioPhaseState: PropTypes.func,
-    handleSkipScenarioPhaseState: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
 };
 SectionServer.defaultProps = {};
 

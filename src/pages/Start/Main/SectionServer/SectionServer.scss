@@ -1,39 +1,12 @@
 .SectionServer {
-  /* Variable */
-  $height: 200px;
-
-  /* Property */
-  //box
-  width: 600px;
-  height: $height;
-  margin: 30px auto;
-  padding: 30px 40px;
-  //background
-  background-color: darken(#202020, 7%);
-  //text
-  font-family: Nanum Gothic Coding;
-  line-height: 1.5;
-  overflow-y: scroll;
-  white-space: pre-line;
-  //ui
-  opacity: 1;
-  //animation
-  transition: all 2s ease-in-out;
+  @include prop-transition;
+  @include prop-main-section;
+  @include prop-main-section-bash;
+  @include selector-invisible-section;
+  @include selector-scrollbar;
 
   /* Selector */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &.off {
-    //box
-    height: 0px;
-    margin: 0;
-    padding: 0 40px;
-    //ui
-    opacity: 0;
-    pointer-events: none;
-  }
   > .ref {
-    height: $height * 0.75;
+    height: calc($main-section-height * 0.75);
   }
 }

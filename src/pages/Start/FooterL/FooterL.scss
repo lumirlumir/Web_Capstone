@@ -1,21 +1,8 @@
 footer.FooterL {
-  /* Property */
-  //transition
-  transition: all 2s ease-out;
-  //grid-item
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  //flex-container
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include prop-flex;
+  @include prop-transition;
+  @include selector-invisible;
+  @include selector-unclickable;
 
-  /* Selector */
-  &.off {
-    pointer-events: none;
-    opacity: 0;
-  }
-  &.clickDisabled {
-    pointer-events: none;
-  }
+  grid-area: 3 / 1 / 4 / 2;
 }

@@ -1,21 +1,8 @@
 header.HeaderR {
-  /* Property */
-  //transition
-  transition: all 2s ease-out;
-  //grid-item
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-  //flex-container
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include prop-flex;
+  @include prop-transition;
+  @include selector-invisible;
+  @include selector-unclickable;
 
-  /* Selector */
-  &.off {
-    pointer-events: none;
-    opacity: 0;
-  }
-  &.clickDisabled {
-    pointer-events: none;
-  }
+  grid-area: 1 / 3 / 2 / 4;
 }

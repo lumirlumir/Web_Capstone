@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import './CompFontNeon.scss';
 
 /**
- * Neon effect text component
+ * Component Font Neon
  *
  * @component React component
- * @param {Object} props children, className, neonColor, neonSize, fontFamily, fontSize
- * @param {any} props.children any. type texts you want to render. only texts are supported
+ * @param {object} props children, className, neonColor, neonSize, fontFamily, fontSize
+ * @param {node} props.children node. type texts or SVG you want to render
  * @param {string} props.className string. you can add more class names
- * @param {String} props.neonColor string. select among 'red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white', 'black'
- * @param {String} props.neonSize string. select among 'xl', 'l', 'm', 's', 'xs'
- * @param {String} props.fontFamily string. type fontFamily you want to render
- * @param {String} props.fontSize string. type fontSize you want to render
- * @returns {JSX.Element} Neon effect text component
+ * @param {string} props.neonColor string. select among 'red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white', 'black'
+ * @param {string} props.neonSize string. select among 'xl', 'l', 'm', 's', 'xs'
+ * @param {string} props.fontFamily string. type fontFamily you want to render
+ * @param {string} props.fontSize string. type fontSize you want to render
+ * @returns {React.JSX.Element} Component Font Neon
  *
  * @example
  * //Default Values
@@ -35,7 +35,7 @@ function CompFontNeon({ children, className, neonColor, neonSize, fontFamily, fo
   );
 }
 CompFontNeon.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   className: PropTypes.string,
   neonColor: PropTypes.oneOf(['red', 'brightOrange', 'orange', 'banana', 'yellow', 'green', 'sky', 'blue', 'violet', 'purple', 'silver', 'white', 'black']),
   neonSize: PropTypes.oneOf(['xl', 'l', 'm', 's', 'xs']),

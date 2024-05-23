@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CiMicrophoneOn } from 'react-icons/ci';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
 
 import './HeaderR.scss';
 
@@ -13,7 +13,7 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState].HeaderR;
 
   /* Function */
@@ -21,7 +21,7 @@ function HeaderR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
+    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />
@@ -31,11 +31,8 @@ function HeaderR({ scenario, scenarioPhase }) {
   );
 }
 HeaderR.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    isScenarioPhaseEnd: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 HeaderR.defaultProps = {};
 

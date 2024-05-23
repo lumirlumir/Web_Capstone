@@ -21,7 +21,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    'react/forbid-prop-types': 'off', // PropTypes.any
+    'jsx-a11y/label-has-associated-control': 'off', // <label><input /></label>
   },
   env: {
     browser: true,

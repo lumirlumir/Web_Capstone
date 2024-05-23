@@ -29,22 +29,50 @@ function Start() {
     const newScenarioPhaseState = scenario.phase.length - 1;
     setScenarioPhaseState(newScenarioPhaseState);
   };
-  const isScenarioPhaseEnd = () => {
+  const isScenarioPhaseDone = () => {
     return scenarioPhaseState === scenario.phase.length - 1;
   };
   const scenarioPhase = {
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,
-    isScenarioPhaseEnd,
+    isScenarioPhaseDone,
+  };
+  // config
+  const [configState, setConfigState] = useState({
+    visibility: false,
+    questionType: {
+      cs: false,
+      fe: false,
+      be: false,
+      db: false,
+      oop: false,
+    },
+    questionMain: 0,
+    questionSub: 0,
+    timeLimit: 0,
+  });
+  const handleConfigState = obj => {
+    setConfigState(prevState => ({
+      ...prevState,
+      ...obj,
+      questionType: {
+        ...prevState.questionType,
+        ...obj.questionType,
+      },
+    }));
+  };
+  const config = {
+    configState,
+    handleConfigState,
   };
 
   /* Return */
   return (
     <div className="Start">
-      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} />
+      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
       <HeaderR scenario={scenario} scenarioPhase={scenarioPhase} />
-      <Main scenario={scenario} scenarioPhase={scenarioPhase} />
+      <Main scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
       <FooterL scenario={scenario} scenarioPhase={scenarioPhase} />
       <FooterM scenario={scenario} scenarioPhase={scenarioPhase} />
       <FooterR scenario={scenario} scenarioPhase={scenarioPhase} />

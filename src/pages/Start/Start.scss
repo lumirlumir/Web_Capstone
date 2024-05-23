@@ -1,14 +1,9 @@
 .Start {
-  /* Variables */
-  $width: 80px;
-  $height: 80px;
-
-  /* Properties */
   //box
   width: 100%;
   height: 100%;
   //grid-container
   display: grid;
-  grid-template-columns: $width 1fr $width;
-  grid-template-rows: $height 1fr $height;
+  grid-template-columns: $grid-width 1fr $grid-width;
+  grid-template-rows: $grid-height 1fr $grid-height;
 }

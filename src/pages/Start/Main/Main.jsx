@@ -32,7 +32,7 @@ function Main({ scenario, scenarioPhase, config }) {
     <main className="Main">
       <div>
         <Heading scenario={scenario} scenarioPhase={scenarioPhase} />
-        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} />
+        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
         <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
         <SectionConfig config={config} />
         <SectionResult />

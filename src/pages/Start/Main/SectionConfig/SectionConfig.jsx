@@ -15,54 +15,36 @@ import './SectionConfig.scss';
 function SectionConfig({ config }) {
   /* Props */
   const { configState, handleConfigState } = config;
+  const questionTypeKeys = Object.keys(configState.questionType);
+
+  /* Func */
+  const handleButtonCount = (e, key) => {
+    if (e.ctrlKey && configState[key] - 1 >= 0) {
+      handleConfigState({ [key]: configState[key] - 1 });
+    } else if (!e.ctrlKey && configState[key] + 1 <= 10) {
+      handleConfigState({ [key]: configState[key] + 1 });
+    }
+  };
 
   /* Return */
   return (
     <CompDivNeon className={`SectionConfig ${configState.visibility ? '' : 'invisible'}`} neonSize="m" neonColor="banana">
       <div>
         <div>
-          <CheckBox onChange={() => handleConfigState({ questionType: { cs: !configState.questionType.cs } })} isChecked={configState.questionType.cs}>
-            CS
-          </CheckBox>
-          <CheckBox onChange={() => handleConfigState({ questionType: { fe: !configState.questionType.fe } })} isChecked={configState.questionType.fe}>
-            FE
-          </CheckBox>
-          <CheckBox onChange={() => handleConfigState({ questionType: { be: !configState.questionType.be } })} isChecked={configState.questionType.be}>
-            BE
-          </CheckBox>
-          <CheckBox onChange={() => handleConfigState({ questionType: { db: !configState.questionType.db } })} isChecked={configState.questionType.db}>
-            DB
-          </CheckBox>
-          <CheckBox onChange={() => handleConfigState({ questionType: { oop: !configState.questionType.oop } })} isChecked={configState.questionType.oop}>
-            OOP
-          </CheckBox>
+          {questionTypeKeys.map(key => (
+            <CheckBox key={key} onChange={() => handleConfigState({ questionType: { [key]: !configState.questionType[key] } })} isChecked={configState.questionType[key]}>
+              {key.toUpperCase()}
+            </CheckBox>
+          ))}
         </div>
         <div>
-          <ButtonCount
-            onClick={e => {
-              if (e.ctrlKey) handleConfigState({ questionMain: configState.questionMain - 1 });
-              else handleConfigState({ questionMain: configState.questionMain + 1 });
-            }}
-            count={configState.questionMain}
-          >
+          <ButtonCount onClick={e => handleButtonCount(e, 'questionMain')} count={configState.questionMain}>
             QUESTION-MAIN:
           </ButtonCount>
-          <ButtonCount
-            onClick={e => {
-              if (e.ctrlKey) handleConfigState({ questionSub: configState.questionSub - 1 });
-              else handleConfigState({ questionSub: configState.questionSub + 1 });
-            }}
-            count={configState.questionSub}
-          >
+          <ButtonCount onClick={e => handleButtonCount(e, 'questionSub')} count={configState.questionSub}>
             QUESTION-SUB:
           </ButtonCount>
-          <ButtonCount
-            onClick={e => {
-              if (e.ctrlKey) handleConfigState({ timeLimit: configState.timeLimit - 1 });
-              else handleConfigState({ timeLimit: configState.timeLimit + 1 });
-            }}
-            count={configState.timeLimit}
-          >
+          <ButtonCount onClick={e => handleButtonCount(e, 'timeLimit')} count={configState.timeLimit}>
             TIME-LIMIT:
           </ButtonCount>
         </div>

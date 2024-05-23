@@ -1,7 +1,8 @@
 .SectionConfig {
   @include prop-flex;
   @include prop-transition;
-  @include prop-main-section;
+  @include prop-undraggable;
+  @include prop-main-section(1.5);
   @include selector-invisible-section;
   @include selector-scrollbar;
 

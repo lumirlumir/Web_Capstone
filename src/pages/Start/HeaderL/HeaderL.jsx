@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { GoGear } from 'react-icons/go';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
+import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './HeaderL.scss';
 
@@ -11,18 +11,21 @@ import './HeaderL.scss';
  *
  * @returns HeaderL
  */
-function HeaderL({ scenario, scenarioPhase }) {
+function HeaderL({ scenario, scenarioPhase, config }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseEnd } = scenarioPhase;
+  const { configState, handleConfigState } = config;
+  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState].HeaderL;
-
-  /* Function */
-  const doNothing = () => {};
 
   /* Return */
   return (
-    <header className={`HeaderL ${visibility ? '' : 'off'} ${isScenarioPhaseEnd() ? '' : 'clickDisabled'}`}>
-      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
+    <header className={`HeaderL ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
+      <CompButtonLight
+        style={{ width: '60px', height: '60px' }}
+        onClick={() => {
+          handleConfigState({ visibility: !configState.visibility });
+        }}
+      >
         <CompFontNeon neonColor="white">
           <GoGear size="35px" />
         </CompFontNeon>
@@ -31,11 +34,9 @@ function HeaderL({ scenario, scenarioPhase }) {
   );
 }
 HeaderL.propTypes = {
-  scenario: PropTypes.object.isRequired,
-  scenarioPhase: PropTypes.shape({
-    scenarioPhaseState: PropTypes.number,
-    isScenarioPhaseEnd: PropTypes.func,
-  }).isRequired,
+  scenario: scenarioPropTypes.isRequired,
+  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
 };
 HeaderL.defaultProps = {};
 

@@ -7,7 +7,7 @@
   } @else if($size == 'm') {
     @return 0.5;
   } @else if($size == 's') {
-    @return 0.25;
+    @return 0.2;
   } @else if($size == 'xs') {
     @return 0.03;
   }

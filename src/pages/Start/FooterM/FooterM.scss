@@ -1,18 +1,7 @@
 footer.FooterM {
-  /* Property */
-  //transition
-  transition: all 2s ease-out;
-  //grid-item
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-  //flex-container
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include prop-flex;
+  @include prop-transition;
+  @include selector-invisible;
 
-  /* Selector */
-  &.off {
-    pointer-events: none;
-    opacity: 0;
-  }
+  grid-area: 3 / 2 / 4 / 3;
 }

@@ -36,7 +36,7 @@ function Main({ scenario, scenarioPhase, config }) {
         <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
         <SectionConfig config={config} />
         <SectionResult />
-        <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} />
+        <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
         <div ref={scrollRef} />
       </div>
     </main>

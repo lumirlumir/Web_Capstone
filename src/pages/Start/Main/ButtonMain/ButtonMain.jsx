@@ -2,7 +2,7 @@ import React from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './ButtonMain.scss';
 
@@ -10,14 +10,15 @@ import './ButtonMain.scss';
  *
  * @returns ButtonMain
  */
-function ButtonMain({ scenario, scenarioPhase }) {
+function ButtonMain({ scenario, scenarioPhase, config }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState } = scenarioPhase;
+  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
   const { visibility, content } = scenario.phase[scenarioPhaseState].Main.ButtonMain;
+  const { isConfigDone } = config;
 
   /* Return */
   return (
-    <div className={`ButtonMain ${visibility ? '' : 'invisible'}`}>
+    <div className={`ButtonMain ${visibility || (isConfigDone() && isScenarioPhaseDone()) ? '' : 'invisible'}`}>
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {
@@ -38,6 +39,7 @@ function ButtonMain({ scenario, scenarioPhase }) {
 ButtonMain.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
 };
 ButtonMain.defaultProps = {};
 

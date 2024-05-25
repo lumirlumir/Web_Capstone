@@ -62,9 +62,16 @@ function Start() {
       },
     }));
   };
+  const isConfigDone = () => {
+    const { cs, fe, be, db, oop } = configState.questionType;
+    const { questionMain, questionSub, timeLimit } = configState;
+
+    return (cs || fe || be || db || oop) && questionMain && questionSub && timeLimit;
+  };
   const config = {
     configState,
     handleConfigState,
+    isConfigDone,
   };
 
   /* Return */

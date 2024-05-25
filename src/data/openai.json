@@ -1,0 +1,167 @@
+{
+  "requestBody": {
+    "model": "gpt-3.5-turbo-0125",
+    "temperature": 1,
+    "top_p": 0.7,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512
+  },
+  "generateQuestionMain": {
+    "cs": {
+      "messages": [
+        {
+          "role": "system",
+          "content": [
+            {
+              "text": "Generate a list of advanced technical interview questions for a Computer Science(CS) position.\nThe questions should cover topics like algorithms, data structures, operating systems, software engineering and computer networks.\nDo not include topics related to Front End(FE), Back End(BE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.\n\n",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "JavaScript에서 비동기 처리에 대해 설명해주세요. 비동기 함수와 동기 함수의 차이점은 무엇이며, 비동기 처리의 장단점에 대해 설명해주세요. 또한, 콜백 함수, 프로미스(Promise), async/await을 활용한 비동기 처리 방법에 대해 설명하고, 각각의 사용 시나리오와 장단점에 대해서도 언급해주세요.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "React Hooks에 대해 설명해주세요. 함수형 컴포넌트에서 상태(state)와 생명주기 메서드를 어떻게 관리할 수 있는지, useState, useEffect, useContext 등의 훅에 대해 설명해주세요. 또한, 클래스형 컴포넌트와 함수형 컴포넌트의 차이점과 React Hooks를 사용하는 이유에 대해서도 언급해주세요.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "fe": {
+      "messages": [
+        {
+          "role": "system",
+          "content": [
+            {
+              "text": "Generate a list of advanced technical interview questions for a Front End(FE) position.\nThe questions should cover topics such as JavaScript, CSS, HTML, and modern frameworks.\nDo not include topics related to Computer Science(CS), Back End(BE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "이진 검색 트리(Binary Search Tree)의 삽입 연산을 설명해주세요. 삽입 연산 시에 어떤 규칙을 따르며 새로운 노드를 적절한 위치에 추가하는지 자세히 설명해주세요. 또한, 이진 검색 트리의 균형을 유지하기 위해 어떤 방법들이 사용될 수 있는지에 대해도 설명해주세요.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "네트워크에서 TCP와 UDP의 차이점에 대해 설명해주세요. 각 프로토콜의 특징과 사용되는 상황, 데이터 전송 방식, 연결 설정 과정 등에 대해 자세히 설명해주세요. 또한, TCP와 UDP 중 어떤 프로토콜을 선택해야 하는지 결정하는 요소에 대해서도 언급해주세요.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "be": {
+      "messages": [
+        {
+          "role": "system",
+          "content": [
+            {
+              "text": "Generate a list of advanced technical interview questions for a Back End(BE) position.\nThe questions should cover topics such as server-side programming, APIs, and system design.\nDo not include topics related to Computer Science(CS), Front End(FE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "이진 검색 트리(Binary Search Tree)의 삽입 연산을 설명해주세요. 삽입 연산 시에 어떤 규칙을 따르며 새로운 노드를 적절한 위치에 추가하는지 자세히 설명해주세요. 또한, 이진 검색 트리의 균형을 유지하기 위해 어떤 방법들이 사용될 수 있는지에 대해도 설명해주세요.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "네트워크에서 TCP와 UDP의 차이점에 대해 설명해주세요. 각 프로토콜의 특징과 사용되는 상황, 데이터 전송 방식, 연결 설정 과정 등에 대해 자세히 설명해주세요. 또한, TCP와 UDP 중 어떤 프로토콜을 선택해야 하는지 결정하는 요소에 대해서도 언급해주세요.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "db": {
+      "messages": [
+        {
+          "role": "system",
+          "content": [
+            {
+              "text": "Generate a list of advanced technical interview questions for a Database(DB) position.\nThe questions should cover topics such as SQL, NoSQL, database design, indexing, and transactions.\nDo not include topics related to Computer Science(CS), Front End(FE), Back End(BE), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "이진 검색 트리(Binary Search Tree)의 삽입 연산을 설명해주세요. 삽입 연산 시에 어떤 규칙을 따르며 새로운 노드를 적절한 위치에 추가하는지 자세히 설명해주세요. 또한, 이진 검색 트리의 균형을 유지하기 위해 어떤 방법들이 사용될 수 있는지에 대해도 설명해주세요.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "네트워크에서 TCP와 UDP의 차이점에 대해 설명해주세요. 각 프로토콜의 특징과 사용되는 상황, 데이터 전송 방식, 연결 설정 과정 등에 대해 자세히 설명해주세요. 또한, TCP와 UDP 중 어떤 프로토콜을 선택해야 하는지 결정하는 요소에 대해서도 언급해주세요.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "oop": {
+      "messages": [
+        {
+          "role": "system",
+          "content": [
+            {
+              "text": "Generate a list of advanced technical interview questions for a Object Oriented Programming(OOP) position.\nThe questions should cover topics such as design patterns, principles of OOP, and practical implementation in a major programming language like Java or C++.\nDo not include topics related to Computer Science(CS), Front End(FE), Back End(BE), or Database(DB).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "이진 검색 트리(Binary Search Tree)의 삽입 연산을 설명해주세요. 삽입 연산 시에 어떤 규칙을 따르며 새로운 노드를 적절한 위치에 추가하는지 자세히 설명해주세요. 또한, 이진 검색 트리의 균형을 유지하기 위해 어떤 방법들이 사용될 수 있는지에 대해도 설명해주세요.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "text": "네트워크에서 TCP와 UDP의 차이점에 대해 설명해주세요. 각 프로토콜의 특징과 사용되는 상황, 데이터 전송 방식, 연결 설정 과정 등에 대해 자세히 설명해주세요. 또한, TCP와 UDP 중 어떤 프로토콜을 선택해야 하는지 결정하는 요소에 대해서도 언급해주세요.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

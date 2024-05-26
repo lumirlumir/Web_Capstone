@@ -15,7 +15,11 @@ function SectionClient({ scenario, scenarioPhase }) {
   const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.SectionClient;
 
   /* Return */
-  return <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black" />;
+  return (
+    <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black">
+      <div contentEditable="true" spellCheck="false" placeholder="$ Interviewee" />
+    </CompDivNeon>
+  );
 }
 SectionClient.propTypes = {
   scenario: scenarioPropTypes.isRequired,

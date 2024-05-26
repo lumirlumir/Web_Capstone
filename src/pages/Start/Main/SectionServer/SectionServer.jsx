@@ -43,8 +43,9 @@ function SectionServer({ scenario, scenarioPhase, config }) {
           }}
           onInit={typewriter => {
             typewriter
+              .pauseFor(2000) // original: 2000
               .typeString(content)
-              .pauseFor(3000) // original: 3000
+              .pauseFor(1000) // original: 1000
               .start()
               .callFunction(() => {
                 setContentHistoryState(`${contentHistoryState}${content}`);

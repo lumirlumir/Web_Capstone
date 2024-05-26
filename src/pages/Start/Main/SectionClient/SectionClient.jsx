@@ -12,7 +12,7 @@ import './SectionClient.scss';
 function SectionClient({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].Main.SectionClient;
+  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.SectionClient;
 
   /* Return */
   return <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black" />;

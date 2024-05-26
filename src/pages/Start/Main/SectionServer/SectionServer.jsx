@@ -13,8 +13,8 @@ import './SectionServer.scss';
 function SectionServer({ scenario, scenarioPhase, config }) {
   /* Props */
   const { scenarioPhaseState, handleNextScenarioPhaseState } = scenarioPhase;
-  const { auto } = scenario.phase[scenarioPhaseState].global;
-  const { visibility, content } = scenario.phase[scenarioPhaseState].Main.SectionServer;
+  const { auto } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].global;
+  const { visibility, content } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.SectionServer;
   const { configState } = config;
 
   /* useState */
@@ -25,10 +25,10 @@ function SectionServer({ scenario, scenarioPhase, config }) {
 
   /* useEffect */
   useEffect(() => {
-    if (scenarioPhaseState > 1) {
+    if (scenarioPhaseState.minor > 1) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
     }
-  }, [scenarioPhaseState]);
+  }, [scenarioPhaseState.minor]);
 
   /* Return */
   return (
@@ -48,7 +48,7 @@ function SectionServer({ scenario, scenarioPhase, config }) {
               .start()
               .callFunction(() => {
                 setContentHistoryState(`${contentHistoryState}${content}`);
-                if (auto) handleNextScenarioPhaseState();
+                if (auto) handleNextScenarioPhaseState('minor');
               });
           }}
         />

@@ -14,7 +14,7 @@ import './FooterL.scss';
 function FooterL({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].FooterL;
+  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].FooterL;
 
   /* Function */
   const reload = () => {

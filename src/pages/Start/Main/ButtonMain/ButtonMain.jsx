@@ -13,7 +13,7 @@ import './ButtonMain.scss';
 function ButtonMain({ scenario, scenarioPhase, config }) {
   /* Props */
   const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility, content } = scenario.phase[scenarioPhaseState].Main.ButtonMain;
+  const { visibility, content } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.ButtonMain;
   const { isConfigDone } = config;
 
   /* Return */
@@ -22,10 +22,10 @@ function ButtonMain({ scenario, scenarioPhase, config }) {
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {
-          if (e.ctrlKey && scenarioPhaseState !== 0) {
+          if (e.ctrlKey && scenarioPhaseState.minor !== 0) {
             handleSkipScenarioPhaseState();
           } else {
-            handleNextScenarioPhaseState();
+            handleNextScenarioPhaseState('minor');
           }
         }}
       >

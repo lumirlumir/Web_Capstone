@@ -12,7 +12,7 @@ import './Heading.scss';
 function Heading({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].Main.Heading;
+  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.Heading;
 
   /* Return */
   return (

@@ -25,7 +25,7 @@ function Main({ scenario, scenarioPhase, config }) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }, 2000);
     return () => clearTimeout(timeout);
-  }, [scenarioPhase.scenarioPhaseState]);
+  }, [scenarioPhase.scenarioPhaseState.minor]);
 
   /* Return */
   return (

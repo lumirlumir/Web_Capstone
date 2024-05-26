@@ -12,7 +12,7 @@ import './FooterM.scss';
 function FooterM({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].FooterM;
+  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].FooterM;
 
   /* Return */
   return (

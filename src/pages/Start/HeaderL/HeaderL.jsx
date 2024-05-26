@@ -15,7 +15,7 @@ function HeaderL({ scenario, scenarioPhase, config }) {
   /* Props */
   const { configState, handleConfigState } = config;
   const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].HeaderL;
+  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderL;
 
   /* Return */
   return (

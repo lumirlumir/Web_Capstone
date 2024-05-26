@@ -18,19 +18,28 @@ import './Start.scss';
 function Start() {
   /* useState */
   // scenarioPhase
-  const [scenarioPhaseState, setScenarioPhaseState] = useState(0);
-  const handleNextScenarioPhaseState = () => {
-    const newScenarioPhaseState = scenarioPhaseState + 1;
-    if (newScenarioPhaseState < scenario.phase.length) {
-      setScenarioPhaseState(newScenarioPhaseState);
+  const [scenarioPhaseState, setScenarioPhaseState] = useState({
+    major: 0,
+    minor: 0,
+  });
+  const handleNextScenarioPhaseState = type => {
+    const newScenarioPhaseState = scenarioPhaseState[type] + 1;
+
+    if (type === 'major' && newScenarioPhaseState < scenario.phase.length) {
+      setScenarioPhaseState(prevState => ({ ...prevState, [type]: newScenarioPhaseState }));
+    } else if (type === 'minor' && newScenarioPhaseState < scenario.phase[scenarioPhaseState.major].length) {
+      setScenarioPhaseState(prevState => ({ ...prevState, [type]: newScenarioPhaseState }));
     }
   };
   const handleSkipScenarioPhaseState = () => {
-    const newScenarioPhaseState = scenario.phase.length - 1;
-    setScenarioPhaseState(newScenarioPhaseState);
+    // for minor phase
+    const newScenarioPhaseState = scenario.phase[scenarioPhaseState.major].length - 1;
+
+    setScenarioPhaseState(prevState => ({ ...prevState, minor: newScenarioPhaseState }));
   };
   const isScenarioPhaseDone = () => {
-    return scenarioPhaseState === scenario.phase.length - 1;
+    // for minor phase
+    return scenarioPhaseState.minor === scenario.phase[scenarioPhaseState.major].length - 1;
   };
   const scenarioPhase = {
     scenarioPhaseState,

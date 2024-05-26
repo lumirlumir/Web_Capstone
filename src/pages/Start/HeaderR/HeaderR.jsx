@@ -14,7 +14,7 @@ import './HeaderR.scss';
 function HeaderR({ scenario, scenarioPhase }) {
   /* Props */
   const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].HeaderR;
+  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderR;
 
   /* Function */
   const doNothing = () => {};

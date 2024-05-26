@@ -12,9 +12,9 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, scenarioPhase, config }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
+  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenarioPhase;
   const { visibility, content } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.ButtonMain;
-  const { isConfigDone } = config;
+  const { handleConfigState, isConfigDone } = config;
 
   /* Return */
   return (
@@ -22,8 +22,11 @@ function ButtonMain({ scenario, scenarioPhase, config }) {
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {
-          if (e.ctrlKey && scenarioPhaseState.minor !== 0) {
+          if (e.ctrlKey && isTutorialPhase() && scenarioPhaseState.minor !== 0) {
             handleSkipScenarioPhaseState();
+          } else if (isTutorialPhase() && isScenarioPhaseDone() && isConfigDone()) {
+            handleNextScenarioPhaseState('major');
+            handleConfigState({ visibility: false });
           } else {
             handleNextScenarioPhaseState('minor');
           }

@@ -26,7 +26,7 @@ function Start() {
     const newScenarioPhaseState = scenarioPhaseState[type] + 1;
 
     if (type === 'major' && newScenarioPhaseState < scenario.phase.length) {
-      setScenarioPhaseState(prevState => ({ ...prevState, [type]: newScenarioPhaseState }));
+      setScenarioPhaseState(prevState => ({ ...prevState, major: newScenarioPhaseState, minor: 0 }));
     } else if (type === 'minor' && newScenarioPhaseState < scenario.phase[scenarioPhaseState.major].length) {
       setScenarioPhaseState(prevState => ({ ...prevState, [type]: newScenarioPhaseState }));
     }
@@ -41,11 +41,19 @@ function Start() {
     // for minor phase
     return scenarioPhaseState.minor === scenario.phase[scenarioPhaseState.major].length - 1;
   };
+  const isTutorialPhase = () => {
+    return scenarioPhaseState.major === 0;
+  };
+  const isInterviewPhase = () => {
+    return scenarioPhaseState.major === 1;
+  };
   const scenarioPhase = {
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,
     isScenarioPhaseDone,
+    isTutorialPhase,
+    isInterviewPhase,
   };
   // config
   const [configState, setConfigState] = useState({

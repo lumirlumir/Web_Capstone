@@ -52,6 +52,8 @@ export const scenarioPhasePropTypes = PropTypes.shape({
   handleNextScenarioPhaseState: PropTypes.func.isRequired,
   handleSkipScenarioPhaseState: PropTypes.func.isRequired,
   isScenarioPhaseDone: PropTypes.func.isRequired,
+  isTutorialPhase: PropTypes.func.isRequired,
+  isInterviewPhase: PropTypes.func.isRequired,
 });
 
 export const configPropTypes = PropTypes.shape({

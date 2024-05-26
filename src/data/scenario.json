@@ -626,13 +626,13 @@
           },
           "SectionServer": {
             "visibility": true,
-            "content": "> 이것으로 서비스에 대한 소개 및 튜토리얼을 마치겠습니다. 좌측 상단에 위치한 톱니 모양의 환경설정 버튼을 눌러 설정을 완료한 후 인터뷰 서비스를 진행해 주시기 바랍니다."
+            "content": "> 이것으로 서비스에 대한 소개 및 튜토리얼을 마치겠습니다. 좌측 상단에 위치한 톱니 모양의 환경설정 버튼을 눌러 설정을 완료한 후 인터뷰 서비스를 진행해 주시기 바랍니다.\n\n"
           }
         }
       },
       {
         "global": {
-          "auto": false
+          "auto": true
         },
         "FooterL": {
           "visibility": true
@@ -660,6 +660,119 @@
           },
           "SectionClient": {
             "visibility": false
+          },
+          "SectionServer": {
+            "visibility": true,
+            "content": ""
+          }
+        }
+      }
+    ],
+    [
+      {
+        "global": {
+          "auto": true
+        },
+        "FooterL": {
+          "visibility": true
+        },
+        "FooterM": {
+          "visibility": true
+        },
+        "FooterR": {
+          "visibility": true,
+          "isSubmit": true
+        },
+        "HeaderL": {
+          "visibility": false
+        },
+        "HeaderR": {
+          "visibility": true
+        },
+        "Main": {
+          "ButtonMain": {
+            "visibility": false,
+            "content": "START"
+          },
+          "Heading": {
+            "visibility": false
+          },
+          "SectionClient": {
+            "visibility": true
+          },
+          "SectionServer": {
+            "visibility": true,
+            "content": "> 지금부터 인터뷰를 진행하도록 하겠습니다.\n\n"
+          }
+        }
+      },
+      {
+        "global": {
+          "auto": false
+        },
+        "FooterL": {
+          "visibility": true
+        },
+        "FooterM": {
+          "visibility": true
+        },
+        "FooterR": {
+          "visibility": true,
+          "isSubmit": true
+        },
+        "HeaderL": {
+          "visibility": false
+        },
+        "HeaderR": {
+          "visibility": true
+        },
+        "Main": {
+          "ButtonMain": {
+            "visibility": false,
+            "content": "START"
+          },
+          "Heading": {
+            "visibility": false
+          },
+          "SectionClient": {
+            "visibility": true
+          },
+          "SectionServer": {
+            "visibility": true,
+            "content": ""
+          }
+        }
+      },
+      {
+        "global": {
+          "auto": false
+        },
+        "FooterL": {
+          "visibility": true
+        },
+        "FooterM": {
+          "visibility": true
+        },
+        "FooterR": {
+          "visibility": true,
+          "isSubmit": true
+        },
+        "HeaderL": {
+          "visibility": false
+        },
+        "HeaderR": {
+          "visibility": true
+        },
+        "Main": {
+          "ButtonMain": {
+            "visibility": false,
+            "content": "START"
+          },
+          "Heading": {
+            "visibility": false
+          },
+          "SectionClient": {
+            "visibility": true
           },
           "SectionServer": {
             "visibility": true,

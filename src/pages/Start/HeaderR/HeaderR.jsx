@@ -13,7 +13,7 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenarioPhase;
   const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderR;
 
   /* Function */
@@ -21,7 +21,7 @@ function HeaderR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
+    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${(isTutorialPhase() && isScenarioPhaseDone()) || isInterviewPhase() ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />

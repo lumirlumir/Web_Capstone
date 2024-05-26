@@ -14,7 +14,7 @@ import './FooterR.scss';
  */
 function FooterR({ scenario, scenarioPhase }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
+  const { scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenarioPhase;
   const { visibility, isSubmit } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].FooterR;
 
   /* Function */
@@ -22,7 +22,7 @@ function FooterR({ scenario, scenarioPhase }) {
 
   /* Return */
   return (
-    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
+    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${(isTutorialPhase() && isScenarioPhaseDone()) || isInterviewPhase() ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
       </CompButtonLight>

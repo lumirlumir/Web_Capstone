@@ -1,10 +1,10 @@
 import openaiJson from '@/data/openai.json';
 import { openaiInstance } from '@/utils/openai';
 
-const generateQuestionMain = async (type, messages) => {
+const generateQuestion = async (type, history) => {
   const response = await openaiInstance.chat.completions.create({
     ...openaiJson.requestBody,
-    messages: [...openaiJson.generateQuestionMain[type.toLowerCase()].messages, ...messages],
+    messages: [...openaiJson.generateQuestionMain[type.toLowerCase()].messages, ...history],
   });
 
   // console.log(response?.choices?.[0]?.message?.content);
@@ -12,4 +12,4 @@ const generateQuestionMain = async (type, messages) => {
   return response?.choices?.[0]?.message?.content;
 };
 
-export default generateQuestionMain;
+export default generateQuestion;

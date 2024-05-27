@@ -90,6 +90,12 @@ function Start() {
     handleConfigState,
     isConfigDone,
   };
+  // questions
+  // const [csQuestionMain, generateCsQuestionMain] = useQuestionMain('cs', 3);
+  // const [feQuestionMain, generateFeQuestionMain] = useQuestionMain('fe', 3);
+  // const [beQuestionMain, generateBeQuestionMain] = useQuestionMain('be', 3);
+  // const [dbQuestionMain, generateDbQuestionMain] = useQuestionMain('db', 3);
+  // const [oopQuestionMain, generateOopQuestionMain] = useQuestionMain('oop', 3);
 
   /* Return */
   return (

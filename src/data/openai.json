@@ -14,7 +14,7 @@
           "role": "system",
           "content": [
             {
-              "text": "Generate a list of advanced technical interview questions for a Computer Science(CS) position.\nThe questions should cover topics like algorithms, data structures, operating systems, software engineering and computer networks.\nDo not include topics related to Front End(FE), Back End(BE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.\n\n",
+              "text": "Generate a list of advanced technical interview questions for a Computer Science(CS) position.\nThe questions should cover topics like algorithms, data structures, operating systems, software engineering, computer architecture, and computer networks.\nDo not include topics related to Front End(FE), Back End(BE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Topic of the same subject shouldn't come out in a row.\n- Ensure no question is repeated.",
               "type": "text"
             }
           ]
@@ -45,7 +45,7 @@
           "role": "system",
           "content": [
             {
-              "text": "Generate a list of advanced technical interview questions for a Front End(FE) position.\nThe questions should cover topics such as JavaScript, CSS, HTML, and modern frameworks.\nDo not include topics related to Computer Science(CS), Back End(BE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "text": "Generate a list of advanced technical interview questions for a Front End(FE) position.\nThe questions should cover topics such as JavaScript, CSS, HTML, and modern frameworks.\nDo not include topics related to Computer Science(CS), Back End(BE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Topic of the same subject shouldn't come out in a row.\n- Ensure no question is repeated.",
               "type": "text"
             }
           ]
@@ -76,7 +76,7 @@
           "role": "system",
           "content": [
             {
-              "text": "Generate a list of advanced technical interview questions for a Back End(BE) position.\nThe questions should cover topics such as server-side programming, APIs, and system design.\nDo not include topics related to Computer Science(CS), Front End(FE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "text": "Generate a list of advanced technical interview questions for a Back End(BE) position.\nThe questions should cover topics such as server-side programming, APIs, and system design.\nDo not include topics related to Computer Science(CS), Front End(FE), Database(DB), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Topic of the same subject shouldn't come out in a row.\n- Ensure no question is repeated.",
               "type": "text"
             }
           ]
@@ -107,7 +107,7 @@
           "role": "system",
           "content": [
             {
-              "text": "Generate a list of advanced technical interview questions for a Database(DB) position.\nThe questions should cover topics such as SQL, NoSQL, database design, indexing, and transactions.\nDo not include topics related to Computer Science(CS), Front End(FE), Back End(BE), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "text": "Generate a list of advanced technical interview questions for a Database(DB) position.\nThe questions should cover topics such as SQL, NoSQL, database design, indexing, and transactions.\nDo not include topics related to Computer Science(CS), Front End(FE), Back End(BE), or Object Oriented Programming(OOP).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Topic of the same subject shouldn't come out in a row.\n- Ensure no question is repeated.",
               "type": "text"
             }
           ]
@@ -138,7 +138,7 @@
           "role": "system",
           "content": [
             {
-              "text": "Generate a list of advanced technical interview questions for a Object Oriented Programming(OOP) position.\nThe questions should cover topics such as design patterns, principles of OOP, and practical implementation in a major programming language like Java or C++.\nDo not include topics related to Computer Science(CS), Front End(FE), Back End(BE), or Database(DB).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Ensure no question is repeated.",
+              "text": "Generate a list of advanced technical interview questions for a Object Oriented Programming(OOP) position.\nThe questions should cover topics such as design patterns, principles of OOP, and practical implementation in a major programming language like Java or C++.\nDo not include topics related to Computer Science(CS), Front End(FE), Back End(BE), or Database(DB).\n\nRules:\n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 150 tokens and less than 300 tokens.\n- Topic of the same subject shouldn't come out in a row.\n- Ensure no question is repeated.",
               "type": "text"
             }
           ]

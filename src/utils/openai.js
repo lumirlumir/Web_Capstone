@@ -14,3 +14,13 @@ export const createMessage = (role, text) => ({
     },
   ],
 });
+
+export const createMessageArray = array => {
+  const returnArray = [];
+
+  for (let i = 0; i < array.length; i += 1) {
+    returnArray.push(createMessage('assistant', array[i]));
+  }
+
+  return returnArray;
+};

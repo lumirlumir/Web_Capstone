@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const scenarioPropTypes = PropTypes.shape({
-  phase: PropTypes.arrayOf(
+  chapter: PropTypes.arrayOf(
     PropTypes.arrayOf(
       PropTypes.shape({
         global: PropTypes.shape({
@@ -42,9 +42,6 @@ export const scenarioPropTypes = PropTypes.shape({
       }).isRequired,
     ).isRequired,
   ).isRequired,
-});
-
-export const scenarioPhasePropTypes = PropTypes.shape({
   scenarioPhaseState: PropTypes.shape({
     major: PropTypes.number.isRequired,
     minor: PropTypes.number.isRequired,

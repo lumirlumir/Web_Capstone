@@ -2,7 +2,7 @@ import React from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './ButtonMain.scss';
 
@@ -10,10 +10,10 @@ import './ButtonMain.scss';
  *
  * @returns ButtonMain
  */
-function ButtonMain({ scenario, scenarioPhase, config }) {
+function ButtonMain({ scenario, config }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenarioPhase;
-  const { visibility, content } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.ButtonMain;
+  const { chapter, scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenario;
+  const { visibility, content } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
 
   /* Return */
@@ -41,7 +41,6 @@ function ButtonMain({ scenario, scenarioPhase, config }) {
 }
 ButtonMain.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
 };
 ButtonMain.defaultProps = {};

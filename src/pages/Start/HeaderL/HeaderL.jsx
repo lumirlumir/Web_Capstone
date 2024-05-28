@@ -3,7 +3,7 @@ import { GoGear } from 'react-icons/go';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './HeaderL.scss';
 
@@ -11,11 +11,11 @@ import './HeaderL.scss';
  *
  * @returns HeaderL
  */
-function HeaderL({ scenario, scenarioPhase, config }) {
+function HeaderL({ scenario, config }) {
   /* Props */
   const { configState, handleConfigState } = config;
-  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderL;
+  const { chapter, scenarioPhaseState, isScenarioPhaseDone } = scenario;
+  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderL;
 
   /* Return */
   return (
@@ -35,7 +35,6 @@ function HeaderL({ scenario, scenarioPhase, config }) {
 }
 HeaderL.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
 };
 HeaderL.defaultProps = {};

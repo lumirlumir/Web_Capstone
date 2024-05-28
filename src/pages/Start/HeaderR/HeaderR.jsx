@@ -3,7 +3,7 @@ import { CiMicrophoneOn } from 'react-icons/ci';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes } from '@/utils/propTypes';
 
 import './HeaderR.scss';
 
@@ -11,10 +11,10 @@ import './HeaderR.scss';
  *
  * @returns HeaderR
  */
-function HeaderR({ scenario, scenarioPhase }) {
+function HeaderR({ scenario }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderR;
+  const { chapter, scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
+  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderR;
 
   /* Function */
   const doNothing = () => {};
@@ -32,7 +32,6 @@ function HeaderR({ scenario, scenarioPhase }) {
 }
 HeaderR.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 HeaderR.defaultProps = {};
 

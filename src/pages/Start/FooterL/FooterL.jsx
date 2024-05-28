@@ -3,7 +3,7 @@ import { GrPowerReset } from 'react-icons/gr';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes } from '@/utils/propTypes';
 
 import './FooterL.scss';
 
@@ -11,10 +11,10 @@ import './FooterL.scss';
  *
  * @returns FooterL
  */
-function FooterL({ scenario, scenarioPhase }) {
+function FooterL({ scenario }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].FooterL;
+  const { chapter, scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
+  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].FooterL;
 
   /* Function */
   const reload = () => {
@@ -34,7 +34,6 @@ function FooterL({ scenario, scenarioPhase }) {
 }
 FooterL.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterL.defaultProps = {};
 

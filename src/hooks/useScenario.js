@@ -37,8 +37,11 @@ const useScenario = () => {
     return scenarioPhaseState.major === 1;
   };
 
+  // const getCurrentChapter
+
   /* Return */
   return {
+    chapter: scenario.phase,
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,

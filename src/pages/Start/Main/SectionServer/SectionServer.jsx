@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
 
@@ -10,20 +10,19 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ scenario, scenarioPhase, config }) {
+function SectionServer({ scenario, config }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState } = scenarioPhase;
-  const { auto } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].global;
-  const { visibility, content } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.SectionServer;
+  const { chapter, scenarioPhaseState, handleNextScenarioPhaseState } = scenario;
+  const { auto } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].global;
+  const { visibility, content } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].Main.SectionServer;
   const { configState } = config;
 
-  /* useState */
+  /* Hooks */
+  // useState
   const [contentHistoryState, setContentHistoryState] = useState('');
-
-  /* useRef */
+  // useRef
   const scrollRef = useRef();
-
-  /* useEffect */
+  // useEffect
   useEffect(() => {
     if (scenarioPhaseState.minor > 1) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
@@ -60,7 +59,6 @@ function SectionServer({ scenario, scenarioPhase, config }) {
 }
 SectionServer.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
 };
 SectionServer.defaultProps = {};

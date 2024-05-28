@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -15,28 +15,28 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main({ scenario, scenarioPhase, config }) {
-  /* useRef */
+function Main({ scenario, config }) {
+  /* Hooks */
+  // useRef
   const scrollRef = useRef();
-
-  /* useEffect */
+  // useEffect
   useEffect(() => {
     const timeout = setTimeout(() => {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }, 2000);
     return () => clearTimeout(timeout);
-  }, [scenarioPhase.scenarioPhaseState.minor]);
+  }, [scenario.scenarioPhaseState.minor]);
 
   /* Return */
   return (
     <main className="Main">
       <div>
-        <Heading scenario={scenario} scenarioPhase={scenarioPhase} />
-        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
-        <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
+        <Heading scenario={scenario} />
+        <SectionServer scenario={scenario} config={config} />
+        <SectionClient scenario={scenario} />
         <SectionConfig config={config} />
         <SectionResult />
-        <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
+        <ButtonMain scenario={scenario} config={config} />
         <div ref={scrollRef} />
       </div>
     </main>
@@ -44,7 +44,6 @@ function Main({ scenario, scenarioPhase, config }) {
 }
 Main.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
 };
 Main.defaultProps = {};

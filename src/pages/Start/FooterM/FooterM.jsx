@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes } from '@/utils/propTypes';
 
 import './FooterM.scss';
 
@@ -9,10 +9,10 @@ import './FooterM.scss';
  *
  * @returns FooterM
  */
-function FooterM({ scenario, scenarioPhase }) {
+function FooterM({ scenario }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].FooterM;
+  const { chapter, scenarioPhaseState } = scenario;
+  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].FooterM;
 
   /* Return */
   return (
@@ -25,7 +25,6 @@ function FooterM({ scenario, scenarioPhase }) {
 }
 FooterM.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterM.defaultProps = {};
 

@@ -4,7 +4,7 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes } from '@/utils/propTypes';
 
 import './FooterR.scss';
 
@@ -12,10 +12,10 @@ import './FooterR.scss';
  *
  * @returns FooterR
  */
-function FooterR({ scenario, scenarioPhase }) {
+function FooterR({ scenario }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenarioPhase;
-  const { visibility, isSubmit } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].FooterR;
+  const { chapter, scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
+  const { visibility, isSubmit } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].FooterR;
 
   /* Function */
   const doNothing = () => {};
@@ -31,7 +31,6 @@ function FooterR({ scenario, scenarioPhase }) {
 }
 FooterR.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterR.defaultProps = {};
 

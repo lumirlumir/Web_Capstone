@@ -3,13 +3,20 @@ import { useState } from 'react';
 import scenario from '@/data/scenario.json';
 
 /**
- * chapter > section > subsection
+ * chapter > section > subsection => chapter[section][subsection]
  *
  * @returns
  */
 const useScenario = () => {
   /* Variables */
   const { chapter } = scenario;
+
+  /* Constants */
+  const { TUTORIAL, INTERVIEW, RESULT } = Object.freeze({
+    TUTORIAL: 0,
+    INTERVIEW: 1,
+    RESULT: 2,
+  });
 
   /* Hooks */
   // useState
@@ -19,6 +26,7 @@ const useScenario = () => {
   });
 
   /* Func */
+  // delete
   const handleNextScenarioPhaseState = type => {
     const newScenarioPhaseState = scenarioPhaseState[type] + 1;
 
@@ -28,36 +36,45 @@ const useScenario = () => {
       setScenarioPhaseState(prevState => ({ ...prevState, [type]: newScenarioPhaseState }));
     }
   };
-  const handleSkipScenarioPhaseState = () => {
-    // for minor phase
+
+  // section
+  const isSection = sectionType => {
+    switch (sectionType.toUpperCase()) {
+      case 'TUTORIAL':
+        return scenarioPhaseState.major === TUTORIAL;
+      case 'INTERVIEW':
+        return scenarioPhaseState.major === INTERVIEW;
+      case 'RESULT':
+        return scenarioPhaseState.major === RESULT;
+      default:
+        return null;
+    }
+  };
+  // subsection
+  const getSubsectionObject = () => {
+    return chapter[scenarioPhaseState.major][scenarioPhaseState.minor];
+  };
+  const toLastSubsection = () => {
     const newScenarioPhaseState = chapter[scenarioPhaseState.major].length - 1;
 
     setScenarioPhaseState(prevState => ({ ...prevState, minor: newScenarioPhaseState }));
   };
-  const isScenarioPhaseDone = () => {
-    // for minor phase
+  const isSubsectionLast = () => {
     return scenarioPhaseState.minor === chapter[scenarioPhaseState.major].length - 1;
-  };
-  const isTutorialPhase = () => {
-    return scenarioPhaseState.major === 0;
-  };
-  const isInterviewPhase = () => {
-    return scenarioPhaseState.major === 1;
-  };
-
-  const getCurrentChapterObject = () => {
-    return chapter[scenarioPhaseState.major][scenarioPhaseState.minor];
   };
 
   /* Return */
   return {
-    scenarioPhaseState,
-    handleNextScenarioPhaseState,
-    handleSkipScenarioPhaseState,
-    isScenarioPhaseDone,
-    isTutorialPhase,
-    isInterviewPhase,
-    getCurrentChapterObject,
+    scenarioPhaseState, // delete
+    handleNextScenarioPhaseState, // delete
+    // getSectionState
+    // toNextSection
+    isSection,
+    // getSubsectionState
+    getSubsectionObject,
+    // toNextSubsection
+    toLastSubsection,
+    isSubsectionLast,
   };
 };
 

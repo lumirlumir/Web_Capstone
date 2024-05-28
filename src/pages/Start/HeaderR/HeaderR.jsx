@@ -13,15 +13,15 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario }) {
   /* Props */
-  const { getCurrentChapterObject, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
-  const { visibility } = getCurrentChapterObject().HeaderR;
+  const { getSubsectionObject, isSubsectionLast, isSection } = scenario;
+  const { visibility } = getSubsectionObject().HeaderR;
 
   /* Function */
   const doNothing = () => {};
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${(isTutorialPhase() && isScenarioPhaseDone()) || isInterviewPhase() ? '' : 'unclickable'}`}>
+    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${(isSection('tutorial') && isSubsectionLast()) || isSection('interview') ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />

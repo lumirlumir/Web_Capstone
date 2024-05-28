@@ -12,19 +12,19 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, config }) {
   /* Props */
-  const { getCurrentChapterObject, scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenario;
-  const { visibility, content } = getCurrentChapterObject().Main.ButtonMain;
+  const { getSubsectionObject, scenarioPhaseState, handleNextScenarioPhaseState, toLastSubsection, isSubsectionLast, isSection } = scenario;
+  const { visibility, content } = getSubsectionObject().Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
 
   /* Return */
   return (
-    <div className={`ButtonMain ${visibility || (isConfigDone() && isScenarioPhaseDone()) ? '' : 'invisible'}`}>
+    <div className={`ButtonMain ${visibility || (isConfigDone() && isSubsectionLast()) ? '' : 'invisible'}`}>
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {
-          if (e.ctrlKey && isTutorialPhase() && scenarioPhaseState.minor !== 0) {
-            handleSkipScenarioPhaseState();
-          } else if (isTutorialPhase() && isScenarioPhaseDone() && isConfigDone()) {
+          if (e.ctrlKey && isSection('tutorial') && scenarioPhaseState.minor !== 0) {
+            toLastSubsection();
+          } else if (isSection('tutorial') && isSubsectionLast() && isConfigDone()) {
             handleNextScenarioPhaseState('major');
             handleConfigState({ visibility: false });
           } else {

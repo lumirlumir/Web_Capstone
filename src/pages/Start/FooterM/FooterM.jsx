@@ -11,8 +11,8 @@ import './FooterM.scss';
  */
 function FooterM({ scenario }) {
   /* Props */
-  const { getCurrentChapterObject } = scenario;
-  const { visibility } = getCurrentChapterObject().FooterM;
+  const { getSubsectionObject } = scenario;
+  const { visibility } = getSubsectionObject().FooterM;
 
   /* Return */
   return (

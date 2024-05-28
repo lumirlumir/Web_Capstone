@@ -6,11 +6,10 @@ export const scenarioPropTypes = PropTypes.shape({
     minor: PropTypes.number.isRequired,
   }).isRequired,
   handleNextScenarioPhaseState: PropTypes.func.isRequired,
-  handleSkipScenarioPhaseState: PropTypes.func.isRequired,
-  isScenarioPhaseDone: PropTypes.func.isRequired,
-  isTutorialPhase: PropTypes.func.isRequired,
-  isInterviewPhase: PropTypes.func.isRequired,
-  getCurrentChapterObject: PropTypes.func.isRequired,
+  toLastSubsection: PropTypes.func.isRequired,
+  getSubsectionObject: PropTypes.func.isRequired,
+  isSection: PropTypes.func.isRequired,
+  isSubsectionLast: PropTypes.func.isRequired,
 });
 
 export const configPropTypes = PropTypes.shape({

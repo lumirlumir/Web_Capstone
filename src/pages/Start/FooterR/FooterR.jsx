@@ -14,15 +14,15 @@ import './FooterR.scss';
  */
 function FooterR({ scenario }) {
   /* Props */
-  const { getCurrentChapterObject, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
-  const { visibility, isSubmit } = getCurrentChapterObject().FooterR;
+  const { getSubsectionObject, isSubsectionLast, isSection } = scenario;
+  const { visibility, isSubmit } = getSubsectionObject().FooterR;
 
   /* Function */
   const doNothing = () => {};
 
   /* Return */
   return (
-    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${(isTutorialPhase() && isScenarioPhaseDone()) || isInterviewPhase() ? '' : 'unclickable'}`}>
+    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${(isSection('tutorial') && isSubsectionLast()) || isSection('interview') ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
       </CompButtonLight>

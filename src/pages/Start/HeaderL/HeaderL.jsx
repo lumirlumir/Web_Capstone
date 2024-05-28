@@ -14,12 +14,12 @@ import './HeaderL.scss';
 function HeaderL({ scenario, config }) {
   /* Props */
   const { configState, handleConfigState } = config;
-  const { getCurrentChapterObject, isScenarioPhaseDone } = scenario;
-  const { visibility } = getCurrentChapterObject().HeaderL;
+  const { getSubsectionObject, isSubsectionLast } = scenario;
+  const { visibility } = getSubsectionObject().HeaderL;
 
   /* Return */
   return (
-    <header className={`HeaderL ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
+    <header className={`HeaderL ${visibility ? '' : 'invisible'} ${isSubsectionLast() ? '' : 'unclickable'}`}>
       <CompButtonLight
         style={{ width: '60px', height: '60px' }}
         onClick={() => {

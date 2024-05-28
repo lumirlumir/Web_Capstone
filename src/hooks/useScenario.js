@@ -2,7 +2,15 @@ import { useState } from 'react';
 
 import scenario from '@/data/scenario.json';
 
+/**
+ * chapter > section > subsection
+ *
+ * @returns
+ */
 const useScenario = () => {
+  /* Variables */
+  const { chapter } = scenario;
+
   /* Hooks */
   // useState
   const [scenarioPhaseState, setScenarioPhaseState] = useState({
@@ -14,21 +22,21 @@ const useScenario = () => {
   const handleNextScenarioPhaseState = type => {
     const newScenarioPhaseState = scenarioPhaseState[type] + 1;
 
-    if (type === 'major' && newScenarioPhaseState < scenario.phase.length) {
+    if (type === 'major' && newScenarioPhaseState < chapter.length) {
       setScenarioPhaseState(prevState => ({ ...prevState, major: newScenarioPhaseState, minor: 0 }));
-    } else if (type === 'minor' && newScenarioPhaseState < scenario.phase[scenarioPhaseState.major].length) {
+    } else if (type === 'minor' && newScenarioPhaseState < chapter[scenarioPhaseState.major].length) {
       setScenarioPhaseState(prevState => ({ ...prevState, [type]: newScenarioPhaseState }));
     }
   };
   const handleSkipScenarioPhaseState = () => {
     // for minor phase
-    const newScenarioPhaseState = scenario.phase[scenarioPhaseState.major].length - 1;
+    const newScenarioPhaseState = chapter[scenarioPhaseState.major].length - 1;
 
     setScenarioPhaseState(prevState => ({ ...prevState, minor: newScenarioPhaseState }));
   };
   const isScenarioPhaseDone = () => {
     // for minor phase
-    return scenarioPhaseState.minor === scenario.phase[scenarioPhaseState.major].length - 1;
+    return scenarioPhaseState.minor === chapter[scenarioPhaseState.major].length - 1;
   };
   const isTutorialPhase = () => {
     return scenarioPhaseState.major === 0;
@@ -41,7 +49,7 @@ const useScenario = () => {
 
   /* Return */
   return {
-    chapter: scenario.phase,
+    chapter,
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,

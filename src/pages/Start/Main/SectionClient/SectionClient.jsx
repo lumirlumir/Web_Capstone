@@ -11,8 +11,8 @@ import './SectionClient.scss';
  */
 function SectionClient({ scenario }) {
   /* Props */
-  const { chapter, scenarioPhaseState } = scenario;
-  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].Main.SectionClient;
+  const { getCurrentChapterObject } = scenario;
+  const { visibility } = getCurrentChapterObject().Main.SectionClient;
 
   /* Return */
   return (

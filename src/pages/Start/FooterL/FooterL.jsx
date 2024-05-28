@@ -13,8 +13,8 @@ import './FooterL.scss';
  */
 function FooterL({ scenario }) {
   /* Props */
-  const { chapter, scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
-  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].FooterL;
+  const { getCurrentChapterObject, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
+  const { visibility } = getCurrentChapterObject().FooterL;
 
   /* Function */
   const reload = () => {

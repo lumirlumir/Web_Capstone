@@ -11,8 +11,8 @@ import './Heading.scss';
  */
 function Heading({ scenario }) {
   /* Props */
-  const { chapter, scenarioPhaseState } = scenario;
-  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].Main.Heading;
+  const { getCurrentChapterObject } = scenario;
+  const { visibility } = getCurrentChapterObject().Main.Heading;
 
   /* Return */
   return (

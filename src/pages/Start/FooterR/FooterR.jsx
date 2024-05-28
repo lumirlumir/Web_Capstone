@@ -14,8 +14,8 @@ import './FooterR.scss';
  */
 function FooterR({ scenario }) {
   /* Props */
-  const { chapter, scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
-  const { visibility, isSubmit } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].FooterR;
+  const { getCurrentChapterObject, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
+  const { visibility, isSubmit } = getCurrentChapterObject().FooterR;
 
   /* Function */
   const doNothing = () => {};

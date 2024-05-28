@@ -45,17 +45,19 @@ const useScenario = () => {
     return scenarioPhaseState.major === 1;
   };
 
-  // const getCurrentChapter
+  const getCurrentChapterObject = () => {
+    return chapter[scenarioPhaseState.major][scenarioPhaseState.minor];
+  };
 
   /* Return */
   return {
-    chapter,
     scenarioPhaseState,
     handleNextScenarioPhaseState,
     handleSkipScenarioPhaseState,
     isScenarioPhaseDone,
     isTutorialPhase,
     isInterviewPhase,
+    getCurrentChapterObject,
   };
 };
 

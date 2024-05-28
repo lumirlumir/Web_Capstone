@@ -12,8 +12,8 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, config }) {
   /* Props */
-  const { chapter, scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenario;
-  const { visibility, content } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].Main.ButtonMain;
+  const { getCurrentChapterObject, scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenario;
+  const { visibility, content } = getCurrentChapterObject().Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
 
   /* Return */

@@ -13,8 +13,8 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario }) {
   /* Props */
-  const { chapter, scenarioPhaseState, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
-  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderR;
+  const { getCurrentChapterObject, isScenarioPhaseDone, isTutorialPhase, isInterviewPhase } = scenario;
+  const { visibility } = getCurrentChapterObject().HeaderR;
 
   /* Function */
   const doNothing = () => {};

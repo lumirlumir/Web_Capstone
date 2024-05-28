@@ -14,8 +14,8 @@ import './HeaderL.scss';
 function HeaderL({ scenario, config }) {
   /* Props */
   const { configState, handleConfigState } = config;
-  const { chapter, scenarioPhaseState, isScenarioPhaseDone } = scenario;
-  const { visibility } = chapter[scenarioPhaseState.major][scenarioPhaseState.minor].HeaderL;
+  const { getCurrentChapterObject, isScenarioPhaseDone } = scenario;
+  const { visibility } = getCurrentChapterObject().HeaderL;
 
   /* Return */
   return (

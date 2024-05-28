@@ -90,12 +90,15 @@ function Start() {
     handleConfigState,
     isConfigDone,
   };
-  // questions
-  // const [csQuestionMain, generateCsQuestionMain] = useQuestionMain('cs', 3);
-  // const [feQuestionMain, generateFeQuestionMain] = useQuestionMain('fe', 3);
-  // const [beQuestionMain, generateBeQuestionMain] = useQuestionMain('be', 3);
-  // const [dbQuestionMain, generateDbQuestionMain] = useQuestionMain('db', 3);
-  // const [oopQuestionMain, generateOopQuestionMain] = useQuestionMain('oop', 3);
+  // useQuestionMain
+  // const [arrayCsQuestionMain, generateCsQuestionMain] = useQuestionMain('cs', 3);
+  // const [arrayFeQuestionMain, generateFeQuestionMain] = useQuestionMain('fe', 3);
+  // const [arrayBeQuestionMain, generateBeQuestionMain] = useQuestionMain('be', 3);
+  // const [arrayDbQuestionMain, generateDbQuestionMain] = useQuestionMain('db', 3);
+  // const [arrayOopQuestionMain, generateOopQuestionMain] = useQuestionMain('oop', 3);
+
+  // useAnswer
+  // const [arrayCsAnswerSystem, generateCsAnswerSystem] = useAnswerSystem(['react란 무엇인가요?', '알고리즘이 무엇인가요?', 'axios 라이브러리가 무엇인가요?']);
 
   /* Return */
   return (

@@ -1,21 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 
-import generateQuestion from '@/services/generateQuestionMain';
-import { createMessageArray } from '@/utils/openai';
+import { generateQuestionMain } from '@/services/openaiService';
 
 /**
  *
  * @param {string} questionType select among 'cs', 'fe', 'be', 'db', 'oop'
  * @param {number} questionMainCount
  * @returns {[
- *   state: array,
+ *   array: string[],
  *   generate: function,
  * ]}
  */
 const useQuestionMain = (questionType, questionMainCount) => {
   /* Hooks */
   // useState
-  const [state, setState] = useState([]);
+  const [array, setArray] = useState([]);
   const [triggerState, setTriggerState] = useState(false);
   // useRef
   const questionTypeRef = useRef(questionType.toLowerCase());
@@ -24,12 +23,12 @@ const useQuestionMain = (questionType, questionMainCount) => {
     // useEffect excutes twice at the first mount and questionMainState's mount. Below code prevents both.
     if (!triggerState) return;
 
-    if (state.length < questionMainCount) {
-      generateQuestion(questionTypeRef.current, createMessageArray(state)).then(result => {
-        setState(prevState => [...prevState, result]);
+    if (array.length < questionMainCount) {
+      generateQuestionMain(questionTypeRef.current, array).then(result => {
+        setArray(prevState => [...prevState, result]);
       });
     }
-  }, [questionMainCount, state, triggerState]);
+  }, [questionMainCount, array, triggerState]);
 
   /* Func */
   const generate = () => {
@@ -37,7 +36,7 @@ const useQuestionMain = (questionType, questionMainCount) => {
   };
 
   /* Return */
-  return [state, generate];
+  return [array, generate];
 };
 
 export default useQuestionMain;

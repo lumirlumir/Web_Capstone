@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import scenario from '@/data/scenario.json';
+import useConfig from '@/hooks/useConfig';
 
 import FooterL from './FooterL';
 import FooterM from './FooterM';
@@ -16,7 +17,9 @@ import './Start.scss';
  * @returns Start
  */
 function Start() {
-  /* useState */
+  /* Hooks */
+  // useConfig
+  const config = useConfig();
   // scenarioPhase
   const [scenarioPhaseState, setScenarioPhaseState] = useState({
     major: 0,
@@ -55,41 +58,7 @@ function Start() {
     isTutorialPhase,
     isInterviewPhase,
   };
-  // config
-  const [configState, setConfigState] = useState({
-    visibility: false,
-    questionType: {
-      cs: false,
-      fe: false,
-      be: false,
-      db: false,
-      oop: false,
-    },
-    questionMain: 0,
-    questionSub: 0,
-    timeLimit: 0,
-  });
-  const handleConfigState = obj => {
-    setConfigState(prevState => ({
-      ...prevState,
-      ...obj,
-      questionType: {
-        ...prevState.questionType,
-        ...obj.questionType,
-      },
-    }));
-  };
-  const isConfigDone = () => {
-    const { cs, fe, be, db, oop } = configState.questionType;
-    const { questionMain, questionSub, timeLimit } = configState;
 
-    return (cs || fe || be || db || oop) && questionMain && questionSub && timeLimit;
-  };
-  const config = {
-    configState,
-    handleConfigState,
-    isConfigDone,
-  };
   // useQuestionMain
   // const [arrayCsQuestionMain, generateCsQuestionMain] = useQuestionMain('cs', 3);
   // const [arrayFeQuestionMain, generateFeQuestionMain] = useQuestionMain('fe', 3);

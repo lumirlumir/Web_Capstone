@@ -6,20 +6,24 @@
           "auto": false
         },
         "FooterL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -43,20 +47,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": false
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -71,7 +79,7 @@
           },
           "SectionServer": {
             "visibility": true,
-            "content": "$ AI Interviewer\n\n"
+            "content": "$ Interviewer\n\n"
           }
         }
       },
@@ -80,20 +88,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": false
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -108,7 +120,7 @@
           },
           "SectionServer": {
             "visibility": true,
-            "content": "> 안녕하세요, 'ChatGPT를 활용한 인터뷰 서비스'에 오신 것을 환영합니다. 서비스에 대한 소개 및 튜토리얼을 진행하겠습니다. 소개 및 튜토리얼 진행을 생략하고 싶으시면, 하단의 START 버튼을 키보드의 CTRL Key를 누른 채 눌러주시기 바랍니다.\n\n"
+            "content": "> 안녕하세요, 'ChatGPT를 활용한 인터뷰 서비스'에 오신 것을 환영합니다. 서비스에 대한 소개 및 튜토리얼을 진행하겠습니다. 소개 및 튜토리얼 진행을 생략하고 싶으시면, 하단의 START 버튼을 키보드의 CTRL을 누른 채 눌러주시기 바랍니다.\n\n"
           }
         }
       },
@@ -117,20 +129,24 @@
           "auto": false
         },
         "FooterL": {
-          "visibility": false
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -154,20 +170,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -191,20 +211,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -228,20 +252,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -256,7 +284,7 @@
           },
           "SectionServer": {
             "visibility": true,
-            "content": "> CS(Computer Science)는 자료구조, 알고리즘, 운영체제, 네트워크 등을 아우르는 컴퓨터 공학 지식 일반, FE(Front-End)는 클라이언트 사이드인 프런트엔드, BE(Back-End)는 서버 사이드인 백엔드, DB(DataBase)는 데이터베이스, OOP(Object-Oriented Programming)는 객체 지향 프로그래밍을 의미합니다.\n\n"
+            "content": "> CS(Computer Science)는 자료구조, 알고리즘, 운영체제, 네트워크 등을 아우르는 컴퓨터 공학 지식 일반, FE(Front-End)는 클라이언트 사이드인 프론트엔드, BE(Back-End)는 서버 사이드인 백엔드, DB(DataBase)는 데이터베이스, OOP(Object-Oriented Programming)는 객체 지향 프로그래밍을 의미합니다.\n\n"
           }
         }
       },
@@ -265,20 +293,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -302,20 +334,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -339,20 +375,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -367,7 +407,7 @@
           },
           "SectionServer": {
             "visibility": true,
-            "content": "> 두번째로, 좌측 상단에 위치한 톱니 모양의 환경설정 버튼입니다. 버튼을 누르면 환경설정 섹션이 나타나고, 설정을 진행할 수 있습니다. CS, FE, BE, DB, OOP 각 분야별 인터뷰 메인 질문 개수(최소 1개 ~ 최대 5개), 메인 질문에 따른 꼬리 질문 개수(최소 1개 ~ 최대 5개), 각 질문에 대한 답변 시간제한(최소 1분 ~ 최대 10분)을 설정할 수 있습니다.\n\n"
+            "content": "> 두번째로, 좌측 상단에 위치한 톱니 모양의 환경설정 버튼입니다. 버튼을 누르면 환경설정 섹션이 나타나고, 설정을 진행할 수 있습니다. CS, FE, BE, DB, OOP 각 분야별 인터뷰 메인 질문 개수(최소 1개 ~ 최대 10개), 메인 질문에 따른 꼬리 질문 개수(최소 1개 ~ 최대 10개), 각 질문에 대한 답변 시간제한(최소 1분 ~ 최대 10분)을 설정할 수 있습니다.\n\n"
           }
         }
       },
@@ -376,20 +416,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -413,20 +457,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": true,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -450,20 +498,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": true,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -487,20 +539,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": true,
+          "clickability": false,
           "isSubmit": false
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -524,20 +580,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": true
         },
         "FooterR": {
           "visibility": true,
+          "clickability": false,
           "isSubmit": false
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -561,20 +621,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": true
         },
         "FooterR": {
           "visibility": true,
+          "clickability": false,
           "isSubmit": false
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -589,7 +653,7 @@
           },
           "SectionServer": {
             "visibility": true,
-            "content": "> 마지막으로, 중앙의 AI Interviewer 섹션 아래에 위치한 Interviewee 섹션입니다. AI Interviewer의 질문에 대한 답변을 텍스트로 입력할 수 있습니다. 타이핑을 통해 텍스트를 직접 입력할 수 있으며, 우측 상단에 위치한 마이크 모양의 음성인식 버튼을 눌러 음성인식을 통한 타이핑을 활용할 수도 있습니다. 또한, 모든 섹션은 마우스 스크롤을 통해 위ㆍ아래로 이동이 가능합니다.\n\n"
+            "content": "> 마지막으로, 중앙의 Interviewer 섹션 아래에 위치한 Interviewee 섹션입니다. Interviewer의 질문에 대한 답변을 텍스트로 입력할 수 있습니다. 타이핑을 통해 텍스트를 직접 입력할 수 있으며, 우측 상단에 위치한 마이크 모양의 음성인식 버튼을 눌러 음성인식을 통한 타이핑을 활용할 수도 있습니다. 또한, 모든 섹션은 마우스 스크롤을 통해 위ㆍ아래로 이동이 가능합니다.\n\n"
           }
         }
       },
@@ -598,20 +662,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": false
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -632,23 +700,27 @@
       },
       {
         "global": {
-          "auto": true
+          "auto": false
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": false
         },
         "FooterR": {
           "visibility": false,
+          "clickability": false,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "HeaderR": {
-          "visibility": false
+          "visibility": false,
+          "clickability": false
         },
         "Main": {
           "ButtonMain": {
@@ -674,20 +746,24 @@
           "auto": true
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": true
         },
         "FooterR": {
           "visibility": true,
+          "clickability": true,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "Main": {
           "ButtonMain": {
@@ -711,20 +787,24 @@
           "auto": false
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": true
         },
         "FooterR": {
           "visibility": true,
+          "clickability": true,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "Main": {
           "ButtonMain": {
@@ -748,20 +828,24 @@
           "auto": false
         },
         "FooterL": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "FooterM": {
           "visibility": true
         },
         "FooterR": {
           "visibility": true,
+          "clickability": true,
           "isSubmit": true
         },
         "HeaderL": {
-          "visibility": false
+          "visibility": true,
+          "clickability": false
         },
         "HeaderR": {
-          "visibility": true
+          "visibility": true,
+          "clickability": true
         },
         "Main": {
           "ButtonMain": {

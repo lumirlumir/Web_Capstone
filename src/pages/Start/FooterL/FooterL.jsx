@@ -13,8 +13,8 @@ import './FooterL.scss';
  */
 function FooterL({ scenario }) {
   /* Props */
-  const { isSection, getSubsectionObject, isSubsectionLast } = scenario;
-  const { visibility } = getSubsectionObject().FooterL;
+  const { getSubsectionObject } = scenario;
+  const { visibility, clickability } = getSubsectionObject().FooterL;
 
   /* Function */
   const reload = () => {
@@ -23,7 +23,7 @@ function FooterL({ scenario }) {
 
   /* Return */
   return (
-    <footer className={`FooterL ${visibility ? '' : 'invisible'} ${(isSection('tutorial') && isSubsectionLast()) || isSection('interview') ? '' : 'unclickable'}`}>
+    <footer className={`FooterL ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={reload}>
         <CompFontNeon neonColor="white">
           <GrPowerReset size="32px" />

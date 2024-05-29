@@ -13,15 +13,15 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario }) {
   /* Props */
-  const { isSection, getSubsectionObject, isSubsectionLast } = scenario;
-  const { visibility } = getSubsectionObject().HeaderR;
+  const { getSubsectionObject } = scenario;
+  const { visibility, clickability } = getSubsectionObject().HeaderR;
 
   /* Function */
   const doNothing = () => {};
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${(isSection('tutorial') && isSubsectionLast()) || isSection('interview') ? '' : 'unclickable'}`}>
+    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />

@@ -13,13 +13,13 @@ import './HeaderL.scss';
  */
 function HeaderL({ scenario, config }) {
   /* Props */
-  const { getSubsectionObject, isSubsectionLast } = scenario;
-  const { visibility } = getSubsectionObject().HeaderL;
+  const { getSubsectionObject } = scenario;
+  const { visibility, clickability } = getSubsectionObject().HeaderL;
   const { configState, handleConfigState } = config;
 
   /* Return */
   return (
-    <header className={`HeaderL ${visibility ? '' : 'invisible'} ${isSubsectionLast() ? '' : 'unclickable'}`}>
+    <header className={`HeaderL ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
       <CompButtonLight
         style={{ width: '60px', height: '60px' }}
         onClick={() => {

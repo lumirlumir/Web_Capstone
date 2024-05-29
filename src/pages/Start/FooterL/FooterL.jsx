@@ -13,7 +13,7 @@ import './FooterL.scss';
  */
 function FooterL({ scenario }) {
   /* Props */
-  const { getSubsectionObject, isSubsectionLast, isSection } = scenario;
+  const { isSection, getSubsectionObject, isSubsectionLast } = scenario;
   const { visibility } = getSubsectionObject().FooterL;
 
   /* Function */

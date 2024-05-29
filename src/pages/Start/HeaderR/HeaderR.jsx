@@ -13,7 +13,7 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario }) {
   /* Props */
-  const { getSubsectionObject, isSubsectionLast, isSection } = scenario;
+  const { isSection, getSubsectionObject, isSubsectionLast } = scenario;
   const { visibility } = getSubsectionObject().HeaderR;
 
   /* Function */

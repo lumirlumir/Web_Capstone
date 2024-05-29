@@ -13,9 +13,9 @@ import './HeaderL.scss';
  */
 function HeaderL({ scenario, config }) {
   /* Props */
-  const { configState, handleConfigState } = config;
   const { getSubsectionObject, isSubsectionLast } = scenario;
   const { visibility } = getSubsectionObject().HeaderL;
+  const { configState, handleConfigState } = config;
 
   /* Return */
   return (

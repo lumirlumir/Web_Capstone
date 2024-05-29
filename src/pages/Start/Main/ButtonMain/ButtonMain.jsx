@@ -12,7 +12,7 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, config }) {
   /* Props */
-  const { getSubsectionObject, subsectionState, toNextSubsection, toLastSubsection, isSubsectionLast, isSection } = scenario;
+  const { isSection, subsectionState, getSubsectionObject, toNextSubsection, toLastSubsection, isSubsectionLast } = scenario;
   const { visibility, content } = getSubsectionObject().Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
 
@@ -27,7 +27,7 @@ function ButtonMain({ scenario, config }) {
           } else {
             toNextSubsection();
 
-            if (isSection('tutorial') && isSubsectionLast() && isConfigDone()) {
+            if (isSection('tutorial') && isConfigDone() && isSubsectionLast()) {
               handleConfigState({ visibility: false });
             }
           }

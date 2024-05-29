@@ -14,7 +14,7 @@ import './FooterR.scss';
  */
 function FooterR({ scenario }) {
   /* Props */
-  const { getSubsectionObject, isSubsectionLast, isSection } = scenario;
+  const { isSection, getSubsectionObject, isSubsectionLast } = scenario;
   const { visibility, isSubmit } = getSubsectionObject().FooterR;
 
   /* Function */

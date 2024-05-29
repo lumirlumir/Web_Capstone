@@ -1,59 +1,12 @@
 import PropTypes from 'prop-types';
 
 export const scenarioPropTypes = PropTypes.shape({
-  phase: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        global: PropTypes.shape({
-          auto: PropTypes.bool.isRequired,
-        }).isRequired,
-        FooterL: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-        }).isRequired,
-        FooterM: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-        }).isRequired,
-        FooterR: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-          isSubmit: PropTypes.bool.isRequired,
-        }).isRequired,
-        HeaderL: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-        }).isRequired,
-        HeaderR: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-        }).isRequired,
-        Main: PropTypes.shape({
-          ButtonMain: PropTypes.shape({
-            visibility: PropTypes.bool.isRequired,
-            content: PropTypes.string.isRequired,
-          }).isRequired,
-          Heading: PropTypes.shape({
-            visibility: PropTypes.bool.isRequired,
-          }).isRequired,
-          SectionClient: PropTypes.shape({
-            visibility: PropTypes.bool.isRequired,
-          }).isRequired,
-          SectionServer: PropTypes.shape({
-            visibility: PropTypes.bool.isRequired,
-            content: PropTypes.string.isRequired,
-          }).isRequired,
-        }).isRequired,
-      }).isRequired,
-    ).isRequired,
-  ).isRequired,
-});
-
-export const scenarioPhasePropTypes = PropTypes.shape({
-  scenarioPhaseState: PropTypes.shape({
-    major: PropTypes.number.isRequired,
-    minor: PropTypes.number.isRequired,
-  }).isRequired,
-  handleNextScenarioPhaseState: PropTypes.func.isRequired,
-  handleSkipScenarioPhaseState: PropTypes.func.isRequired,
-  isScenarioPhaseDone: PropTypes.func.isRequired,
-  isTutorialPhase: PropTypes.func.isRequired,
-  isInterviewPhase: PropTypes.func.isRequired,
+  isSection: PropTypes.func.isRequired,
+  subsectionState: PropTypes.number.isRequired,
+  getSubsectionObject: PropTypes.func.isRequired,
+  toNextSubsection: PropTypes.func.isRequired,
+  toLastSubsection: PropTypes.func.isRequired,
+  isSubsectionLast: PropTypes.func.isRequired,
 });
 
 export const configPropTypes = PropTypes.shape({

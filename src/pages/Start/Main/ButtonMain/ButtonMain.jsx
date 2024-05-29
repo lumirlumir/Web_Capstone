@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
 
 import './ButtonMain.scss';
 
@@ -10,25 +10,37 @@ import './ButtonMain.scss';
  *
  * @returns ButtonMain
  */
-function ButtonMain({ scenario, scenarioPhase, config }) {
+function ButtonMain({ scenario, config }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState, isScenarioPhaseDone, isTutorialPhase } = scenarioPhase;
-  const { visibility, content } = scenario.phase[scenarioPhaseState.major][scenarioPhaseState.minor].Main.ButtonMain;
+  const { isSection, subsectionState, getSubsectionObject, toNextSubsection, toLastSubsection, isSubsectionLast } = scenario;
+  const { content } = getSubsectionObject().Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
+
+  /* Hooks */
+  // useMemo
+  const visibility = useMemo(() => {
+    const { visibility: _visibility } = getSubsectionObject().Main.ButtonMain;
+
+    if (_visibility === null) {
+      return isConfigDone();
+    }
+    return _visibility;
+  }, [getSubsectionObject, isConfigDone]);
 
   /* Return */
   return (
-    <div className={`ButtonMain ${visibility || (isConfigDone() && isScenarioPhaseDone()) ? '' : 'invisible'}`}>
+    <div className={`ButtonMain ${visibility ? '' : 'invisible'}`}>
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {
-          if (e.ctrlKey && isTutorialPhase() && scenarioPhaseState.minor !== 0) {
-            handleSkipScenarioPhaseState();
-          } else if (isTutorialPhase() && isScenarioPhaseDone() && isConfigDone()) {
-            handleNextScenarioPhaseState('major');
-            handleConfigState({ visibility: false });
+          if (e.ctrlKey && isSection('tutorial') && subsectionState !== 0) {
+            toLastSubsection();
           } else {
-            handleNextScenarioPhaseState('minor');
+            toNextSubsection();
+
+            if (isSection('tutorial') && isConfigDone() && isSubsectionLast()) {
+              handleConfigState({ visibility: false });
+            }
           }
         }}
       >
@@ -41,7 +53,6 @@ function ButtonMain({ scenario, scenarioPhase, config }) {
 }
 ButtonMain.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
 };
 ButtonMain.defaultProps = {};

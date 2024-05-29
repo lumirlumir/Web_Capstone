@@ -1,6 +1,5 @@
 import React from 'react';
 
-import scenario from '@/data/scenario.json';
 import useConfig from '@/hooks/useConfig';
 import useScenario from '@/hooks/useScenario';
 
@@ -20,7 +19,7 @@ import './Start.scss';
 function Start() {
   /* Hooks */
   const config = useConfig();
-  const scenarioPhase = useScenario();
+  const scenario = useScenario();
 
   // useQuestionMain
   // const [arrayCsQuestionMain, generateCsQuestionMain] = useQuestionMain('cs', 3);
@@ -35,12 +34,12 @@ function Start() {
   /* Return */
   return (
     <div className="Start">
-      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
-      <HeaderR scenario={scenario} scenarioPhase={scenarioPhase} />
-      <Main scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
-      <FooterL scenario={scenario} scenarioPhase={scenarioPhase} />
-      <FooterM scenario={scenario} scenarioPhase={scenarioPhase} />
-      <FooterR scenario={scenario} scenarioPhase={scenarioPhase} />
+      <HeaderL scenario={scenario} config={config} />
+      <HeaderR scenario={scenario} />
+      <Main scenario={scenario} config={config} />
+      <FooterL scenario={scenario} />
+      <FooterM scenario={scenario} />
+      <FooterR scenario={scenario} />
     </div>
   );
 }

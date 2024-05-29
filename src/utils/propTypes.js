@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types';
 
 export const scenarioPropTypes = PropTypes.shape({
-  scenarioPhaseState: PropTypes.shape({
-    major: PropTypes.number.isRequired,
-    minor: PropTypes.number.isRequired,
-  }).isRequired,
-  handleNextScenarioPhaseState: PropTypes.func.isRequired,
-  toLastSubsection: PropTypes.func.isRequired,
-  getSubsectionObject: PropTypes.func.isRequired,
   isSection: PropTypes.func.isRequired,
+  subsectionState: PropTypes.number.isRequired,
+  getSubsectionObject: PropTypes.func.isRequired,
+  toNextSubsection: PropTypes.func.isRequired,
+  toLastSubsection: PropTypes.func.isRequired,
   isSubsectionLast: PropTypes.func.isRequired,
 });
 

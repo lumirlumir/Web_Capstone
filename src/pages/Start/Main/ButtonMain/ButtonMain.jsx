@@ -12,7 +12,7 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, config }) {
   /* Props */
-  const { getSubsectionObject, scenarioPhaseState, handleNextScenarioPhaseState, toLastSubsection, isSubsectionLast, isSection } = scenario;
+  const { getSubsectionObject, subsectionState, toNextSubsection, toLastSubsection, isSubsectionLast, isSection } = scenario;
   const { visibility, content } = getSubsectionObject().Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
 
@@ -22,13 +22,14 @@ function ButtonMain({ scenario, config }) {
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {
-          if (e.ctrlKey && isSection('tutorial') && scenarioPhaseState.minor !== 0) {
+          if (e.ctrlKey && isSection('tutorial') && subsectionState !== 0) {
             toLastSubsection();
-          } else if (isSection('tutorial') && isSubsectionLast() && isConfigDone()) {
-            handleNextScenarioPhaseState('major');
-            handleConfigState({ visibility: false });
           } else {
-            handleNextScenarioPhaseState('minor');
+            toNextSubsection();
+
+            if (isSection('tutorial') && isSubsectionLast() && isConfigDone()) {
+              handleConfigState({ visibility: false });
+            }
           }
         }}
       >

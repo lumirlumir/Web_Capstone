@@ -724,7 +724,7 @@
         },
         "Main": {
           "ButtonMain": {
-            "visibility": false,
+            "visibility": null,
             "content": "START"
           },
           "Heading": {

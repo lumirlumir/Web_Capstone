@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
@@ -13,12 +13,23 @@ import './ButtonMain.scss';
 function ButtonMain({ scenario, config }) {
   /* Props */
   const { isSection, subsectionState, getSubsectionObject, toNextSubsection, toLastSubsection, isSubsectionLast } = scenario;
-  const { visibility, content } = getSubsectionObject().Main.ButtonMain;
+  const { content } = getSubsectionObject().Main.ButtonMain;
   const { handleConfigState, isConfigDone } = config;
+
+  /* Hooks */
+  // useMemo
+  const visibility = useMemo(() => {
+    const { visibility: _visibility } = getSubsectionObject().Main.ButtonMain;
+
+    if (_visibility === null) {
+      return isConfigDone();
+    }
+    return _visibility;
+  }, [getSubsectionObject, isConfigDone]);
 
   /* Return */
   return (
-    <div className={`ButtonMain ${visibility || (isConfigDone() && isSubsectionLast()) ? '' : 'invisible'}`}>
+    <div className={`ButtonMain ${visibility ? '' : 'invisible'}`}>
       <CompButtonLight
         style={{ padding: '20px 30px' }}
         onClick={e => {

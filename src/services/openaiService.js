@@ -26,6 +26,22 @@ export const generateQuestionMain = async (type, history) => generate([...openai
  */
 export const generateAnswerSystem = async question => generate([...openaiJson.generateAnswerSystem.messages, createMessagesObject('user', question)]);
 
+/**
+ *
+ * @param {string} answerSystem
+ * @param {string} answerUser
+ * @returns
+ */
+export const generateFeedbackGrade = async (answerSystem, answerUser) => generate([...openaiJson.generateFeedbackGrade.messages, createMessagesObject('user', `Correct Answer\n\n${answerSystem}\n\nUSER's Answer\n\n${answerUser}`)]);
+
+/**
+ *
+ * @param {string} question
+ * @param {string} answerUser
+ * @returns
+ */
+export const generateQuestionSub = async (question, answerUser) => generate([...openaiJson.generateQuestionSub.messages, createMessagesObject('user', `Previous Question\n\n${question}\n\nUSER's Answer\n\n${answerUser}`)]);
+
 /*
 TODO: make enum type and adjust openai.json
 

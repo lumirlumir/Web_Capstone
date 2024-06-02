@@ -1,183 +1,156 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 import { generateQuestionMain, generateAnswerSystem, generateFeedbackGrade, generateQuestionSub } from '@/services/openaiService';
 
-const useInterview = configState => {
-  /* Variables */
-  const {
-    // questionType: { cs, fe, be, db, oop },
-    questionMain,
-    questionSub,
-  } = configState;
-
+const useInterview = () => {
   /* Hooks */
-  // useMemo
-  const rows = useMemo(() => questionMain, [questionMain]);
-  const cols = useMemo(() => questionSub + 1, [questionSub]);
+  // useRef
+  const questionTypeRef = useRef(null);
+  const rowRef = useRef(null);
+  const colRef = useRef(null);
   // useState
-  const [dataState, setDataState] = useState(() => {
-    const data = [];
-
-    for (let i = 0; i < rows; i += 1) {
-      data[i] = [];
-
-      for (let j = 0; j < cols; j += 1) {
-        data[i][j] = {
-          questionMain: '',
-          answerSystem: '',
-          answerUser: '',
-          feedbackGrade: '',
-        };
-      }
-    }
-
-    return data;
-  });
-  const [dataRowColState, setRowColState] = useState({
-    // name to index
+  const [dataState, setDataState] = useState(null);
+  const [indexState, setIndexState] = useState({
     row: 0,
     col: 0,
   });
-  // useEffect
-  useEffect(() => {
-    if (dataState[dataRowColState.row][dataRowColState.col].answerUser === '') return;
 
-    generateFeedbackGrade(dataState[dataRowColState.row][dataRowColState.col].answerSystem, dataState[dataRowColState.row][dataRowColState.col].answerUser)
-      .then(result => {
-        setDataState(prevState => {
-          const newData = [...prevState];
+  /* Func Private */
+  // handler
+  const handleDataState = useCallback(
+    obj => {
+      setDataState(prevState => {
+        const newData = [...prevState];
 
-          newData[dataRowColState.row] = [...prevState[dataRowColState.row]];
+        newData[indexState.row] = [...prevState[indexState.row]];
 
-          newData[dataRowColState.row][dataRowColState.col] = {
-            ...prevState[dataRowColState.row][dataRowColState.col],
-            feedbackGrade: JSON.parse(result),
-          };
+        newData[indexState.row][indexState.col] = {
+          ...prevState[indexState.row][indexState.col],
+          ...obj,
+        };
 
-          return newData;
-        });
-      })
-      .then(
-        setRowColState(prevState => {
-          if (prevState.col + 1 < cols) {
-            return {
-              ...prevState,
-              col: prevState.col + 1,
-            };
-          }
-          if (prevState.row + 1 < rows) {
-            return {
-              ...prevState,
-              row: prevState.row + 1,
-              col: 0,
-            };
-          }
-          return prevState;
-        }),
-      );
-  }, [dataState, dataRowColState.row, dataRowColState.col, rows, cols]);
-
-  /* Func private */
-  const getQuestionMainHistory = () => {
+        return newData;
+      });
+    },
+    [indexState],
+  );
+  const handleIndexState = () => {
+    setIndexState(prevState => {
+      if (prevState.col + 1 < colRef.current) {
+        return {
+          ...prevState,
+          col: prevState.col + 1,
+        };
+      }
+      if (prevState.row + 1 < rowRef.current) {
+        return {
+          ...prevState,
+          row: prevState.row + 1,
+          col: 0,
+        };
+      }
+      return null;
+    });
+  };
+  // get
+  const getQuestionMainHistory = useCallback(() => {
     const questionMainHistory = [];
 
-    for (let i = 0; i <= dataRowColState.row - 1; i += 1) {
+    for (let i = 0; i <= indexState.row - 1; i += 1) {
       questionMainHistory.push(dataState[i][0].questionMain);
     }
 
     return questionMainHistory;
-  };
+  }, [dataState, indexState]);
+  // generateChain
+  const generateChainFirst = useCallback(
+    questionType => {
+      const generateQuestion =
+        indexState.col === 0 ? generateQuestionMain(questionType, getQuestionMainHistory()) : generateQuestionSub(dataState[indexState.row][indexState.col - 1].questionMain, dataState[indexState.row][indexState.col - 1].answerUser);
 
-  /* Func public */
-  const generate = questionType => {
-    if (dataRowColState.col === 0) {
-      generateQuestionMain(questionType, getQuestionMainHistory())
+      generateQuestion
         .then(result => {
-          setDataState(prevState => {
-            const newData = [...prevState];
-
-            newData[dataRowColState.row] = [...prevState[dataRowColState.row]];
-
-            newData[dataRowColState.row][dataRowColState.col] = {
-              ...prevState[dataRowColState.row][dataRowColState.col],
-              questionMain: result,
-            };
-
-            return newData;
-          });
+          handleDataState({ questionMain: result });
 
           return result;
         })
         .then(PrevResult => {
           generateAnswerSystem(PrevResult).then(result => {
-            setDataState(prevState => {
-              const newData = [...prevState];
-
-              newData[dataRowColState.row] = [...prevState[dataRowColState.row]];
-
-              newData[dataRowColState.row][dataRowColState.col] = {
-                ...prevState[dataRowColState.row][dataRowColState.col],
-                answerSystem: result,
-              };
-
-              return newData;
-            });
+            handleDataState({ answerSystem: result });
           });
         });
-    } else {
-      generateQuestionSub(dataState[dataRowColState.row][dataRowColState.col - 1].questionMain, dataState[dataRowColState.row][dataRowColState.col - 1].answerUser)
-        .then(result => {
-          setDataState(prevState => {
-            const newData = [...prevState];
+    },
+    [dataState, indexState, handleDataState, getQuestionMainHistory],
+  );
+  const generateChainSecond = useCallback(() => {
+    generateFeedbackGrade(dataState[indexState.row][indexState.col].answerSystem, dataState[indexState.row][indexState.col].answerUser).then(result => {
+      handleDataState({ feedbackGrade: JSON.parse(result) });
+    });
+  }, [dataState, indexState, handleDataState]);
 
-            newData[dataRowColState.row] = [...prevState[dataRowColState.row]];
+  /* Hooks - useEffect */
+  useEffect(() => {
+    /* Return */
+    if (dataState === null) return; // before init.
+    if (indexState === null) return; // interview done.
 
-            newData[dataRowColState.row][dataRowColState.col] = {
-              ...prevState[dataRowColState.row][dataRowColState.col],
-              questionMain: result,
-            };
+    /* Test */
+    console.log('hello useEffect');
 
-            return newData;
-          });
+    /* Variables */
+    const curData = dataState[indexState.row][indexState.col];
 
-          return result;
-        })
-        .then(PrevResult => {
-          generateAnswerSystem(PrevResult).then(result => {
-            setDataState(prevState => {
-              const newData = [...prevState];
-
-              newData[dataRowColState.row] = [...prevState[dataRowColState.row]];
-
-              newData[dataRowColState.row][dataRowColState.col] = {
-                ...prevState[dataRowColState.row][dataRowColState.col],
-                answerSystem: result,
-              };
-
-              return newData;
-            });
-          });
-        });
+    /* ... */
+    if (curData.questionMain === null && curData.answerSystem === null && curData.answerUser === null && curData.feedbackGrade === null) {
+      console.log('generateChainFirst()');
+      generateChainFirst('cs');
     }
+    if (curData.questionMain !== null && curData.answerSystem !== null && curData.answerUser !== null && curData.feedbackGrade === null) {
+      console.log('generateChainSecond()');
+      generateChainSecond();
+    }
+    if (curData.questionMain !== null && curData.answerSystem !== null && curData.answerUser !== null && curData.feedbackGrade !== null) {
+      console.log('handleIndexState()');
+      handleIndexState();
+    }
+  }, [dataState, indexState, generateChainFirst, generateChainSecond]);
+
+  /* Func Public */
+  const init = configState => {
+    // useRef init
+    const { questionType, questionMain, questionSub } = configState;
+
+    questionTypeRef.current = questionType;
+    rowRef.current = questionMain;
+    colRef.current = questionSub + 1;
+
+    // useState init
+    setDataState(() => {
+      const data = [];
+
+      for (let i = 0; i < rowRef.current; i += 1) {
+        data[i] = [];
+
+        for (let j = 0; j < colRef.current; j += 1) {
+          data[i][j] = {
+            questionMain: null,
+            answerSystem: null,
+            answerUser: null,
+            feedbackGrade: null,
+          };
+        }
+      }
+
+      return data;
+    });
   };
   const submit = answerUser => {
-    setDataState(prevState => {
-      const newData = [...prevState];
-
-      newData[dataRowColState.row] = [...prevState[dataRowColState.row]];
-
-      newData[dataRowColState.row][dataRowColState.col] = {
-        ...prevState[dataRowColState.row][dataRowColState.col],
-        answerUser,
-      };
-
-      return newData;
-    });
+    handleDataState({ answerUser });
   };
 
   /* Return */
   return {
-    generate,
+    init,
     submit,
   };
 };

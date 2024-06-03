@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
-import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
 
@@ -10,24 +10,31 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ scenario, config }) {
+function SectionServer({ scenario, config, interview }) {
   /* Props */
-  const { subsectionState, getSubsectionObject, toNextSubsection } = scenario;
-  const { auto } = getSubsectionObject().global;
+  const { isSection, subsectionState, getSubsectionObject, toNextSubsection } = scenario;
+  const { auto, api } = getSubsectionObject().global;
   const { visibility, content } = getSubsectionObject().Main.SectionServer;
   const { configState } = config;
+  const { getQuestionMain } = interview;
 
   /* Hooks */
   // useState
   const [contentHistoryState, setContentHistoryState] = useState('');
   // useRef
   const scrollRef = useRef();
+  // useMemo
+  const text = useMemo(() => {
+    if (api) return `> ${getQuestionMain()}\n\n`;
+
+    return content;
+  }, [api, content, getQuestionMain]);
   // useEffect
   useEffect(() => {
-    if (subsectionState > 1) {
+    if ((isSection('tutorial') && subsectionState > 1) || isSection('interview')) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
     }
-  }, [subsectionState]);
+  }, [subsectionState, isSection, getQuestionMain]);
 
   /* Return */
   return (
@@ -35,7 +42,7 @@ function SectionServer({ scenario, config }) {
       <div>{contentHistoryState}</div>
       <div>
         <Typewriter
-          key={content}
+          key={text}
           options={{
             cursor: '_',
             delay: 50, // original: 50
@@ -43,11 +50,11 @@ function SectionServer({ scenario, config }) {
           onInit={typewriter => {
             typewriter
               .pauseFor(2000) // original: 2000
-              .typeString(content)
+              .typeString(text)
               .pauseFor(1000) // original: 1000
               .start()
               .callFunction(() => {
-                setContentHistoryState(`${contentHistoryState}${content}`);
+                setContentHistoryState(`${contentHistoryState}${text}`);
                 if (auto) toNextSubsection();
               });
           }}
@@ -60,6 +67,7 @@ function SectionServer({ scenario, config }) {
 SectionServer.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   config: configPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 SectionServer.defaultProps = {};
 

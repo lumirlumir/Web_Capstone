@@ -156,6 +156,9 @@ const useInterview = () => {
   const isInterviewDone = () => {
     return indexState === null;
   };
+  const getQuestionMain = () => {
+    return dataState[indexState.row][indexState.col].questionMain;
+  };
 
   /* Return */
   return {
@@ -164,6 +167,7 @@ const useInterview = () => {
     submit,
     set,
     isInterviewDone,
+    getQuestionMain,
   };
 };
 

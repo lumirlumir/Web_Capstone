@@ -4,7 +4,7 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './FooterR.scss';
 
@@ -12,25 +12,34 @@ import './FooterR.scss';
  *
  * @returns FooterR
  */
-function FooterR({ scenario }) {
+function FooterR({ scenario, interview }) {
   /* Props */
   const { getSubsectionObject } = scenario;
-  const { visibility, clickability, isSubmit } = getSubsectionObject().FooterR;
+  const { visibility, clickability } = getSubsectionObject().FooterR;
+  const { contentRef, submit, isInterviewDone } = interview;
 
   /* Function */
-  const doNothing = () => {};
+  const doNothing = () => {
+    if (isInterviewDone()) {
+      return;
+      // TODO
+    }
+    contentRef.current.innerHTML = '';
+    submit();
+  };
 
   /* Return */
   return (
     <footer className={`FooterR ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
-        <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
+        <CompFontNeon neonColor="white">{isInterviewDone() ? <IoExitOutline size="37px" /> : <IoIosCheckmarkCircleOutline size="39px" />}</CompFontNeon>
       </CompButtonLight>
     </footer>
   );
 }
 FooterR.propTypes = {
   scenario: scenarioPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 FooterR.defaultProps = {};
 

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './ButtonMain.scss';
 
@@ -10,11 +10,12 @@ import './ButtonMain.scss';
  *
  * @returns ButtonMain
  */
-function ButtonMain({ scenario, config }) {
+function ButtonMain({ scenario, config, interview }) {
   /* Props */
   const { isSection, subsectionState, getSubsectionObject, toNextSubsection, toLastSubsection, isSubsectionLast } = scenario;
   const { content } = getSubsectionObject().Main.ButtonMain;
-  const { handleConfigState, isConfigDone } = config;
+  const { configState, handleConfigState, isConfigDone } = config;
+  const { init } = interview;
 
   /* Hooks */
   // useMemo
@@ -40,6 +41,7 @@ function ButtonMain({ scenario, config }) {
 
             if (isSection('tutorial') && isConfigDone() && isSubsectionLast()) {
               handleConfigState({ visibility: false });
+              init(configState);
             }
           }
         }}
@@ -54,6 +56,7 @@ function ButtonMain({ scenario, config }) {
 ButtonMain.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   config: configPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 ButtonMain.defaultProps = {};
 

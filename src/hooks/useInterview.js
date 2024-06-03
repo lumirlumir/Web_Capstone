@@ -8,12 +8,14 @@ const useInterview = () => {
   const questionTypeRef = useRef(null);
   const rowRef = useRef(null);
   const colRef = useRef(null);
+  const contentRef = useRef(null);
   // useState
   const [dataState, setDataState] = useState(null);
   const [indexState, setIndexState] = useState({
     row: 0,
     col: 0,
   });
+  const [contentState, setContentState] = useState('');
 
   /* Func Private */
   // handler
@@ -95,22 +97,23 @@ const useInterview = () => {
     if (indexState === null) return; // interview done.
 
     /* Test */
-    console.log('hello useEffect');
+    // console.log('hello useEffect');
 
     /* Variables */
     const curData = dataState[indexState.row][indexState.col];
 
     /* ... */
     if (curData.questionMain === null && curData.answerSystem === null && curData.answerUser === null && curData.feedbackGrade === null) {
-      console.log('generateChainFirst()');
+      // console.log('generateChainFirst()');
       generateChainFirst('cs');
     }
     if (curData.questionMain !== null && curData.answerSystem !== null && curData.answerUser !== null && curData.feedbackGrade === null) {
-      console.log('generateChainSecond()');
+      // console.log('generateChainSecond()');
+      setContentState('');
       generateChainSecond();
     }
     if (curData.questionMain !== null && curData.answerSystem !== null && curData.answerUser !== null && curData.feedbackGrade !== null) {
-      console.log('handleIndexState()');
+      // console.log('handleIndexState()');
       handleIndexState();
     }
   }, [dataState, indexState, generateChainFirst, generateChainSecond]);
@@ -144,14 +147,23 @@ const useInterview = () => {
       return data;
     });
   };
-  const submit = answerUser => {
-    handleDataState({ answerUser });
+  const submit = () => {
+    handleDataState({ answerUser: contentState });
+  };
+  const set = text => {
+    setContentState(text);
+  };
+  const isInterviewDone = () => {
+    return indexState === null;
   };
 
   /* Return */
   return {
+    contentRef,
     init,
     submit,
+    set,
+    isInterviewDone,
   };
 };
 

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import { scenarioPropTypes, configPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -15,7 +15,7 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main({ scenario, config }) {
+function Main({ scenario, config, interview }) {
   /* Hooks */
   // useRef
   const scrollRef = useRef();
@@ -33,10 +33,10 @@ function Main({ scenario, config }) {
       <div>
         <Heading scenario={scenario} />
         <SectionServer scenario={scenario} config={config} />
-        <SectionClient scenario={scenario} />
+        <SectionClient scenario={scenario} interview={interview} />
         <SectionConfig config={config} />
         <SectionResult />
-        <ButtonMain scenario={scenario} config={config} />
+        <ButtonMain scenario={scenario} config={config} interview={interview} />
         <div ref={scrollRef} />
       </div>
     </main>
@@ -45,6 +45,7 @@ function Main({ scenario, config }) {
 Main.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   config: configPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 Main.defaultProps = {};
 

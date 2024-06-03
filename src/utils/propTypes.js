@@ -25,3 +25,13 @@ export const configPropTypes = PropTypes.shape({
   }).isRequired,
   handleConfigState: PropTypes.func.isRequired,
 });
+
+export const interviewPropTypes = PropTypes.shape({
+  contentRef: PropTypes.shape({
+    current: PropTypes.instanceOf(HTMLElement).isRequired,
+  }).isRequired,
+  init: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
+  set: PropTypes.func.isRequired,
+  isInterviewDone: PropTypes.func.isRequired,
+});

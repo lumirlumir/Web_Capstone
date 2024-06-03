@@ -13,8 +13,7 @@ import './HeaderR.scss';
  */
 function HeaderR({ scenario }) {
   /* Props */
-  const { getSubsectionObject } = scenario;
-  const { visibility, clickability } = getSubsectionObject().HeaderR;
+  const { visibility, clickability } = scenario.getSubsectionObj().HeaderR;
 
   /* Function */
   const doNothing = () => {};

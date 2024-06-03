@@ -14,18 +14,20 @@ import './FooterR.scss';
  */
 function FooterR({ scenario, interview }) {
   /* Props */
-  const { getSubsectionObject } = scenario;
-  const { visibility, clickability } = getSubsectionObject().FooterR;
+  const { visibility, clickability } = scenario.getSubsectionObj().FooterR;
   const { contentRef, submit, isInterviewDone } = interview;
 
   /* Function */
   const doNothing = () => {
-    if (isInterviewDone()) {
-      return;
-      // TODO
+    if (contentRef.current) {
+      if (isInterviewDone()) {
+        return;
+        // TODO
+      }
+
+      contentRef.current.innerHTML = '';
+      submit();
     }
-    contentRef.current.innerHTML = '';
-    submit();
   };
 
   /* Return */

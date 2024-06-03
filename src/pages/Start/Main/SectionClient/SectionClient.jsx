@@ -11,8 +11,7 @@ import './SectionClient.scss';
  */
 function SectionClient({ scenario, interview }) {
   /* Props */
-  const { getSubsectionObject } = scenario;
-  const { visibility } = getSubsectionObject().Main.SectionClient;
+  const { visibility } = scenario.getSubsectionObj().Main.SectionClient;
   const { contentRef, set } = interview;
 
   /* Return */

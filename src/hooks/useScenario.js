@@ -25,7 +25,7 @@ const useScenario = () => {
     subsection: 0,
   });
 
-  /* Func */
+  /* Func Public */
   // section
   const isSection = sectionType => {
     switch (sectionType.toUpperCase()) {
@@ -40,9 +40,7 @@ const useScenario = () => {
     }
   };
   // subsection
-  const getSubsectionObject = () => {
-    return chapter[state.section][state.subsection];
-  };
+  const getSubsectionObj = () => chapter[state.section][state.subsection];
   const toNextSubsection = () => {
     const newSubsectionState = state.subsection + 1;
 
@@ -61,9 +59,6 @@ const useScenario = () => {
 
     setState(prevState => ({ ...prevState, subsection: newSubsectionState }));
   };
-  const isSubsectionLast = () => {
-    return state.subsection === chapter[state.section].length - 1;
-  };
 
   /* Return */
   return {
@@ -71,10 +66,9 @@ const useScenario = () => {
     isSection,
     // subsection
     subsectionState: state.subsection,
-    getSubsectionObject,
+    getSubsectionObj,
     toNextSubsection,
     toLastSubsection,
-    isSubsectionLast,
   };
 };
 

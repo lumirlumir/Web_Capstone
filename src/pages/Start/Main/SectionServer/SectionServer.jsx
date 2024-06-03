@@ -12,9 +12,9 @@ import './SectionServer.scss';
  */
 function SectionServer({ scenario, config, interview }) {
   /* Props */
-  const { isSection, subsectionState, getSubsectionObject, toNextSubsection } = scenario;
-  const { auto, api } = getSubsectionObject().global;
-  const { visibility, content } = getSubsectionObject().Main.SectionServer;
+  const { isSection, subsectionState, getSubsectionObj, toNextSubsection } = scenario;
+  const { auto, api } = getSubsectionObj().global;
+  const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
   const { getQuestionMain } = interview;
 

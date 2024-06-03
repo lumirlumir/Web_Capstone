@@ -1,7 +1,7 @@
 import React from 'react';
 
-import useConfig from '@/hooks/useConfig';
 import useScenario from '@/hooks/useScenario';
+import useConfig from '@/hooks/useConfig';
 import useInterview from '@/hooks/useInterview';
 
 import FooterL from './FooterL';
@@ -19,8 +19,8 @@ import './Start.scss';
  */
 function Start() {
   /* Hooks */
-  const config = useConfig();
   const scenario = useScenario();
+  const config = useConfig();
   const interview = useInterview();
 
   /* Return */

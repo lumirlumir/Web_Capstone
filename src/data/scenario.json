@@ -740,47 +740,6 @@
             "content": ""
           }
         }
-      },
-      {
-        "global": {
-          "auto": false,
-          "api": false
-        },
-        "FooterL": {
-          "visibility": true,
-          "clickability": true
-        },
-        "FooterM": {
-          "visibility": true
-        },
-        "FooterR": {
-          "visibility": true,
-          "clickability": true
-        },
-        "HeaderL": {
-          "visibility": true,
-          "clickability": false
-        },
-        "HeaderR": {
-          "visibility": true,
-          "clickability": true
-        },
-        "Main": {
-          "ButtonMain": {
-            "visibility": false,
-            "content": "START"
-          },
-          "Heading": {
-            "visibility": false
-          },
-          "SectionClient": {
-            "visibility": true
-          },
-          "SectionServer": {
-            "visibility": true,
-            "content": ""
-          }
-        }
       }
     ]
   ]

@@ -42,22 +42,35 @@ const useScenario = () => {
   // subsection
   const getSubsectionObj = () => chapter[state.section][state.subsection];
   const toNextSubsection = () => {
-    const newSubsectionState = state.subsection + 1;
-
-    if (newSubsectionState < chapter[state.section].length) {
-      setState(prevState => ({ ...prevState, subsection: newSubsectionState }));
-    } else {
+    setState(prevState => {
       const newSectionState = state.section + 1;
+      const newSubsectionState = state.subsection + 1;
 
-      if (newSectionState < chapter.length) {
-        setState(prevState => ({ ...prevState, section: newSectionState, subsection: 0 }));
+      if (newSubsectionState < chapter[state.section].length) {
+        return {
+          ...prevState,
+          subsection: newSubsectionState,
+        };
       }
-    }
+      if (newSectionState < chapter.length) {
+        return {
+          ...prevState,
+          section: newSectionState,
+          subsection: 0,
+        };
+      }
+      return prevState;
+    });
   };
   const toLastSubsection = () => {
-    const newSubsectionState = chapter[state.section].length - 1;
+    setState(prevState => {
+      const newSubsectionState = chapter[state.section].length - 1;
 
-    setState(prevState => ({ ...prevState, subsection: newSubsectionState }));
+      return {
+        ...prevState,
+        subsection: newSubsectionState,
+      };
+    });
   };
 
   /* Return */

@@ -1,8 +1,9 @@
-import React, { useState, useLayoutEffect, useMemo } from 'react';
+import React, { useLayoutEffect, useMemo } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
 import useScroll from '@/hooks/ui/useScroll';
+import useHistory from '@/hooks/utils/useHistory';
 import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
@@ -20,18 +21,9 @@ function SectionServer({ scenario, config, interview }) {
   const { getQuestionMain } = interview;
 
   /* Hooks */
-  // useHistory
-  const [prevHistoryState, setPrevHistoryState] = useState('');
-  const [, setHistoryState] = useState('');
-
-  const handleHistoryState = text => {
-    setHistoryState(prevState => {
-      setPrevHistoryState(prevState);
-      return `${prevState}${text}`;
-    });
-  };
-  // useScroll
+  // custom
   const { scrollRef, scroll } = useScroll();
+  const { historyState, addHistory } = useHistory();
   // useMemo
   const text = useMemo(() => {
     if (api) return getQuestionMain() === null ? '' : `> ${getQuestionMain()}\n\n`;
@@ -40,13 +32,13 @@ function SectionServer({ scenario, config, interview }) {
   }, [api, content, getQuestionMain]);
   // useLayoutEffect
   useLayoutEffect(() => {
-    handleHistoryState(text);
-  }, [subsectionState, text]);
+    addHistory(text);
+  }, [subsectionState, text, addHistory]);
 
   /* Return */
   return (
     <CompDivNeon className={`SectionServer ${visibility && !configState.visibility ? '' : 'invisible'}`} neonColor="black">
-      <div>{prevHistoryState}</div>
+      <div>{historyState.slice(0, -1)}</div>
       <div>
         <Typewriter
           key={text}

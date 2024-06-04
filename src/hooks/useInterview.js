@@ -157,6 +157,8 @@ const useInterview = () => {
     return indexState === null;
   };
   const getQuestionMain = () => {
+    if (indexState === null) return null;
+
     return dataState[indexState.row][indexState.col].questionMain;
   };
 

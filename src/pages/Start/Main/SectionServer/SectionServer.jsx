@@ -36,7 +36,7 @@ function SectionServer({ scenario, config, interview }) {
   };
   // useMemo
   const text = useMemo(() => {
-    if (api) return `> ${getQuestionMain()}\n\n`;
+    if (api) return getQuestionMain() === null ? '' : `> ${getQuestionMain()}\n\n`;
 
     return content;
   }, [api, content, getQuestionMain]);

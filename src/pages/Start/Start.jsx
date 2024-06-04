@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useScenario from '@/hooks/useScenario';
+import useScenario from '@/hooks/scenario/useScenario';
 import useConfig from '@/hooks/useConfig';
 import useInterview from '@/hooks/useInterview';
 

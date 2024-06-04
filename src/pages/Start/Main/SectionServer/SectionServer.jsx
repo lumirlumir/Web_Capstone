@@ -1,7 +1,8 @@
-import React, { useState, useRef, useLayoutEffect, useMemo } from 'react';
+import React, { useState, useLayoutEffect, useMemo } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
+import useScroll from '@/hooks/ui/useScroll';
 import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
@@ -30,10 +31,7 @@ function SectionServer({ scenario, config, interview }) {
     });
   };
   // useScroll
-  const scrollRef = useRef();
-  const scroll = () => {
-    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
-  };
+  const { scrollRef, scroll } = useScroll();
   // useMemo
   const text = useMemo(() => {
     if (api) return getQuestionMain() === null ? '' : `> ${getQuestionMain()}\n\n`;

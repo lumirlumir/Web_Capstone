@@ -5,7 +5,7 @@ import useInterviewObj from '@/hooks/interview/useInterviewObj';
 import useContent from '@/hooks/utils/useContent';
 import useTrigger from '@/hooks/utils/useTrigger';
 
-import { generateQuestionMain, generateAnswerSystem, generateFeedbackGrade, generateQuestionSub } from '@/services/openaiService';
+import { fetchQuestionMain, fetchQuestionSub, fetchAnswer, fetchFeedback } from '@/services/openaiService';
 
 const useInterview = () => {
   /* Hooks */
@@ -20,9 +20,9 @@ const useInterview = () => {
 
   /* Func Private */
   // generateChain
-  const generateChainFirst = useCallback(
+  const fetchChainFirst = useCallback(
     questionType => {
-      const generateQuestion = isQuestionMain() ? generateQuestionMain(questionType, getQuestionMainHistory()) : generateQuestionSub(interviewHistoryRef.current.at(-1).question, interviewHistoryRef.current.at(-1).answerUser);
+      const generateQuestion = isQuestionMain() ? fetchQuestionMain(questionType, getQuestionMainHistory()) : fetchQuestionSub(interviewHistoryRef.current.at(-1).question, interviewHistoryRef.current.at(-1).answerUser);
 
       generateQuestion
         .then(result => {
@@ -31,15 +31,15 @@ const useInterview = () => {
           return result;
         })
         .then(PrevResult => {
-          generateAnswerSystem(PrevResult).then(result => {
+          fetchAnswer(PrevResult).then(result => {
             addInterviewObj({ answerSystem: result });
           });
         });
     },
     [interviewHistoryRef, isQuestionMain, getQuestionMainHistory, addInterviewObj],
   );
-  const generateChainSecond = useCallback(() => {
-    generateFeedbackGrade(interviewObjState.answerSystem, interviewObjState.answerUser).then(result => {
+  const fetchChainSecond = useCallback(() => {
+    fetchFeedback(interviewObjState.answerSystem, interviewObjState.answerUser).then(result => {
       addInterviewObj({ feedback: JSON.parse(result) });
     });
   }, [interviewObjState, addInterviewObj]);
@@ -55,12 +55,12 @@ const useInterview = () => {
 
     /* ... */
     if (isInterviewObjEmpty()) {
-      // console.log('generateChainFirst()');
-      generateChainFirst('cs');
+      // console.log('fetchChainFirst()');
+      fetchChainFirst('cs');
     }
     if (isOnlyFeedbackEmpty()) {
-      // console.log('generateChainSecond()');
-      generateChainSecond();
+      // console.log('fetchChainSecond()');
+      fetchChainSecond();
     }
     if (isInterviewObjFull()) {
       // console.log('addInterviewHistory()');
@@ -68,7 +68,7 @@ const useInterview = () => {
       // console.log('initInterviewObj()');
       initInterviewObj();
     }
-  }, [addInterviewHistory, isInterviewDone, interviewObjState, initInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, generateChainFirst, generateChainSecond, triggerState]);
+  }, [addInterviewHistory, isInterviewDone, interviewObjState, initInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, fetchChainFirst, fetchChainSecond, triggerState]);
 
   /* Func Public */
   const initInterview = useCallback(

@@ -7,7 +7,7 @@
     "presence_penalty": 0,
     "max_tokens": 2048
   },
-  "generateQuestionMain": {
+  "fetchQuestionMain": {
     "cs": {
       "messages": [
         {
@@ -164,7 +164,56 @@
       ]
     }
   },
-  "generateAnswerSystem": {
+  "fetchQuestionSub": {
+    "messages": [
+      {
+        "role": "system",
+        "content": [
+          {
+            "type": "text",
+            "text": "Generate a list of follow-up technical interview questions based on the Previous Question. Refers to USER's Answer only when it has given a response related to Previous Question.\n\nRules:\n- No explanation is needed. Just generate follow-up questions. \n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 100 tokens and less than 200 tokens.\n- Ensure no question is repeated."
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "text": "Previous Question\n\n이진 검색 트리(Binary Search Tree)의 삽입 연산을 설명해주세요. 삽입 연산 시에 어떤 규칙을 따르며 새로운 노드를 적절한 위치에 추가하는지 자세히 설명해주세요. 또한, 이진 검색 트리의 균형을 유지하기 위해 어떤 방법들이 사용될 수 있는지에 대해도 설명해주세요.\n\nUSER's answer\n\n이진 검색 트리의 삽입 연산은 현재 노드와 삽입할 값을 비교하여 작은 경우 왼쪽, 큰 경우 오른쪽으로 이동하며 적절한 위치를 찾아 삽입합니다. 균형을 유지하기 위해 AVL 트리나 레드-블랙 트리 같은 방법을 사용합니다. 이는 트리의 높이를 최소화하고 검색 효율을 높이는 데 도움을 줍니다.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "text": "AVL 트리와 레드-블랙 트리가 균형을 유지하는 방법을 자세히 설명해주세요. AVL 트리는 삽입 및 삭제 후 어떻게 균형을 유지하는지 예를 들어 설명해주시고, 레드-블랙 트리는 삽입 및 삭제 후 색상 변경과 회전을 통해 균형을 유지하는 방법을 예를 들어 설명해주세요.",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Previous Question\n\nAVL 트리와 레드-블랙 트리가 균형을 유지하는 방법을 자세히 설명해주세요. AVL 트리는 삽입 및 삭제 후 어떻게 균형을 유지하는지 예를 들어 설명해주시고, 레드-블랙 트리는 삽입 및 삭제 후 색상 변경과 회전을 통해 균형을 유지하는 방법을 예를 들어 설명해주세요.\n\nUSER's answer\n\n잘 모르겠어."
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "AVL 트리의 네 가지 회전 방법인 LL, RR, LR, RL 회전이 어떤 상황에서 사용되는지, 그리고 각 회전이 어떻게 이루어지는지 자세히 설명해 주세요. 특정 노드를 삽입하여 균형이 깨진 상황에서 어떤 회전이 필요한지와 그 과정을 구체적으로 설명해 주세요."
+          }
+        ]
+      }
+    ]
+  },
+  "fetchAnswer": {
     "messages": [
       {
         "role": "system",
@@ -213,7 +262,7 @@
       }
     ]
   },
-  "generateFeedbackGrade": {
+  "fetchFeedback": {
     "messages": [
       {
         "role": "system",
@@ -275,55 +324,6 @@
           {
             "text": "{\"feedback\":\"사용자의 답변은 주어진 정답과 매우 다르며, 내용이 부족하여 정확한 설명이 없습니다. 이진 검색 트리의 삽입 연산과 균형을 유지하기 위한 AVL 트리와 레드-블랙 트리에 대한 설명이 전혀 포함되지 않았습니다. 사용자의 답변은 문제를 해결하는 데 필요한 정보가 전혀 없어서 낮은 점수를 부여해야 합니다.\",\n    \"score\":\"poor\"\n}",
             "type": "text"
-          }
-        ]
-      }
-    ]
-  },
-  "generateQuestionSub": {
-    "messages": [
-      {
-        "role": "system",
-        "content": [
-          {
-            "type": "text",
-            "text": "Generate a list of follow-up technical interview questions based on the Previous Question. Refers to USER's Answer only when it has given a response related to Previous Question.\n\nRules:\n- No explanation is needed. Just generate follow-up questions. \n- Use Korean and honorifics only.\n- Be sure to make only 1 question at a time at the request of USER.\n- The length of the question should be more than 100 tokens and less than 200 tokens.\n- Ensure no question is repeated."
-          }
-        ]
-      },
-      {
-        "role": "user",
-        "content": [
-          {
-            "text": "Previous Question\n\n이진 검색 트리(Binary Search Tree)의 삽입 연산을 설명해주세요. 삽입 연산 시에 어떤 규칙을 따르며 새로운 노드를 적절한 위치에 추가하는지 자세히 설명해주세요. 또한, 이진 검색 트리의 균형을 유지하기 위해 어떤 방법들이 사용될 수 있는지에 대해도 설명해주세요.\n\nUSER's answer\n\n이진 검색 트리의 삽입 연산은 현재 노드와 삽입할 값을 비교하여 작은 경우 왼쪽, 큰 경우 오른쪽으로 이동하며 적절한 위치를 찾아 삽입합니다. 균형을 유지하기 위해 AVL 트리나 레드-블랙 트리 같은 방법을 사용합니다. 이는 트리의 높이를 최소화하고 검색 효율을 높이는 데 도움을 줍니다.",
-            "type": "text"
-          }
-        ]
-      },
-      {
-        "role": "assistant",
-        "content": [
-          {
-            "text": "AVL 트리와 레드-블랙 트리가 균형을 유지하는 방법을 자세히 설명해주세요. AVL 트리는 삽입 및 삭제 후 어떻게 균형을 유지하는지 예를 들어 설명해주시고, 레드-블랙 트리는 삽입 및 삭제 후 색상 변경과 회전을 통해 균형을 유지하는 방법을 예를 들어 설명해주세요.",
-            "type": "text"
-          }
-        ]
-      },
-      {
-        "role": "user",
-        "content": [
-          {
-            "type": "text",
-            "text": "Previous Question\n\nAVL 트리와 레드-블랙 트리가 균형을 유지하는 방법을 자세히 설명해주세요. AVL 트리는 삽입 및 삭제 후 어떻게 균형을 유지하는지 예를 들어 설명해주시고, 레드-블랙 트리는 삽입 및 삭제 후 색상 변경과 회전을 통해 균형을 유지하는 방법을 예를 들어 설명해주세요.\n\nUSER's answer\n\n잘 모르겠어."
-          }
-        ]
-      },
-      {
-        "role": "assistant",
-        "content": [
-          {
-            "type": "text",
-            "text": "AVL 트리의 네 가지 회전 방법인 LL, RR, LR, RL 회전이 어떤 상황에서 사용되는지, 그리고 각 회전이 어떻게 이루어지는지 자세히 설명해 주세요. 특정 노드를 삽입하여 균형이 깨진 상황에서 어떤 회전이 필요한지와 그 과정을 구체적으로 설명해 주세요."
           }
         ]
       }

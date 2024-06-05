@@ -2,7 +2,7 @@ import openaiJson from '@/data/openai.json';
 import openaiInstance from '@/services/openaiInstance';
 import { createMessagesObject, stringArrayToMessagesObjectArray } from '@/utils/openaiUtils';
 
-const generate = async messages => {
+const fetch = async messages => {
   const response = await openaiInstance.chat.completions.create({
     ...openaiJson.requestBody,
     messages,
@@ -17,14 +17,22 @@ const generate = async messages => {
  * @param {string[]} history
  * @returns
  */
-export const generateQuestionMain = async (type, history) => generate([...openaiJson.generateQuestionMain[type.toLowerCase()].messages, ...stringArrayToMessagesObjectArray('assistant', history)]);
+export const fetchQuestionMain = async (type, history) => fetch([...openaiJson.fetchQuestionMain[type.toLowerCase()].messages, ...stringArrayToMessagesObjectArray('assistant', history)]);
+
+/**
+ *
+ * @param {string} question
+ * @param {string} answerUser
+ * @returns
+ */
+export const fetchQuestionSub = async (question, answerUser) => fetch([...openaiJson.fetchQuestionSub.messages, createMessagesObject('user', `Previous Question\n\n${question}\n\nUSER's Answer\n\n${answerUser}`)]);
 
 /**
  *
  * @param {string} question
  * @returns
  */
-export const generateAnswerSystem = async question => generate([...openaiJson.generateAnswerSystem.messages, createMessagesObject('user', question)]);
+export const fetchAnswer = async question => fetch([...openaiJson.fetchAnswer.messages, createMessagesObject('user', question)]);
 
 /**
  *
@@ -32,15 +40,7 @@ export const generateAnswerSystem = async question => generate([...openaiJson.ge
  * @param {string} answerUser
  * @returns
  */
-export const generateFeedbackGrade = async (answerSystem, answerUser) => generate([...openaiJson.generateFeedbackGrade.messages, createMessagesObject('user', `Correct Answer\n\n${answerSystem}\n\nUSER's Answer\n\n${answerUser}`)]);
-
-/**
- *
- * @param {string} question
- * @param {string} answerUser
- * @returns
- */
-export const generateQuestionSub = async (question, answerUser) => generate([...openaiJson.generateQuestionSub.messages, createMessagesObject('user', `Previous Question\n\n${question}\n\nUSER's Answer\n\n${answerUser}`)]);
+export const fetchFeedback = async (answerSystem, answerUser) => fetch([...openaiJson.fetchFeedback.messages, createMessagesObject('user', `Correct Answer\n\n${answerSystem}\n\nUSER's Answer\n\n${answerUser}`)]);
 
 /*
 TODO: make enum type and adjust openai.json
@@ -48,7 +48,7 @@ TODO: make enum type and adjust openai.json
 ex)
 
 const generateType = {
-  generateQuestionMain: 1
+  fetchQuestionMain: 1
   generateAnswer: 2
   //...
 }

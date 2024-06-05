@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 
+import useInterviewHistory from '@/hooks/interview/useInterviewHistory';
 import useInterviewObj from '@/hooks/interview/useInterviewObj';
 import useContent from '@/hooks/utils/useContent';
-import useHistoryRef from '@/hooks/utils/useHistoryRef';
 import useTrigger from '@/hooks/utils/useTrigger';
 
 import { generateQuestionMain, generateAnswerSystem, generateFeedbackGrade, generateQuestionSub } from '@/services/openaiService';
 
 const useInterview = () => {
   /* Hooks */
+  // useInterviewHistory
+  const { interviewHistoryRef, initInterviewHistory, addInterviewHistory, isQuestionMain, isInterviewDone, getQuestionMainHistory } = useInterviewHistory();
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
   // useContent
@@ -16,34 +18,11 @@ const useInterview = () => {
   // useTrigger
   const { triggerState, trigger } = useTrigger();
 
-  // useInterviewHistory
-  const questionTypeRef = useRef(null);
-  const rowRef = useRef(null);
-  const colRef = useRef(null);
-
-  const { historyRef, addHistory } = useHistoryRef();
-
-  const isQuestionMain = useCallback(() => {
-    return historyRef.current.length % colRef.current === 0;
-  }, [historyRef]);
-  const isInterviewDone = useCallback(() => {
-    return historyRef.current.length === rowRef.current * colRef.current;
-  }, [historyRef]);
-  const getQuestionMainHistory = useCallback(() => {
-    const questionMainHistory = [];
-
-    for (let i = 0; i < historyRef.current.length; i += colRef.current) {
-      questionMainHistory.push(historyRef.current[i].question);
-    }
-
-    return questionMainHistory;
-  }, [historyRef]);
-
   /* Func Private */
   // generateChain
   const generateChainFirst = useCallback(
     questionType => {
-      const generateQuestion = isQuestionMain() ? generateQuestionMain(questionType, getQuestionMainHistory()) : generateQuestionSub(historyRef.current.at(-1).question, historyRef.current.at(-1).answerUser);
+      const generateQuestion = isQuestionMain() ? generateQuestionMain(questionType, getQuestionMainHistory()) : generateQuestionSub(interviewHistoryRef.current.at(-1).question, interviewHistoryRef.current.at(-1).answerUser);
 
       generateQuestion
         .then(result => {
@@ -57,7 +36,7 @@ const useInterview = () => {
           });
         });
     },
-    [isQuestionMain, getQuestionMainHistory, historyRef, addInterviewObj],
+    [interviewHistoryRef, isQuestionMain, getQuestionMainHistory, addInterviewObj],
   );
   const generateChainSecond = useCallback(() => {
     generateFeedbackGrade(interviewObjState.answerSystem, interviewObjState.answerUser).then(result => {
@@ -84,20 +63,16 @@ const useInterview = () => {
       generateChainSecond();
     }
     if (isInterviewObjFull()) {
-      // console.log('addHistory()');
-      addHistory(interviewObjState);
+      // console.log('addInterviewHistory()');
+      addInterviewHistory(interviewObjState);
       // console.log('initInterviewObj()');
       initInterviewObj();
     }
-  }, [interviewObjState, generateChainFirst, generateChainSecond, isInterviewObjEmpty, isOnlyFeedbackEmpty, isInterviewObjFull, addHistory, isInterviewDone, triggerState, initInterviewObj]);
+  }, [addInterviewHistory, isInterviewDone, interviewObjState, initInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, generateChainFirst, generateChainSecond, triggerState]);
 
   /* Func Public */
-  const init = configState => {
-    const { questionType, questionMain, questionSub } = configState;
-    questionTypeRef.current = questionType;
-    rowRef.current = questionMain;
-    colRef.current = questionSub + 1;
-
+  const initInterview = configState => {
+    initInterviewHistory(configState);
     trigger();
   };
   const submit = () => {
@@ -107,12 +82,16 @@ const useInterview = () => {
 
   /* Return */
   return {
-    contentRef,
-    init,
-    submit,
-    set: setContent,
+    // useInterviewHistory
     isInterviewDone,
+    // useInterviewObject
     getQuestionMain: getQuestion,
+    // useContent
+    contentRef,
+    set: setContent,
+    // useInterview
+    init: initInterview,
+    submit,
   };
 };
 

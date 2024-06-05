@@ -71,26 +71,29 @@ const useInterview = () => {
   }, [addInterviewHistory, isInterviewDone, interviewObjState, initInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, generateChainFirst, generateChainSecond, triggerState]);
 
   /* Func Public */
-  const initInterview = configState => {
-    initInterviewHistory(configState);
-    trigger();
-  };
-  const submit = () => {
+  const initInterview = useCallback(
+    configState => {
+      initInterviewHistory(configState);
+      trigger();
+    },
+    [initInterviewHistory, trigger],
+  );
+  const submit = useCallback(() => {
     addInterviewObj({ answerUser: contentState });
     clearContent();
-  };
+  }, [addInterviewObj, contentState, clearContent]);
 
   /* Return */
   return {
     // useInterviewHistory
     isInterviewDone,
     // useInterviewObject
-    getQuestionMain: getQuestion,
+    getQuestion,
     // useContent
     contentRef,
-    set: setContent,
+    setContent,
     // useInterview
-    init: initInterview,
+    initInterview,
     submit,
   };
 };

@@ -18,7 +18,7 @@ function SectionServer({ scenario, config, interview }) {
   const { auto, api } = getSubsectionObj().global;
   const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
-  const { getQuestionMain } = interview;
+  const { getQuestion } = interview;
 
   /* Hooks */
   // custom
@@ -26,10 +26,10 @@ function SectionServer({ scenario, config, interview }) {
   const { historyState, addHistory } = useHistoryState();
   // useMemo
   const text = useMemo(() => {
-    if (api) return getQuestionMain() === null ? '' : `> ${getQuestionMain()}\n\n`;
+    if (api) return getQuestion() === null ? '' : `> ${getQuestion()}\n\n`;
 
     return content;
-  }, [api, content, getQuestionMain]);
+  }, [api, content, getQuestion]);
   // useLayoutEffect
   useLayoutEffect(() => {
     addHistory(text);

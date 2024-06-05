@@ -15,7 +15,7 @@ function ButtonMain({ scenario, config, interview }) {
   const { isSection, subsectionState, getSubsectionObj, toNextSubsection, toLastSubsection } = scenario;
   const { content } = getSubsectionObj().Main.ButtonMain;
   const { configState, handleConfigState, isConfigDone } = config;
-  const { init } = interview;
+  const { initInterview } = interview;
 
   /* Hooks */
   // useMemo
@@ -41,7 +41,7 @@ function ButtonMain({ scenario, config, interview }) {
 
             if (isSection('tutorial') && isConfigDone()) {
               handleConfigState({ visibility: false });
-              init(configState);
+              initInterview(configState);
             }
           }
         }}

@@ -31,7 +31,6 @@ export const interviewPropTypes = PropTypes.shape({
   contentRef: PropTypes.shape({
     current: PropTypes.instanceOf(HTMLElement),
   }).isRequired,
-  setContent: PropTypes.func.isRequired,
   initInterview: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
 });

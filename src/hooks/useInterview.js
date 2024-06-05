@@ -14,7 +14,7 @@ const useInterview = () => {
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
   // useContent
-  const { contentRef, contentState, clearContent, setContent } = useContent();
+  const { contentRef, getTextContent, setHTMLContent } = useContent();
   // useTrigger
   const { triggerState, trigger } = useTrigger();
 
@@ -79,9 +79,9 @@ const useInterview = () => {
     [initInterviewHistory, trigger],
   );
   const submit = useCallback(() => {
-    addInterviewObj({ answerUser: contentState });
-    clearContent();
-  }, [addInterviewObj, contentState, clearContent]);
+    addInterviewObj({ answerUser: getTextContent() });
+    setHTMLContent('');
+  }, [addInterviewObj, getTextContent, setHTMLContent]);
 
   /* Return */
   return {
@@ -91,7 +91,6 @@ const useInterview = () => {
     getQuestion,
     // useContent
     contentRef,
-    setContent,
     // useInterview
     initInterview,
     submit,

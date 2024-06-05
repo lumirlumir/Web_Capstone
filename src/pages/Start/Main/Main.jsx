@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import useScroll from '@/hooks/ui/useScroll';
+import useScroll from '@/hooks/utils/useScroll';
 import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';

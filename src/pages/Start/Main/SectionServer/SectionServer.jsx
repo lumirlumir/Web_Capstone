@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useMemo } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
-import useScroll from '@/hooks/ui/useScroll';
+import useScroll from '@/hooks/utils/useScroll';
 import useHistoryState from '@/hooks/utils/useHistoryState';
 import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 

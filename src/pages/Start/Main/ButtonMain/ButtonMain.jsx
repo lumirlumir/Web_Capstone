@@ -12,21 +12,21 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, config, interview }) {
   /* Props */
-  const { isSection, subsectionState, getSubsectionObject, toNextSubsection, toLastSubsection, isSubsectionLast } = scenario;
-  const { content } = getSubsectionObject().Main.ButtonMain;
+  const { isSection, subsectionState, getSubsectionObj, toNextSubsection, toLastSubsection } = scenario;
+  const { content } = getSubsectionObj().Main.ButtonMain;
   const { configState, handleConfigState, isConfigDone } = config;
-  const { init } = interview;
+  const { initInterview } = interview;
 
   /* Hooks */
   // useMemo
   const visibility = useMemo(() => {
-    const { visibility: _visibility } = getSubsectionObject().Main.ButtonMain;
+    const { visibility: _visibility } = getSubsectionObj().Main.ButtonMain;
 
     if (_visibility === null) {
       return isConfigDone();
     }
     return _visibility;
-  }, [getSubsectionObject, isConfigDone]);
+  }, [getSubsectionObj, isConfigDone]);
 
   /* Return */
   return (
@@ -39,9 +39,9 @@ function ButtonMain({ scenario, config, interview }) {
           } else {
             toNextSubsection();
 
-            if (isSection('tutorial') && isConfigDone() && isSubsectionLast()) {
+            if (isSection('tutorial') && isConfigDone()) {
               handleConfigState({ visibility: false });
-              init(configState);
+              initInterview(configState);
             }
           }
         }}

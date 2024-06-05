@@ -11,14 +11,13 @@ import './SectionClient.scss';
  */
 function SectionClient({ scenario, interview }) {
   /* Props */
-  const { getSubsectionObject } = scenario;
-  const { visibility } = getSubsectionObject().Main.SectionClient;
-  const { contentRef, set } = interview;
+  const { visibility } = scenario.getSubsectionObj().Main.SectionClient;
+  const { contentRef, setContent } = interview;
 
   /* Return */
   return (
     <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black">
-      <div ref={contentRef} contentEditable="true" spellCheck="false" placeholder="$ Interviewee" onInput={e => set(e.currentTarget.textContent)} />
+      <div ref={contentRef} contentEditable="true" spellCheck="false" placeholder="$ Interviewee" onInput={e => setContent(e.currentTarget.textContent)} />
     </CompDivNeon>
   );
 }

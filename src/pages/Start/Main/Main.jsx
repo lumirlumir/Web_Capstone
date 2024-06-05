@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
+import useScroll from '@/hooks/utils/useScroll';
 import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
@@ -16,28 +17,28 @@ import './Main.scss';
  * @returns Main
  */
 function Main({ scenario, config, interview }) {
+  /* Props */
+  const { subsectionState } = scenario;
+
   /* Hooks */
-  // useRef
-  const scrollRef = useRef();
+  // useScroll
+  const { scrollRef, scroll } = useScroll();
   // useEffect
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    }, 2000);
+    const timeout = setTimeout(scroll, 2000);
     return () => clearTimeout(timeout);
-  }, [scenario.subsectionState]);
+  }, [subsectionState, scroll]);
 
   /* Return */
   return (
     <main className="Main">
-      <div>
+      <div ref={scrollRef}>
         <Heading scenario={scenario} />
-        <SectionServer scenario={scenario} config={config} />
+        <SectionServer scenario={scenario} config={config} interview={interview} />
         <SectionClient scenario={scenario} interview={interview} />
         <SectionConfig config={config} />
         <SectionResult />
         <ButtonMain scenario={scenario} config={config} interview={interview} />
-        <div ref={scrollRef} />
       </div>
     </main>
   );

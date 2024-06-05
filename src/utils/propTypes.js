@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 export const scenarioPropTypes = PropTypes.shape({
   isSection: PropTypes.func.isRequired,
   subsectionState: PropTypes.number.isRequired,
-  getSubsectionObject: PropTypes.func.isRequired,
+  getSubsectionObj: PropTypes.func.isRequired,
   toNextSubsection: PropTypes.func.isRequired,
   toLastSubsection: PropTypes.func.isRequired,
-  isSubsectionLast: PropTypes.func.isRequired,
 });
 
 export const configPropTypes = PropTypes.shape({
@@ -27,11 +26,12 @@ export const configPropTypes = PropTypes.shape({
 });
 
 export const interviewPropTypes = PropTypes.shape({
-  contentRef: PropTypes.shape({
-    current: PropTypes.instanceOf(HTMLElement).isRequired,
-  }).isRequired,
-  init: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired,
-  set: PropTypes.func.isRequired,
   isInterviewDone: PropTypes.func.isRequired,
+  getQuestion: PropTypes.func.isRequired,
+  contentRef: PropTypes.shape({
+    current: PropTypes.instanceOf(HTMLElement),
+  }).isRequired,
+  setContent: PropTypes.func.isRequired,
+  initInterview: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
 });

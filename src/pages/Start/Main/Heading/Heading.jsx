@@ -11,8 +11,7 @@ import './Heading.scss';
  */
 function Heading({ scenario }) {
   /* Props */
-  const { getSubsectionObject } = scenario;
-  const { visibility } = getSubsectionObject().Main.Heading;
+  const { visibility } = scenario.getSubsectionObj().Main.Heading;
 
   /* Return */
   return (

@@ -14,9 +14,8 @@ import './FooterR.scss';
  */
 function FooterR({ scenario, interview }) {
   /* Props */
-  const { getSubsectionObject } = scenario;
-  const { visibility, clickability } = getSubsectionObject().FooterR;
-  const { contentRef, submit, isInterviewDone } = interview;
+  const { visibility, clickability } = scenario.getSubsectionObj().FooterR;
+  const { submit, isInterviewDone } = interview;
 
   /* Function */
   const doNothing = () => {
@@ -24,7 +23,7 @@ function FooterR({ scenario, interview }) {
       return;
       // TODO
     }
-    contentRef.current.innerHTML = '';
+
     submit();
   };
 

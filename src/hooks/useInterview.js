@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from 'react';
 
+import useInterviewContent from '@/hooks/interview/useInterviewContent';
 import useInterviewHistory from '@/hooks/interview/useInterviewHistory';
 import useInterviewObj from '@/hooks/interview/useInterviewObj';
-import useContent from '@/hooks/utils/useContent';
 import useTrigger from '@/hooks/utils/useTrigger';
 
 import { fetchQuestionMain, fetchQuestionSub, fetchAnswer, fetchFeedback } from '@/services/openaiService';
@@ -14,7 +14,7 @@ const useInterview = () => {
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
   // useContent
-  const { contentRef, getTextContent, setHTMLContent } = useContent();
+  const { contentRef, getTextContent, setHTMLContent, listening, toggleListening } = useInterviewContent();
   // useTrigger
   const { triggerState, trigger } = useTrigger();
 
@@ -85,6 +85,9 @@ const useInterview = () => {
 
   /* Return */
   return {
+    // useInterviewContent
+    listening,
+    toggleListening,
     // useInterviewHistory
     isInterviewDone,
     // useInterviewObject

@@ -15,19 +15,16 @@ import './FooterR.scss';
 function FooterR({ scenario, interview }) {
   /* Props */
   const { visibility, clickability } = scenario.getSubsectionObj().FooterR;
-  const { contentRef, submit, isInterviewDone } = interview;
+  const { submit, isInterviewDone } = interview;
 
   /* Function */
   const doNothing = () => {
-    if (contentRef.current) {
-      if (isInterviewDone()) {
-        return;
-        // TODO
-      }
-
-      contentRef.current.innerHTML = '';
-      submit();
+    if (isInterviewDone()) {
+      return;
+      // TODO
     }
+
+    submit();
   };
 
   /* Return */

@@ -1,14 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import useInterviewObj from '@/hooks/interview/useInterviewObj';
+import useContent from '@/hooks/utils/useContent';
 import useHistoryRef from '@/hooks/utils/useHistoryRef';
 import useTrigger from '@/hooks/utils/useTrigger';
+
 import { generateQuestionMain, generateAnswerSystem, generateFeedbackGrade, generateQuestionSub } from '@/services/openaiService';
 
 const useInterview = () => {
   /* Hooks */
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
+  // useContent
+  const { contentRef, contentState, clearContent, setContent } = useContent();
   // useTrigger
   const { triggerState, trigger } = useTrigger();
 
@@ -34,12 +38,6 @@ const useInterview = () => {
 
     return questionMainHistory;
   }, [historyRef]);
-  // useContent
-  const contentRef = useRef(null);
-  const [contentState, setContentState] = useState('');
-  const set = text => {
-    setContentState(text);
-  };
 
   /* Func Private */
   // generateChain
@@ -83,7 +81,6 @@ const useInterview = () => {
     }
     if (isOnlyFeedbackEmpty()) {
       // console.log('generateChainSecond()');
-      setContentState('');
       generateChainSecond();
     }
     if (isInterviewObjFull()) {
@@ -105,6 +102,7 @@ const useInterview = () => {
   };
   const submit = () => {
     addInterviewObj({ answerUser: contentState });
+    clearContent();
   };
 
   /* Return */
@@ -112,7 +110,7 @@ const useInterview = () => {
     contentRef,
     init,
     submit,
-    set,
+    set: setContent,
     isInterviewDone,
     getQuestionMain: getQuestion,
   };

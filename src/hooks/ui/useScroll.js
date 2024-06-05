@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 /**
  *
@@ -10,7 +10,15 @@ const useScroll = () => {
   const scrollRef = useRef();
 
   /* Func */
-  const scroll = () => scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+  const scroll = useCallback(
+    () =>
+      scrollRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'nearest',
+      }),
+    [],
+  );
 
   /* Return */
   return {

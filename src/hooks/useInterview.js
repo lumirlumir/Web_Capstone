@@ -2,12 +2,16 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import useInterviewObj from '@/hooks/interview/useInterviewObj';
 import useHistoryRef from '@/hooks/utils/useHistoryRef';
+import useTrigger from '@/hooks/utils/useTrigger';
 import { generateQuestionMain, generateAnswerSystem, generateFeedbackGrade, generateQuestionSub } from '@/services/openaiService';
 
 const useInterview = () => {
   /* Hooks */
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
+  // useTrigger
+  const { triggerState, trigger } = useTrigger();
+
   // useInterviewHistory
   const questionTypeRef = useRef(null);
   const rowRef = useRef(null);
@@ -35,11 +39,6 @@ const useInterview = () => {
   const [contentState, setContentState] = useState('');
   const set = text => {
     setContentState(text);
-  };
-  // useTrigger
-  const [triggerState, setTriggerState] = useState(false);
-  const trigger = () => {
-    setTriggerState(true);
   };
 
   /* Func Private */

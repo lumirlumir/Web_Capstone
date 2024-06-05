@@ -1,165 +1,111 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+import useInterviewObj from '@/hooks/interview/useInterviewObj';
+import useHistoryRef from '@/hooks/utils/useHistoryRef';
 import { generateQuestionMain, generateAnswerSystem, generateFeedbackGrade, generateQuestionSub } from '@/services/openaiService';
 
 const useInterview = () => {
   /* Hooks */
-  // useRef
+  // useInterviewObj
+  const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
+  // useInterviewHistory
   const questionTypeRef = useRef(null);
   const rowRef = useRef(null);
   const colRef = useRef(null);
-  const contentRef = useRef(null);
-  // useState
-  const [dataState, setDataState] = useState(null);
-  const [indexState, setIndexState] = useState({
-    row: 0,
-    col: 0,
-  });
-  const [contentState, setContentState] = useState('');
 
-  /* Func Private */
-  // handler
-  const handleDataState = useCallback(
-    obj => {
-      setDataState(prevState => {
-        const newData = [...prevState];
+  const { historyRef, addHistory } = useHistoryRef();
 
-        newData[indexState.row] = [...prevState[indexState.row]];
-
-        newData[indexState.row][indexState.col] = {
-          ...prevState[indexState.row][indexState.col],
-          ...obj,
-        };
-
-        return newData;
-      });
-    },
-    [indexState],
-  );
-  const handleIndexState = () => {
-    setIndexState(prevState => {
-      if (prevState.col + 1 < colRef.current) {
-        return {
-          ...prevState,
-          col: prevState.col + 1,
-        };
-      }
-      if (prevState.row + 1 < rowRef.current) {
-        return {
-          ...prevState,
-          row: prevState.row + 1,
-          col: 0,
-        };
-      }
-      return null;
-    });
-  };
-  // get
+  const isQuestionMain = useCallback(() => {
+    return historyRef.current.length % colRef.current === 0;
+  }, [historyRef]);
+  const isInterviewDone = useCallback(() => {
+    return historyRef.current.length === rowRef.current * colRef.current;
+  }, [historyRef]);
   const getQuestionMainHistory = useCallback(() => {
     const questionMainHistory = [];
 
-    for (let i = 0; i <= indexState.row - 1; i += 1) {
-      questionMainHistory.push(dataState[i][0].questionMain);
+    for (let i = 0; i < historyRef.current.length; i += colRef.current) {
+      questionMainHistory.push(historyRef.current[i].question);
     }
 
     return questionMainHistory;
-  }, [dataState, indexState]);
+  }, [historyRef]);
+  // useContent
+  const contentRef = useRef(null);
+  const [contentState, setContentState] = useState('');
+  const set = text => {
+    setContentState(text);
+  };
+  // useTrigger
+  const [triggerState, setTriggerState] = useState(false);
+  const trigger = () => {
+    setTriggerState(true);
+  };
+
+  /* Func Private */
   // generateChain
   const generateChainFirst = useCallback(
     questionType => {
-      const generateQuestion =
-        indexState.col === 0 ? generateQuestionMain(questionType, getQuestionMainHistory()) : generateQuestionSub(dataState[indexState.row][indexState.col - 1].questionMain, dataState[indexState.row][indexState.col - 1].answerUser);
+      const generateQuestion = isQuestionMain() ? generateQuestionMain(questionType, getQuestionMainHistory()) : generateQuestionSub(historyRef.current.at(-1).question, historyRef.current.at(-1).answerUser);
 
       generateQuestion
         .then(result => {
-          handleDataState({ questionMain: result });
+          addInterviewObj({ question: result });
 
           return result;
         })
         .then(PrevResult => {
           generateAnswerSystem(PrevResult).then(result => {
-            handleDataState({ answerSystem: result });
+            addInterviewObj({ answerSystem: result });
           });
         });
     },
-    [dataState, indexState, handleDataState, getQuestionMainHistory],
+    [isQuestionMain, getQuestionMainHistory, historyRef, addInterviewObj],
   );
   const generateChainSecond = useCallback(() => {
-    generateFeedbackGrade(dataState[indexState.row][indexState.col].answerSystem, dataState[indexState.row][indexState.col].answerUser).then(result => {
-      handleDataState({ feedbackGrade: JSON.parse(result) });
+    generateFeedbackGrade(interviewObjState.answerSystem, interviewObjState.answerUser).then(result => {
+      addInterviewObj({ feedback: JSON.parse(result) });
     });
-  }, [dataState, indexState, handleDataState]);
+  }, [interviewObjState, addInterviewObj]);
 
   /* Hooks - useEffect */
   useEffect(() => {
     /* Return */
-    if (dataState === null) return; // before init.
-    if (indexState === null) return; // interview done.
+    if (!triggerState) return; // before init.
+    if (isInterviewDone()) return; // interview done.
 
     /* Test */
     // console.log('hello useEffect');
 
-    /* Variables */
-    const curData = dataState[indexState.row][indexState.col];
-
     /* ... */
-    if (curData.questionMain === null && curData.answerSystem === null && curData.answerUser === null && curData.feedbackGrade === null) {
+    if (isInterviewObjEmpty()) {
       // console.log('generateChainFirst()');
       generateChainFirst('cs');
     }
-    if (curData.questionMain !== null && curData.answerSystem !== null && curData.answerUser !== null && curData.feedbackGrade === null) {
+    if (isOnlyFeedbackEmpty()) {
       // console.log('generateChainSecond()');
       setContentState('');
       generateChainSecond();
     }
-    if (curData.questionMain !== null && curData.answerSystem !== null && curData.answerUser !== null && curData.feedbackGrade !== null) {
-      // console.log('handleIndexState()');
-      handleIndexState();
+    if (isInterviewObjFull()) {
+      // console.log('addHistory()');
+      addHistory(interviewObjState);
+      // console.log('initInterviewObj()');
+      initInterviewObj();
     }
-  }, [dataState, indexState, generateChainFirst, generateChainSecond]);
+  }, [interviewObjState, generateChainFirst, generateChainSecond, isInterviewObjEmpty, isOnlyFeedbackEmpty, isInterviewObjFull, addHistory, isInterviewDone, triggerState, initInterviewObj]);
 
   /* Func Public */
   const init = configState => {
-    // useRef init
     const { questionType, questionMain, questionSub } = configState;
-
     questionTypeRef.current = questionType;
     rowRef.current = questionMain;
     colRef.current = questionSub + 1;
 
-    // useState init
-    setDataState(() => {
-      const data = [];
-
-      for (let i = 0; i < rowRef.current; i += 1) {
-        data[i] = [];
-
-        for (let j = 0; j < colRef.current; j += 1) {
-          data[i][j] = {
-            questionMain: null,
-            answerSystem: null,
-            answerUser: null,
-            feedbackGrade: null,
-          };
-        }
-      }
-
-      return data;
-    });
+    trigger();
   };
   const submit = () => {
-    handleDataState({ answerUser: contentState });
-  };
-  const set = text => {
-    setContentState(text);
-  };
-  const isInterviewDone = () => {
-    return indexState === null;
-  };
-  const getQuestionMain = () => {
-    if (indexState === null) return null;
-
-    return dataState[indexState.row][indexState.col].questionMain;
+    addInterviewObj({ answerUser: contentState });
   };
 
   /* Return */
@@ -169,7 +115,7 @@ const useInterview = () => {
     submit,
     set,
     isInterviewDone,
-    getQuestionMain,
+    getQuestionMain: getQuestion,
   };
 };
 

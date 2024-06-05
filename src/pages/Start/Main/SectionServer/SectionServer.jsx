@@ -3,7 +3,7 @@ import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
 import useScroll from '@/hooks/ui/useScroll';
-import useHistory from '@/hooks/utils/useHistory';
+import useHistoryState from '@/hooks/utils/useHistoryState';
 import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
@@ -23,7 +23,7 @@ function SectionServer({ scenario, config, interview }) {
   /* Hooks */
   // custom
   const { scrollRef, scroll } = useScroll();
-  const { historyState, addHistory } = useHistory();
+  const { historyState, addHistory } = useHistoryState();
   // useMemo
   const text = useMemo(() => {
     if (api) return getQuestionMain() === null ? '' : `> ${getQuestionMain()}\n\n`;

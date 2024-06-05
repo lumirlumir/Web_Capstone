@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
  *
  * @returns
  */
-const useHistory = () => {
+const useHistoryState = () => {
   /* Hooks */
   // useState
   const [historyState, setHistoryState] = useState([]);
@@ -21,4 +21,4 @@ const useHistory = () => {
   };
 };
 
-export default useHistory;
+export default useHistoryState;

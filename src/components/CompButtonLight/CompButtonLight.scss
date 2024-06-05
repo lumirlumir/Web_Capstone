@@ -11,7 +11,8 @@
   border-radius: 6px;
 
   /* Selector */
-  &:hover {
+  &:hover,
+  &.hover {
     /* Property */
     background: $color-main;
     border-radius: 15px;

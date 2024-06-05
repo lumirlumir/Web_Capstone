@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 
 /**
  *
@@ -8,24 +8,24 @@ const useContent = () => {
   /* Hooks */
   // useRef
   const contentRef = useRef(null);
-  // useState
-  const [contentState, setContentState] = useState('');
 
   /* Func */
-  const clearContent = useCallback(() => {
-    contentRef.current.innerHTML = '';
-    setContentState('');
+  const getTextContent = useCallback(() => {
+    return contentRef.current.innerText;
   }, []);
-  const setContent = useCallback(text => {
-    setContentState(text);
+  const getHTMLContent = useCallback(() => {
+    return contentRef.current.innerHTML;
+  }, []);
+  const setHTMLContent = useCallback(val => {
+    contentRef.current.innerHTML = val;
   }, []);
 
   /* Return */
   return {
     contentRef,
-    contentState,
-    clearContent,
-    setContent,
+    getTextContent,
+    getHTMLContent,
+    setHTMLContent,
   };
 };
 

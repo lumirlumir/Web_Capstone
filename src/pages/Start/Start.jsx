@@ -27,7 +27,7 @@ function Start() {
   return (
     <div className="Start">
       <HeaderL scenario={scenario} config={config} />
-      <HeaderR scenario={scenario} />
+      <HeaderR scenario={scenario} interview={interview} />
       <Main scenario={scenario} config={config} interview={interview} />
       <FooterL scenario={scenario} />
       <FooterM scenario={scenario} />

@@ -12,17 +12,18 @@ import './CompButtonLight.scss';
  * @param {object} props.style object
  * @param {function} props.onClick function
  * @param {string} props.neonSize string
+ * @param {boolean} props.hoverEffect boolean
  * @returns {React.JSX.Element} Component Button Light
  *
  * @example
  * //Default Values
- * <CompButtonLight style={null} onClick={() => {}} neonSize="2px">
+ * <CompButtonLight style={null} onClick={() => {}} neonSize="2px" hoverEffect={false}>
  *   null
  * </CompButtonLight>
  */
-function CompButtonLight({ children, style, onClick, neonSize }) {
+function CompButtonLight({ children, style, onClick, neonSize, hoverEffect }) {
   return (
-    <div className="CompButtonLight">
+    <div className={`CompButtonLight ${hoverEffect ? 'hover' : ''}`}>
       <span style={{ height: neonSize }} />
       <span style={{ width: neonSize }} />
       <span style={{ height: neonSize }} />
@@ -38,12 +39,14 @@ CompButtonLight.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
   onClick: PropTypes.func,
   neonSize: PropTypes.string,
+  hoverEffect: PropTypes.bool,
 };
 CompButtonLight.defaultProps = {
   children: null,
   style: null,
   onClick: () => {},
   neonSize: '2px',
+  hoverEffect: false,
 };
 
 export default CompButtonLight;

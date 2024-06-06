@@ -9,35 +9,32 @@ import { fetchQuestionMain, fetchQuestionSub, fetchAnswer, fetchFeedback } from 
 
 const useInterview = () => {
   /* Hooks */
+  // useInterviewContent
+  const { contentRef, getTextContent, setHTMLContent, listening, toggleListening } = useInterviewContent();
   // useInterviewHistory
-  const { interviewHistoryRef, initInterviewHistory, addInterviewHistory, isQuestionMain, isInterviewDone, getQuestionMainHistory } = useInterviewHistory();
+  const { interviewHistoryRef, initInterviewHistory, addInterviewHistory, isQuestionMain, isInterviewDone, getQuestionMainHistory, getInterviewInfo } = useInterviewHistory();
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
-  // useContent
-  const { contentRef, getTextContent, setHTMLContent, listening, toggleListening } = useInterviewContent();
   // useTrigger
   const { triggerState, trigger } = useTrigger();
 
   /* Func Private */
   // generateChain
-  const fetchChainFirst = useCallback(
-    questionType => {
-      const generateQuestion = isQuestionMain() ? fetchQuestionMain(questionType, getQuestionMainHistory()) : fetchQuestionSub(interviewHistoryRef.current.at(-1).question, interviewHistoryRef.current.at(-1).answerUser);
+  const fetchChainFirst = useCallback(() => {
+    const generateQuestion = isQuestionMain() ? fetchQuestionMain(getInterviewInfo().questionType, getQuestionMainHistory()) : fetchQuestionSub(interviewHistoryRef.current.at(-1).question, interviewHistoryRef.current.at(-1).answerUser);
 
-      generateQuestion
-        .then(result => {
-          addInterviewObj({ question: result });
+    generateQuestion
+      .then(result => {
+        addInterviewObj({ question: result });
 
-          return result;
-        })
-        .then(PrevResult => {
-          fetchAnswer(PrevResult).then(result => {
-            addInterviewObj({ answerSystem: result });
-          });
+        return result;
+      })
+      .then(PrevResult => {
+        fetchAnswer(PrevResult).then(result => {
+          addInterviewObj({ answerSystem: result });
         });
-    },
-    [interviewHistoryRef, isQuestionMain, getQuestionMainHistory, addInterviewObj],
-  );
+      });
+  }, [interviewHistoryRef, isQuestionMain, getQuestionMainHistory, getInterviewInfo, addInterviewObj]);
   const fetchChainSecond = useCallback(() => {
     fetchFeedback(interviewObjState.answerSystem, interviewObjState.answerUser).then(result => {
       addInterviewObj({ feedback: JSON.parse(result) });
@@ -56,7 +53,7 @@ const useInterview = () => {
     /* ... */
     if (isInterviewObjEmpty()) {
       // console.log('fetchChainFirst()');
-      fetchChainFirst('cs');
+      fetchChainFirst();
     }
     if (isOnlyFeedbackEmpty()) {
       // console.log('fetchChainSecond()');
@@ -81,19 +78,19 @@ const useInterview = () => {
   const submit = useCallback(() => {
     addInterviewObj({ answerUser: getTextContent() });
     setHTMLContent('');
-  }, [addInterviewObj, getTextContent, setHTMLContent]);
+  }, [getTextContent, setHTMLContent, addInterviewObj]);
 
   /* Return */
   return {
     // useInterviewContent
+    contentRef,
     listening,
     toggleListening,
     // useInterviewHistory
     isInterviewDone,
+    getInterviewInfo,
     // useInterviewObject
     getQuestion,
-    // useContent
-    contentRef,
     // useInterview
     initInterview,
     submit,

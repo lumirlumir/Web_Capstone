@@ -18,7 +18,7 @@ function SectionServer({ scenario, config, interview }) {
   const { auto, api } = getSubsectionObj().global;
   const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
-  const { getQuestion } = interview;
+  const { getInterviewInfo, getQuestion } = interview;
 
   /* Hooks */
   // custom
@@ -26,10 +26,10 @@ function SectionServer({ scenario, config, interview }) {
   const { historyState, addHistory } = useHistoryState();
   // useMemo
   const text = useMemo(() => {
-    if (api) return getQuestion() === null ? '' : `> ${getQuestion()}\n\n`;
+    if (api) return getQuestion() === null ? '' : `> ${getInterviewInfo().questionType.toUpperCase()}분야 ${getInterviewInfo().questionMain}-${getInterviewInfo().questionSub}번 문제입니다. ${getQuestion()}\n\n`;
 
     return content;
-  }, [api, content, getQuestion]);
+  }, [api, content, getInterviewInfo, getQuestion]);
   // useLayoutEffect
   useLayoutEffect(() => {
     addHistory(text);

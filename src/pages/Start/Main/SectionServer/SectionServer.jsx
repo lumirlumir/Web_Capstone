@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
@@ -18,7 +18,7 @@ function SectionServer({ scenario, config, interview }) {
   const { auto, api } = getSubsectionObj().global;
   const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
-  const { getInterviewInfo, getQuestion } = interview;
+  const { getInterviewInfo, getQuestion, isInterviewDone } = interview;
 
   /* Hooks */
   // custom
@@ -34,6 +34,10 @@ function SectionServer({ scenario, config, interview }) {
   useLayoutEffect(() => {
     addHistory(text);
   }, [subsectionState, text, addHistory]);
+  // useEffect
+  useEffect(() => {
+    if (api && isInterviewDone()) toNextSubsection();
+  }, [getQuestion, isInterviewDone, toNextSubsection, api]);
 
   /* Return */
   return (

@@ -3,7 +3,7 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, interviewPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, interviewPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import './FooterR.scss';
 
@@ -11,14 +11,16 @@ import './FooterR.scss';
  *
  * @returns FooterR
  */
-function FooterR({ scenario, interview }) {
+function FooterR({ scenario, interview, timer }) {
   /* Props */
   const { visibility, clickability } = scenario.getSubsectionObj().FooterR;
   const { submit } = interview;
+  const { stopTimer } = timer;
 
   /* Function */
   const onClick = () => {
     submit();
+    stopTimer();
   };
 
   /* Return */
@@ -35,6 +37,7 @@ function FooterR({ scenario, interview }) {
 FooterR.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   interview: interviewPropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 FooterR.defaultProps = {};
 

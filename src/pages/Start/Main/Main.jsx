@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import useScroll from '@/hooks/utils/useScroll';
-import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -16,7 +16,7 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main({ scenario, config, interview }) {
+function Main({ scenario, config, interview, timer }) {
   /* Props */
   const { subsectionState } = scenario;
 
@@ -34,7 +34,7 @@ function Main({ scenario, config, interview }) {
     <main className="Main">
       <div ref={scrollRef}>
         <Heading scenario={scenario} />
-        <SectionServer scenario={scenario} config={config} interview={interview} />
+        <SectionServer scenario={scenario} config={config} interview={interview} timer={timer} />
         <SectionClient scenario={scenario} interview={interview} />
         <SectionConfig config={config} />
         <SectionResult />
@@ -47,6 +47,7 @@ Main.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   config: configPropTypes.isRequired,
   interview: interviewPropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 Main.defaultProps = {};
 

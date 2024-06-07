@@ -33,3 +33,9 @@ export const interviewPropTypes = PropTypes.shape({
   initInterview: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
 });
+
+export const timerPropTypes = PropTypes.shape({
+  resetTimer: PropTypes.func.isRequired,
+  stopTimer: PropTypes.func.isRequired,
+  getTimer: PropTypes.func.isRequired,
+});

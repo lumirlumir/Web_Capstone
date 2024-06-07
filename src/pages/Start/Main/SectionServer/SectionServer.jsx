@@ -4,7 +4,7 @@ import Typewriter from 'typewriter-effect';
 import CompDivNeon from '@/components/CompDivNeon';
 import useScroll from '@/hooks/utils/useScroll';
 import useHistoryState from '@/hooks/utils/useHistoryState';
-import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
 
@@ -12,13 +12,14 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ scenario, config, interview }) {
+function SectionServer({ scenario, config, interview, timer }) {
   /* Props */
   const { subsectionState, getSubsectionObj, toNextSubsection } = scenario;
   const { auto, api } = getSubsectionObj().global;
   const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
   const { getInterviewInfo, getQuestion, isInterviewDone } = interview;
+  const { resetTimer } = timer;
 
   /* Hooks */
   // custom
@@ -58,6 +59,7 @@ function SectionServer({ scenario, config, interview }) {
               .start()
               .callFunction(() => {
                 if (auto) toNextSubsection();
+                if (api && text !== '') resetTimer(configState.timeLimit);
                 scroll();
               });
           }}
@@ -71,6 +73,7 @@ SectionServer.propTypes = {
   scenario: scenarioPropTypes.isRequired,
   config: configPropTypes.isRequired,
   interview: interviewPropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 SectionServer.defaultProps = {};
 

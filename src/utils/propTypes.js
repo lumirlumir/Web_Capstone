@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 export const scenarioPropTypes = PropTypes.shape({
-  isSection: PropTypes.func.isRequired,
   subsectionState: PropTypes.number.isRequired,
   getSubsectionObj: PropTypes.func.isRequired,
   toNextSubsection: PropTypes.func.isRequired,

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
@@ -12,40 +12,47 @@ import './ButtonMain.scss';
  */
 function ButtonMain({ scenario, config, interview }) {
   /* Props */
-  const { isSection, subsectionState, getSubsectionObj, toNextSubsection, toLastSubsection } = scenario;
-  const { content } = getSubsectionObj().Main.ButtonMain;
+  const { getSubsectionObj, toNextSubsection, toLastSubsection } = scenario;
+  const { content, visibility: _visibility } = getSubsectionObj().Main.ButtonMain;
   const { configState, handleConfigState, isConfigDone } = config;
   const { initInterview } = interview;
 
   /* Hooks */
   // useMemo
   const visibility = useMemo(() => {
-    const { visibility: _visibility } = getSubsectionObj().Main.ButtonMain;
-
     if (_visibility === null) {
       return isConfigDone();
     }
     return _visibility;
-  }, [getSubsectionObj, isConfigDone]);
+  }, [_visibility, isConfigDone]);
+  // useCallback
+  const onClick = useCallback(
+    e => {
+      if (content === 'PRESS') {
+        toNextSubsection();
+      }
+      if (content === 'START') {
+        if (e.ctrlKey) {
+          toLastSubsection();
+          return;
+        }
+        if (isConfigDone()) {
+          handleConfigState({ visibility: false });
+          initInterview(configState);
+        }
+        toNextSubsection();
+      }
+      if (content === 'DOWNLOAD') {
+        // TODO
+      }
+    },
+    [toNextSubsection, toLastSubsection, content, configState, handleConfigState, isConfigDone, initInterview],
+  );
 
   /* Return */
   return (
     <div className={`ButtonMain ${visibility ? '' : 'invisible'}`}>
-      <CompButtonLight
-        style={{ padding: '20px 30px' }}
-        onClick={e => {
-          if (e.ctrlKey && isSection('tutorial') && subsectionState !== 0) {
-            toLastSubsection();
-          } else {
-            toNextSubsection();
-
-            if (isSection('tutorial') && isConfigDone()) {
-              handleConfigState({ visibility: false });
-              initInterview(configState);
-            }
-          }
-        }}
-      >
+      <CompButtonLight style={{ padding: '20px 30px' }} onClick={e => onClick(e)}>
         <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
           {content}
         </CompFontNeon>

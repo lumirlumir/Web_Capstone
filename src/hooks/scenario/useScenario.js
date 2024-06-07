@@ -3,11 +3,6 @@ import { useCallback, useState } from 'react';
 import scenario from '@/data/scenario.json';
 
 /* Constants */
-const { TUTORIAL, INTERVIEW, RESULT } = Object.freeze({
-  TUTORIAL: 0,
-  INTERVIEW: 1,
-  RESULT: 2,
-});
 const { chapter: CHAPTER } = Object.freeze(scenario);
 
 /**
@@ -24,23 +19,6 @@ const useScenario = () => {
   });
 
   /* Func */
-  // section
-  const isSection = useCallback(
-    sectionType => {
-      switch (sectionType.toUpperCase()) {
-        case 'TUTORIAL':
-          return state.section === TUTORIAL;
-        case 'INTERVIEW':
-          return state.section === INTERVIEW;
-        case 'RESULT':
-          return state.section === RESULT;
-        default:
-          return null;
-      }
-    },
-    [state],
-  );
-  // subsection
   const getSubsectionObj = useCallback(() => CHAPTER[state.section][state.subsection], [state]);
   const toNextSubsection = useCallback(() => {
     setState(prevState => {
@@ -76,9 +54,6 @@ const useScenario = () => {
 
   /* Return */
   return {
-    // section
-    isSection,
-    // subsection
     subsectionState: state.subsection,
     getSubsectionObj,
     toNextSubsection,

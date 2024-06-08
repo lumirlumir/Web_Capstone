@@ -15,10 +15,10 @@ import './SectionServer.scss';
 function SectionServer({ scenario, config, interview, timer }) {
   /* Props */
   const { subsectionState, getSubsectionObj, toNextSubsection } = scenario;
-  const { auto, api } = getSubsectionObj().global;
+  const { auto, api, result } = getSubsectionObj().global;
   const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
-  const { getInterviewInfo, getQuestion, isInterviewDone } = interview;
+  const { getInterviewInfo, getQuestion, isInterviewDone, getInterviewHistory } = interview;
   const { resetTimer } = timer;
 
   /* Hooks */
@@ -29,8 +29,10 @@ function SectionServer({ scenario, config, interview, timer }) {
   const text = useMemo(() => {
     if (api) return getQuestion() === null ? '' : `> ${getInterviewInfo().questionType.toUpperCase()}분야 ${getInterviewInfo().questionMain}-${getInterviewInfo().questionSub}번 문제입니다. ${getQuestion()}\n\n`;
 
+    if (result) return getInterviewHistory();
+
     return content;
-  }, [api, content, getInterviewInfo, getQuestion]);
+  }, [api, content, result, getInterviewInfo, getQuestion, getInterviewHistory]);
   // useLayoutEffect
   useLayoutEffect(() => {
     addHistory(text);
@@ -42,14 +44,14 @@ function SectionServer({ scenario, config, interview, timer }) {
 
   /* Return */
   return (
-    <CompDivNeon className={`SectionServer ${visibility && !configState.visibility ? '' : 'invisible'}`} neonColor="black">
+    <CompDivNeon className={`SectionServer ${visibility && !configState.visibility ? '' : 'invisible'} ${result ? 'wide' : ''}`} neonColor="black">
       <div>{historyState.slice(0, -1)}</div>
       <div>
         <Typewriter
           key={text}
           options={{
             cursor: '_',
-            delay: 50, // original: 50
+            delay: result ? 1 : 30, // original: 30
           }}
           onInit={typewriter => {
             typewriter

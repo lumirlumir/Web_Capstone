@@ -12,7 +12,7 @@ const useInterview = () => {
   // useInterviewContent
   const { contentRef, getTextContent, setHTMLContent, listening, toggleListening } = useInterviewContent();
   // useInterviewHistory
-  const { interviewHistoryRef, initInterviewHistory, addInterviewHistory, isQuestionMain, isInterviewDone, getQuestionMainHistory, getInterviewInfo } = useInterviewHistory();
+  const { interviewHistoryRef, initInterviewHistory, addInterviewHistory, isQuestionMain, isInterviewDone, getQuestionMainHistory, getInterviewInfo, getInterviewHistory } = useInterviewHistory();
   // useInterviewObj
   const { interviewObjState, initInterviewObj, addInterviewObj, isInterviewObjEmpty, isInterviewObjFull, isOnlyFeedbackEmpty, getQuestion } = useInterviewObj();
   // useTrigger
@@ -89,6 +89,7 @@ const useInterview = () => {
     // useInterviewHistory
     isInterviewDone,
     getInterviewInfo,
+    getInterviewHistory,
     // useInterviewObject
     getQuestion,
     // useInterview

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes } from '@/utils/propTypes';
 
 import './Heading.scss';
 
@@ -9,10 +9,9 @@ import './Heading.scss';
  *
  * @returns Heading
  */
-function Heading({ scenario, scenarioPhase }) {
+function Heading({ scenario }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].Main.Heading;
+  const { visibility } = scenario.getSubsectionObj().Main.Heading;
 
   /* Return */
   return (
@@ -32,7 +31,6 @@ function Heading({ scenario, scenarioPhase }) {
 }
 Heading.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 Heading.defaultProps = {};
 

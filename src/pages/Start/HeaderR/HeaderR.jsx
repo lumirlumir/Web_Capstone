@@ -3,7 +3,7 @@ import { CiMicrophoneOn } from 'react-icons/ci';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './HeaderR.scss';
 
@@ -11,18 +11,20 @@ import './HeaderR.scss';
  *
  * @returns HeaderR
  */
-function HeaderR({ scenario, scenarioPhase }) {
+function HeaderR({ scenario, interview }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].HeaderR;
+  const { visibility, clickability } = scenario.getSubsectionObj().HeaderR;
+  const { listening, toggleListening } = interview;
 
   /* Function */
-  const doNothing = () => {};
+  const onClick = () => {
+    toggleListening();
+  };
 
   /* Return */
   return (
-    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
-      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
+    <header className={`HeaderR ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
+      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={onClick} hoverEffect={listening}>
         <CompFontNeon neonColor="white">
           <CiMicrophoneOn size="40px" />
         </CompFontNeon>
@@ -32,7 +34,7 @@ function HeaderR({ scenario, scenarioPhase }) {
 }
 HeaderR.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 HeaderR.defaultProps = {};
 

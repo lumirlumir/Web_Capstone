@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import CompDivNeon from '@/components/CompDivNeon';
 import CompFontNeon from '@/components/CompFontNeon';

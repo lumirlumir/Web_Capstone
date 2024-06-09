@@ -3,7 +3,7 @@ import { GrPowerReset } from 'react-icons/gr';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes } from '@/utils/propTypes';
 
 import './FooterL.scss';
 
@@ -11,19 +11,18 @@ import './FooterL.scss';
  *
  * @returns FooterL
  */
-function FooterL({ scenario, scenarioPhase }) {
+function FooterL({ scenario }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].FooterL;
+  const { visibility, clickability } = scenario.getSubsectionObj().FooterL;
 
-  /* Function */
+  /* Func */
   const reload = () => {
     window.location.reload();
   };
 
   /* Return */
   return (
-    <footer className={`FooterL ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
+    <footer className={`FooterL ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
       <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={reload}>
         <CompFontNeon neonColor="white">
           <GrPowerReset size="32px" />
@@ -34,7 +33,6 @@ function FooterL({ scenario, scenarioPhase }) {
 }
 FooterL.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
 };
 FooterL.defaultProps = {};
 

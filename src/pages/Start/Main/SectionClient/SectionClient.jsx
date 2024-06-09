@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CompDivNeon from '@/components/CompDivNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './SectionClient.scss';
 
@@ -9,17 +9,21 @@ import './SectionClient.scss';
  *
  * @returns SectionClient
  */
-function SectionClient({ scenario, scenarioPhase }) {
+function SectionClient({ scenario, interview }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].Main.SectionClient;
+  const { visibility } = scenario.getSubsectionObj().Main.SectionClient;
+  const { contentRef } = interview;
 
   /* Return */
-  return <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black" />;
+  return (
+    <CompDivNeon className={`SectionClient ${visibility ? '' : 'invisible'}`} neonColor="black">
+      <div ref={contentRef} contentEditable="true" spellCheck="false" placeholder="$ Interviewee" />
+    </CompDivNeon>
+  );
 }
 SectionClient.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 SectionClient.defaultProps = {};
 

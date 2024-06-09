@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import './FooterM.scss';
 
@@ -9,23 +9,23 @@ import './FooterM.scss';
  *
  * @returns FooterM
  */
-function FooterM({ scenario, scenarioPhase }) {
+function FooterM({ scenario, timer }) {
   /* Props */
-  const { scenarioPhaseState } = scenarioPhase;
-  const { visibility } = scenario.phase[scenarioPhaseState].FooterM;
+  const { visibility } = scenario.getSubsectionObj().FooterM;
+  const { getTimer } = timer;
 
   /* Return */
   return (
     <footer className={`FooterM ${visibility ? '' : 'invisible'}`}>
-      <CompFontNeon neonSize="s" fontFamily="audiowide" fontSize="35px">
-        59:59:59
+      <CompFontNeon neonColor={getTimer().minute === 0 ? 'red' : 'white'} neonSize="s" fontFamily="audiowide" fontSize="35px">
+        {getTimer().timer}
       </CompFontNeon>
     </footer>
   );
 }
 FooterM.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 FooterM.defaultProps = {};
 

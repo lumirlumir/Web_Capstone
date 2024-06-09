@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import scenario from '@/data/scenario.json';
+import useScenario from '@/hooks/scenario/useScenario';
+import useConfig from '@/hooks/useConfig';
+import useInterview from '@/hooks/useInterview';
+import useTimer from '@/hooks/utils/useTimer';
 
 import FooterL from './FooterL';
 import FooterM from './FooterM';
@@ -16,66 +19,21 @@ import './Start.scss';
  * @returns Start
  */
 function Start() {
-  /* useState */
-  // scenarioPhase
-  const [scenarioPhaseState, setScenarioPhaseState] = useState(0);
-  const handleNextScenarioPhaseState = () => {
-    const newScenarioPhaseState = scenarioPhaseState + 1;
-    if (newScenarioPhaseState < scenario.phase.length) {
-      setScenarioPhaseState(newScenarioPhaseState);
-    }
-  };
-  const handleSkipScenarioPhaseState = () => {
-    const newScenarioPhaseState = scenario.phase.length - 1;
-    setScenarioPhaseState(newScenarioPhaseState);
-  };
-  const isScenarioPhaseDone = () => {
-    return scenarioPhaseState === scenario.phase.length - 1;
-  };
-  const scenarioPhase = {
-    scenarioPhaseState,
-    handleNextScenarioPhaseState,
-    handleSkipScenarioPhaseState,
-    isScenarioPhaseDone,
-  };
-  // config
-  const [configState, setConfigState] = useState({
-    visibility: false,
-    questionType: {
-      cs: false,
-      fe: false,
-      be: false,
-      db: false,
-      oop: false,
-    },
-    questionMain: 0,
-    questionSub: 0,
-    timeLimit: 0,
-  });
-  const handleConfigState = obj => {
-    setConfigState(prevState => ({
-      ...prevState,
-      ...obj,
-      questionType: {
-        ...prevState.questionType,
-        ...obj.questionType,
-      },
-    }));
-  };
-  const config = {
-    configState,
-    handleConfigState,
-  };
+  /* Hooks */
+  const scenario = useScenario();
+  const config = useConfig();
+  const interview = useInterview();
+  const timer = useTimer(interview.submit);
 
   /* Return */
   return (
     <div className="Start">
-      <HeaderL scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
-      <HeaderR scenario={scenario} scenarioPhase={scenarioPhase} />
-      <Main scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
-      <FooterL scenario={scenario} scenarioPhase={scenarioPhase} />
-      <FooterM scenario={scenario} scenarioPhase={scenarioPhase} />
-      <FooterR scenario={scenario} scenarioPhase={scenarioPhase} />
+      <HeaderL scenario={scenario} config={config} />
+      <HeaderR scenario={scenario} interview={interview} />
+      <Main scenario={scenario} config={config} interview={interview} timer={timer} />
+      <FooterL scenario={scenario} />
+      <FooterM scenario={scenario} timer={timer} />
+      <FooterR scenario={scenario} interview={interview} timer={timer} />
     </div>
   );
 }

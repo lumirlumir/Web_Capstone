@@ -1,52 +1,10 @@
 import PropTypes from 'prop-types';
 
 export const scenarioPropTypes = PropTypes.shape({
-  phase: PropTypes.arrayOf(
-    PropTypes.shape({
-      global: PropTypes.shape({
-        auto: PropTypes.bool.isRequired,
-      }).isRequired,
-      FooterL: PropTypes.shape({
-        visibility: PropTypes.bool.isRequired,
-      }).isRequired,
-      FooterM: PropTypes.shape({
-        visibility: PropTypes.bool.isRequired,
-      }).isRequired,
-      FooterR: PropTypes.shape({
-        visibility: PropTypes.bool.isRequired,
-        isSubmit: PropTypes.bool.isRequired,
-      }).isRequired,
-      HeaderL: PropTypes.shape({
-        visibility: PropTypes.bool.isRequired,
-      }).isRequired,
-      HeaderR: PropTypes.shape({
-        visibility: PropTypes.bool.isRequired,
-      }).isRequired,
-      Main: PropTypes.shape({
-        ButtonMain: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-          content: PropTypes.string.isRequired,
-        }).isRequired,
-        Heading: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-        }).isRequired,
-        SectionClient: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-        }).isRequired,
-        SectionServer: PropTypes.shape({
-          visibility: PropTypes.bool.isRequired,
-          content: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired,
-    }).isRequired,
-  ).isRequired,
-});
-
-export const scenarioPhasePropTypes = PropTypes.shape({
-  scenarioPhaseState: PropTypes.number.isRequired,
-  handleNextScenarioPhaseState: PropTypes.func.isRequired,
-  handleSkipScenarioPhaseState: PropTypes.func.isRequired,
-  isScenarioPhaseDone: PropTypes.func.isRequired,
+  subsectionState: PropTypes.number.isRequired,
+  getSubsectionObj: PropTypes.func.isRequired,
+  toNextSubsection: PropTypes.func.isRequired,
+  toLastSubsection: PropTypes.func.isRequired,
 });
 
 export const configPropTypes = PropTypes.shape({
@@ -64,4 +22,20 @@ export const configPropTypes = PropTypes.shape({
     timeLimit: PropTypes.number.isRequired,
   }).isRequired,
   handleConfigState: PropTypes.func.isRequired,
+});
+
+export const interviewPropTypes = PropTypes.shape({
+  isInterviewDone: PropTypes.func.isRequired,
+  getQuestion: PropTypes.func.isRequired,
+  contentRef: PropTypes.shape({
+    current: PropTypes.instanceOf(HTMLElement),
+  }).isRequired,
+  initInterview: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
+});
+
+export const timerPropTypes = PropTypes.shape({
+  resetTimer: PropTypes.func.isRequired,
+  stopTimer: PropTypes.func.isRequired,
+  getTimer: PropTypes.func.isRequired,
 });

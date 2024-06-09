@@ -39,8 +39,9 @@ jobs:
 
       - name: Environment Variables
         run: |
-          echo "TEST=${{ secrets.TEST }}" >> .env
           echo "PUBLIC_URL=${{ secrets.PUBLIC_URL }}" >> .env
+          echo "BACKEND_PORT=${{ secrets.BACKEND_PORT }}" >> .env
+          echo "BACKEND_IP=${{ secrets.BACKEND_IP }}" >> .env
 
       - name: Build
         run: npm run build

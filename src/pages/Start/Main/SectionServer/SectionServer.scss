@@ -6,6 +6,10 @@
   @include selector-scrollbar;
 
   /* Selector */
+  &.wide {
+    height: 600px;
+  }
+
   > .ref {
     height: calc($main-section-height * 0.75);
   }

@@ -26,7 +26,9 @@
 
 ### 1-1. Links
 
-- [***Github Repository***](https://github.com/lumirlumir/Web_Capstone)
+- [***Github Pages***](https://lumirlumir.github.io/Web_Capstone/): 웹 사이트
+- [***Github Repository: Front-End***](https://github.com/lumirlumir/Web_Capstone)
+- [***Github Repository: Back-End***](https://github.com/lumirlumir/Web_Capstone_Back)
 - [***Github PR***](https://github.com/lumirlumir/Web_Capstone/pulls)
 - [***Github Issues***](https://github.com/lumirlumir/Web_Capstone/issues)
 - [***Github Projects***](https://github.com/users/lumirlumir/projects/2)

@@ -1,10 +1,9 @@
 import React from 'react';
-import { IoExitOutline } from 'react-icons/io5';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, interviewPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import './FooterR.scss';
 
@@ -12,26 +11,33 @@ import './FooterR.scss';
  *
  * @returns FooterR
  */
-function FooterR({ scenario, scenarioPhase }) {
+function FooterR({ scenario, interview, timer }) {
   /* Props */
-  const { scenarioPhaseState, isScenarioPhaseDone } = scenarioPhase;
-  const { visibility, isSubmit } = scenario.phase[scenarioPhaseState].FooterR;
+  const { visibility, clickability } = scenario.getSubsectionObj().FooterR;
+  const { submit } = interview;
+  const { stopTimer } = timer;
 
   /* Function */
-  const doNothing = () => {};
+  const onClick = () => {
+    submit();
+    stopTimer();
+  };
 
   /* Return */
   return (
-    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${isScenarioPhaseDone() ? '' : 'unclickable'}`}>
-      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={doNothing}>
-        <CompFontNeon neonColor="white">{isSubmit ? <IoIosCheckmarkCircleOutline size="39px" /> : <IoExitOutline size="37px" />}</CompFontNeon>
+    <footer className={`FooterR ${visibility ? '' : 'invisible'} ${clickability ? '' : 'unclickable'}`}>
+      <CompButtonLight style={{ width: '60px', height: '60px' }} onClick={onClick}>
+        <CompFontNeon neonColor="white">
+          <IoIosCheckmarkCircleOutline size="39px" />
+        </CompFontNeon>
       </CompButtonLight>
     </footer>
   );
 }
 FooterR.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 FooterR.defaultProps = {};
 

@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo } from 'react';
 import Typewriter from 'typewriter-effect';
 
 import CompDivNeon from '@/components/CompDivNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import useScroll from '@/hooks/utils/useScroll';
+import useHistoryState from '@/hooks/utils/useHistoryState';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import './SectionServer.scss';
 
@@ -10,45 +12,57 @@ import './SectionServer.scss';
  *
  * @returns SectionServer
  */
-function SectionServer({ scenario, scenarioPhase, config }) {
+function SectionServer({ scenario, config, interview, timer }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState } = scenarioPhase;
-  const { auto } = scenario.phase[scenarioPhaseState].global;
-  const { visibility, content } = scenario.phase[scenarioPhaseState].Main.SectionServer;
+  const { subsectionState, getSubsectionObj, toNextSubsection } = scenario;
+  const { auto, api, result } = getSubsectionObj().global;
+  const { visibility, content } = getSubsectionObj().Main.SectionServer;
   const { configState } = config;
+  const { getInterviewInfo, getQuestion, isInterviewDone, getInterviewHistory } = interview;
+  const { resetTimer } = timer;
 
-  /* useState */
-  const [contentHistoryState, setContentHistoryState] = useState('');
+  /* Hooks */
+  // custom
+  const { scrollRef, scroll } = useScroll();
+  const { historyState, addHistory } = useHistoryState();
+  // useMemo
+  const text = useMemo(() => {
+    if (api) return getQuestion() === null ? '' : `> ${getInterviewInfo().questionType.toUpperCase()}분야 ${getInterviewInfo().questionMain}-${getInterviewInfo().questionSub}번 문제입니다. ${getQuestion()}\n\n`;
 
-  /* useRef */
-  const scrollRef = useRef();
+    if (result) return getInterviewHistory();
 
-  /* useEffect */
+    return content;
+  }, [api, content, result, getInterviewInfo, getQuestion, getInterviewHistory]);
+  // useLayoutEffect
+  useLayoutEffect(() => {
+    addHistory(text);
+  }, [subsectionState, text, addHistory]);
+  // useEffect
   useEffect(() => {
-    if (scenarioPhaseState > 1) {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
-    }
-  }, [scenarioPhaseState]);
+    if (api && isInterviewDone()) toNextSubsection();
+  }, [getQuestion, isInterviewDone, toNextSubsection, api]);
 
   /* Return */
   return (
-    <CompDivNeon className={`SectionServer ${visibility && !configState.visibility ? '' : 'invisible'}`} neonColor="black">
-      <div>{contentHistoryState}</div>
+    <CompDivNeon className={`SectionServer ${visibility && !configState.visibility ? '' : 'invisible'} ${result ? 'wide' : ''}`} neonColor="black">
+      <div>{historyState.slice(0, -1)}</div>
       <div>
         <Typewriter
-          key={content}
+          key={text}
           options={{
             cursor: '_',
-            delay: 50, // original: 50
+            delay: result ? 1 : 30, // original: 30
           }}
           onInit={typewriter => {
             typewriter
-              .typeString(content)
-              .pauseFor(3000) // original: 3000
+              .pauseFor(2000) // original: 2000
+              .typeString(text)
+              .pauseFor(1000) // original: 1000
               .start()
               .callFunction(() => {
-                setContentHistoryState(`${contentHistoryState}${content}`);
-                if (auto) handleNextScenarioPhaseState();
+                if (auto) toNextSubsection();
+                if (api && text !== '') resetTimer(configState.timeLimit);
+                scroll();
               });
           }}
         />
@@ -59,8 +73,9 @@ function SectionServer({ scenario, scenarioPhase, config }) {
 }
 SectionServer.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 SectionServer.defaultProps = {};
 

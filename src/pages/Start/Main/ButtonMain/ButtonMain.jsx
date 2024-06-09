@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import CompButtonLight from '@/components/CompButtonLight';
 import CompFontNeon from '@/components/CompFontNeon';
-import { scenarioPropTypes, scenarioPhasePropTypes } from '@/utils/propTypes';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes } from '@/utils/propTypes';
 
 import './ButtonMain.scss';
 
@@ -10,24 +10,49 @@ import './ButtonMain.scss';
  *
  * @returns ButtonMain
  */
-function ButtonMain({ scenario, scenarioPhase }) {
+function ButtonMain({ scenario, config, interview }) {
   /* Props */
-  const { scenarioPhaseState, handleNextScenarioPhaseState, handleSkipScenarioPhaseState } = scenarioPhase;
-  const { visibility, content } = scenario.phase[scenarioPhaseState].Main.ButtonMain;
+  const { getSubsectionObj, toNextSubsection, toLastSubsection } = scenario;
+  const { content, visibility: _visibility } = getSubsectionObj().Main.ButtonMain;
+  const { configState, handleConfigState, isConfigDone } = config;
+  const { initInterview } = interview;
+
+  /* Hooks */
+  // useMemo
+  const visibility = useMemo(() => {
+    if (_visibility === null) {
+      return isConfigDone();
+    }
+    return _visibility;
+  }, [_visibility, isConfigDone]);
+  // useCallback
+  const onClick = useCallback(
+    e => {
+      if (content === 'PRESS') {
+        toNextSubsection();
+      }
+      if (content === 'START') {
+        if (e.ctrlKey) {
+          toLastSubsection();
+          return;
+        }
+        if (isConfigDone()) {
+          handleConfigState({ visibility: false });
+          initInterview(configState);
+        }
+        toNextSubsection();
+      }
+      if (content === 'DOWNLOAD') {
+        // TODO
+      }
+    },
+    [toNextSubsection, toLastSubsection, content, configState, handleConfigState, isConfigDone, initInterview],
+  );
 
   /* Return */
   return (
     <div className={`ButtonMain ${visibility ? '' : 'invisible'}`}>
-      <CompButtonLight
-        style={{ padding: '20px 30px' }}
-        onClick={e => {
-          if (e.ctrlKey && scenarioPhaseState !== 0) {
-            handleSkipScenarioPhaseState();
-          } else {
-            handleNextScenarioPhaseState();
-          }
-        }}
-      >
+      <CompButtonLight style={{ padding: '20px 30px' }} onClick={e => onClick(e)}>
         <CompFontNeon neonColor="white" neonSize="s" fontFamily="Audiowide" fontSize="40px">
           {content}
         </CompFontNeon>
@@ -37,7 +62,8 @@ function ButtonMain({ scenario, scenarioPhase }) {
 }
 ButtonMain.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
+  config: configPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
 };
 ButtonMain.defaultProps = {};
 

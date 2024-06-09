@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-import { scenarioPropTypes, scenarioPhasePropTypes, configPropTypes } from '@/utils/propTypes';
+import useScroll from '@/hooks/utils/useScroll';
+import { scenarioPropTypes, configPropTypes, interviewPropTypes, timerPropTypes } from '@/utils/propTypes';
 
 import ButtonMain from './ButtonMain';
 import Heading from './Heading';
@@ -15,37 +16,38 @@ import './Main.scss';
  *
  * @returns Main
  */
-function Main({ scenario, scenarioPhase, config }) {
-  /* useRef */
-  const scrollRef = useRef();
+function Main({ scenario, config, interview, timer }) {
+  /* Props */
+  const { subsectionState } = scenario;
 
-  /* useEffect */
+  /* Hooks */
+  // useScroll
+  const { scrollRef, scroll } = useScroll();
+  // useEffect
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    }, 2000);
+    const timeout = setTimeout(scroll, 2000);
     return () => clearTimeout(timeout);
-  }, [scenarioPhase.scenarioPhaseState]);
+  }, [subsectionState, scroll]);
 
   /* Return */
   return (
     <main className="Main">
-      <div>
-        <Heading scenario={scenario} scenarioPhase={scenarioPhase} />
-        <SectionServer scenario={scenario} scenarioPhase={scenarioPhase} config={config} />
-        <SectionClient scenario={scenario} scenarioPhase={scenarioPhase} />
+      <div ref={scrollRef}>
+        <Heading scenario={scenario} />
+        <SectionServer scenario={scenario} config={config} interview={interview} timer={timer} />
+        <SectionClient scenario={scenario} interview={interview} />
         <SectionConfig config={config} />
         <SectionResult />
-        <ButtonMain scenario={scenario} scenarioPhase={scenarioPhase} />
-        <div ref={scrollRef} />
+        <ButtonMain scenario={scenario} config={config} interview={interview} />
       </div>
     </main>
   );
 }
 Main.propTypes = {
   scenario: scenarioPropTypes.isRequired,
-  scenarioPhase: scenarioPhasePropTypes.isRequired,
   config: configPropTypes.isRequired,
+  interview: interviewPropTypes.isRequired,
+  timer: timerPropTypes.isRequired,
 };
 Main.defaultProps = {};
 

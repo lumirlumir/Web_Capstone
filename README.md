@@ -34,6 +34,7 @@
 - [***Github Projects***](https://github.com/users/lumirlumir/projects/2)
 - [***PPT Midterm***](https://www.miricanvas.com/v/134hi5w): 중간 발표 PPT
 - [***PPT Final***](https://www.miricanvas.com/v/13bnjrd): 최종 발표 PPT
+- [***PPT Contest***](https://www.miricanvas.com/v/13d3dql): 대회 발표 PPT
 - [***Demonstration Video***](https://www.youtube.com/watch?v=dg9tw4BjRX4): 시연 영상
 
 ### 1-2. Project Info
@@ -53,7 +54,7 @@
   :---: | :--- | :---:
   김용현 | FE Design & Dev, BE Dev, OpenAI Prompt Engineering | 팀장
   김영수 | Administrative Processing, Research  | 팀원
-  김영아 | OpenAI Prompt Engineering  | 팀원
+  김영아 | OpenAI Fine Tuning | 팀원
 - 세부 진행 내역:
   - 김용현:
     - React.js 기반의 SPA 디자인 및 개발.
